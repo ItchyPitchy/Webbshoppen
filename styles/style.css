@@ -5,10 +5,11 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  overflow-x: hidden;
 }
 
 .navigation {
-  min-height: 70px;
+  height: 20vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,17 +27,13 @@ body {
   color: lightgrey;
 }
 
-.header-logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: lightgrey;
-  padding: 0px 50px;
+.navigation img {
+  margin-top: 2%;
+  width: 30vw;
 }
 
 .search-form {
-  width: 100vw;
-  padding: 0px 25px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -49,7 +46,7 @@ body {
 }
 
 .search-input {
-  width: 20%;
+  width: 50%;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid lightgrey;
@@ -64,7 +61,8 @@ input:focus {
 
 .search-submit-btn {
   padding: 5px 15px;
-  border-radius: 2rem;
+  border-radius: 30px;
+  border: 2px solid #93a8ac;
   color: #424b54;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -74,6 +72,7 @@ a {
 }
 
 .navigation-links {
+  height: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,16 +83,52 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-right: 30px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
 }
 
 .navigation-link {
   text-decoration: none;
   color: lightgrey;
   padding: 0px 20px;
+}
+
+@media (min-width: 800px) {
+  .navigation {
+    height: 10vh;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .navigation img {
+    margin-left: 6%;
+    margin-top: 0%;
+    width: 10vw;
+  }
+  .search-form {
+    width: 80%;
+  }
+  .navigation-links {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 60%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-right: 4%;
+  }
+  .navigation-link {
+    padding: 0px 10px;
+  }
+}
+
+@media (min-width: 895px) {
+  .navigation-link {
+    padding: 0px 20px;
+  }
 }
 
 header {
@@ -104,7 +139,7 @@ header {
 }
 
 .header-category-links {
-  min-height: 50px;
+  height: 15vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -116,6 +151,7 @@ header {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   background-color: #424b54;
+  border-bottom: #93a8ac solid 2px;
 }
 
 .header-category-link {
@@ -133,11 +169,19 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+@media (min-width: 800px) {
+  header {
+    height: 50vh;
+  }
+  .header-category-links {
+    height: 8vh;
+  }
 }
 
 footer {
@@ -159,6 +203,7 @@ footer {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  border-top: #93a8ac solid 2px;
 }
 
 footer .first_div_footer {
@@ -184,9 +229,18 @@ footer .first_div_footer div {
   right: 0px;
 }
 
+footer .first_div_footer p {
+  text-align: center;
+}
+
+footer .first_div_footer img {
+  width: 20vw;
+}
+
 footer a {
   text-decoration: none;
   color: lightgray;
+  padding: 2%;
 }
 
 footer .footer_categories {
@@ -198,10 +252,34 @@ footer .footer_categories {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+@media (min-width: 800px) {
+  footer {
+    font-size: 0.9em;
+  }
+  footer .first_div_footer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    height: 40%;
+  }
+  footer .first_div_footer p {
+    text-align: left;
+  }
+  footer .first_div_footer img {
+    width: 15vw;
+  }
+  footer .footer_categories {
+    width: 70%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

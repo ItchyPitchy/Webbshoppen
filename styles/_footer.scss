@@ -8,6 +8,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  border-top: #93a8ac solid 2px;
 
   .first_div_footer {
     width: 100%;
@@ -21,17 +22,49 @@ footer {
       display: inline-block;
       right: 0px;
     }
+
+    p {
+      text-align: center;
+    }
+
+    img {
+      width: 20vw;
+    }
   }
   a {
     text-decoration: none;
     color: lightgray;
+    padding: 2%;
   }
 
   .footer_categories {
     width: 80%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 800px) {
+  footer {
+    font-size: 0.9em;
+    .first_div_footer {
+      flex-direction: row;
+      justify-content: space-around;
+      height: 40%;
+
+      p {
+        text-align: left;
+      }
+
+      img {
+        width: 15vw;
+      }
+    }
+
+    .footer_categories {
+      width: 70%;
+    }
   }
 }
