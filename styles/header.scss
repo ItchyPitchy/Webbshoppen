@@ -1,0 +1,20 @@
+header {
+  min-height: 320px;
+  background-image: url(../images/header_img.jpeg);
+  background-position: center;
+  background-size: cover;
+}
+
+.header-category-links {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #424b54;
+}
+
+.header-category-link {
+  text-decoration: none;
+  color: lightgrey;
+  padding: 0px 20px;
+}

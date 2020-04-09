@@ -1,0 +1,26 @@
+header {
+  min-height: 320px;
+  background-image: url(../images/header_img.jpeg);
+  background-position: center;
+  background-size: cover;
+}
+
+.header-category-links {
+  min-height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #424b54;
+}
+
+.header-category-link {
+  text-decoration: none;
+  color: lightgrey;
+  padding: 0px 20px;
+}
+/*# sourceMappingURL=header.css.map */

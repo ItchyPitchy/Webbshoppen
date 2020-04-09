@@ -1,0 +1,73 @@
+.navigation {
+  min-height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #424b54;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: lightgrey;
+}
+
+.header-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: lightgrey;
+  padding: 0px 50px;
+}
+
+.search-form {
+  padding: 0px 25px;
+}
+
+.search-input {
+  width: 350px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  margin-right: 15px;
+  color: lightgrey;
+  font-size: 18px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.search-submit-btn {
+  padding: 5px 15px;
+  border-radius: 2rem;
+  color: #424b54;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+  font-size: 15px;
+}
+
+.navigation-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-right: 30px;
+}
+
+.navigation-link {
+  text-decoration: none;
+  color: lightgrey;
+  padding: 0px 20px;
+}
+/*# sourceMappingURL=nav.css.map */
