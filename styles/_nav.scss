@@ -1,36 +1,29 @@
 .navigation {
   min-height: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: column;
   background-color: #424b54;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   color: lightgrey;
 }
 
 .header-logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: lightgrey;
   padding: 0px 50px;
 }
 
 .search-form {
+  width: 100vw;
   padding: 0px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-input {
-  width: 350px;
+  width: 20%;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid lightgrey;
@@ -55,13 +48,10 @@ a {
 }
 
 .navigation-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   padding-right: 30px;
 }
 
@@ -70,4 +60,3 @@ a {
   color: lightgrey;
   padding: 0px 20px;
 }
-/*# sourceMappingURL=nav.css.map */
