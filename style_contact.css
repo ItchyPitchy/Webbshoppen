@@ -1,11 +1,5 @@
-/* General Styles */
-html {
-    /* background: url(http://phutora.com/img/friends3.jpg) no-repeat; */
-    /* background-size: cover;
-    height: 100%; */
-    /* background-color: #000; */
-}
-body {
+.container {
+    border: 1px solid red;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -24,11 +18,8 @@ h4 {
 #contact-form {
     background-color: #93a8ac;
     padding: 10px 20px 30px 20px;
-    max-width: 100%;
-    left: 50%;
-    position: absolute;
-    margin-top: 30px;
-    margin-left: -260px;
+    max-width: 70%;
+    margin: auto;
     border-radius: 7px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -85,24 +76,4 @@ textarea:required {
 #contact-form .required {
     font-weight: bold;
     color: #e5e6e7;
-}
-
-/* Hide success/failure message
-    (especially since the php is missing) */
-/* #failure,
-#success {
-    color: #6ea070; */
-/* display: none; */
-/* } */
-
-/* Make form look nice on smaller screens */
-@media only screen and (max-width: 580px) {
-    #contact-form {
-        left: 3%;
-        margin-right: 3%;
-        width: 88%;
-        margin-left: 0;
-        padding-left: 3%;
-        padding-right: 3%;
-    }
 }
