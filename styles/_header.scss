@@ -1,0 +1,29 @@
+header {
+  height: 40vh;
+  background-image: url(../images/header_img.jpeg);
+  background-position: center;
+  background-size: cover;
+}
+
+.header-category-links {
+  min-height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #424b54;
+}
+
+.header-category-link {
+  text-decoration: none;
+  color: lightgrey;
+  padding: 0px 20px;
+}
+
+.header_categories {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
