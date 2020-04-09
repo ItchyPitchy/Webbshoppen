@@ -1,0 +1,40 @@
+header {
+  height: 40vh;
+  background-image: url(../images/header_img.jpeg);
+  background-position: center;
+  background-size: cover;
+}
+
+.header-category-links {
+  height: 15vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #424b54;
+  border-bottom: #93a8ac solid 2px;
+}
+
+.header-category-link {
+  text-decoration: none;
+  color: lightgrey;
+  padding: 0px 20px;
+}
+
+.header_categories {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 800px) {
+  header {
+    height: 50vh;
+  }
+
+  .header-category-links {
+    height: 8vh;
+  }
+}
