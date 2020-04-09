@@ -32,5 +32,3 @@
       <a class="header-category-link" href="">Kategori</a>
       <a class="header-category-link" href="">Kategori</a>
     </div>
-  </body>
-</html>
