@@ -1,17 +1,17 @@
 <?php
 
 require_once "header.php";
- require_once "style_contact.css";
+
 ?>
 
 
-<div class="container">
+<div class="contactContainer">
 <div id="contact-form">
 	<div>
-		<h4>Have a question or just want to get in touch?<br> Fyll out this form and let us know.</h4> 
+		<h4 class="headerForm">Have a question or just want to get in touch?<br> Fyll out this form and let us know.</h4> 
 	</div>
 
-		   <form method="post" action="#">
+		   <form method="post" action="mailto:vanessasuthat@outlook.com" enctype="multipart/form-data">
 			<div>
 		      <label for="name">
 		      	<span class="required">Name: *</span> 
