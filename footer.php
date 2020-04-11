@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
     <footer>
       <div class="first_div_footer">
-        <img src="/images/loggoplaceholder.jpg" alt="" />
+        <img src="./images/loggoplaceholder.jpg" alt="" />
         <div class="footer_contact">
           <p>Adress: Moravägen 45</p>
           <p>Telefon: 075 466 35 78</p>

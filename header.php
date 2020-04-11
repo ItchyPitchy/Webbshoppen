@@ -8,8 +8,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <!-- <span class="header-logo">Här är en logga</span> -->
-      <img src="/images/loggoplaceholder.jpg" alt="" />
+      <img src="./images/loggoplaceholder.jpg" alt="" />
 
       <div class="navigation-links">
         <form class="search-form" action="" method="post">
@@ -33,5 +32,3 @@
       <a class="header-category-link" href="">Kategori</a>
       <a class="header-category-link" href="">Kategori</a>
     </div>
-  </body>
-</html>
