@@ -223,7 +223,6 @@ header {
   background-color: white;
   color: initial;
   text-decoration: none;
-  padding: 0 0px;
 }
 
 .list .list-item .title {
@@ -241,6 +240,7 @@ header {
   height: 200px;
   -o-object-fit: contain;
      object-fit: contain;
+  padding: 0 20px;
 }
 
 footer {

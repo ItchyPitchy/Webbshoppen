@@ -17,7 +17,6 @@
             background-color: white;
             color: initial;
             text-decoration: none;
-            padding: 0 0px;
         }
         .title {
             margin: .5em;
@@ -30,6 +29,7 @@
             width: 200px;
             height: 200px;
             object-fit: contain;
+            padding: 0 20px;
         }
     }
 }
