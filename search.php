@@ -10,7 +10,7 @@ if(isset($_GET["q"])) {
     $q = $_GET["q"];
     $productStmt->execute();
 
-    $output = "<ul>";
+    $output = "<ul class='list'>";
 
     while($productRows = $productStmt->fetch(PDO::FETCH_ASSOC)):
         $sql = "SELECT * FROM product_images WHERE product_id = :id";
@@ -24,9 +24,9 @@ if(isset($_GET["q"])) {
         // echo "</pre>";
         $image = $imageRow["image"];
         
-        $output .= "<li><h3 class='title'>$productRows[name]</h3>";
-        $output .= "<span class='price'>$productRows[price]</span>";
-        $output .= "<img class='search-img' src='uploads/$image'></li>";
+        $output .= "<li class='list-item'><a href='product.php?id=$productRows[id]'><h3 class='title'>$productRows[name]</h3>";
+        $output .= "<img class='search-img' src='uploads/$image'>";
+        $output .= "<span class='price'>$productRows[price]:-</span></a></li>";
 
     endwhile;
 
@@ -35,15 +35,6 @@ if(isset($_GET["q"])) {
 }
 
 require_once "header.php";
-
-?>
-
-<form class="search-form" action="search.php" method="GET">
-    <input class="search-page-input" type="text" name="q"/>
-    <button class="search-page-submit-btn" type="submit">Sök</button>
-</form>
-
-<?php 
 
 echo $output;
 
