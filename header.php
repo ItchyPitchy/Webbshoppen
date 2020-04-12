@@ -8,7 +8,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="./images/loggoplaceholder.jpg" alt="" />
+      <img src="./styles/images/loggoplaceholder.jpg" alt=""/>
 
       <div class="navigation-links">
         <form class="search-form" action="" method="post">

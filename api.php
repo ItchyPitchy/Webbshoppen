@@ -1,6 +1,6 @@
 <?php
 
-$imagesPath = "HÄR LIGGER URL TILL BILDER";
+$imagesPath = "./images";
 require_once "db.php";
 
 $selectProducts = $db->prepare("SELECT * FROM products INNER JOIN category ON products.category_id=category.category_id ");
