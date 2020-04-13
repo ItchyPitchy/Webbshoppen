@@ -12,7 +12,7 @@ if(isset($_GET["q"])) {
         return strpos($v["name"], $_GET["q"]) || strpos($v["description"], $_GET["q"]);
     }, ARRAY_FILTER_USE_BOTH);
 
-    $output = "<ul class='list'>"; 
+    $output = "<main><h2>Du fick " . count($filtered) . " träffar för \"$_GET[q]\":</h2><ul class='list'>";
 
     foreach($filtered as $value) {
         $output .= "<li class='list-item'><a href='product.php?id=$value[id]'><h3 class='title'>$value[name]</h3>";
@@ -20,7 +20,7 @@ if(isset($_GET["q"])) {
         $output .= "<span class='price'>$value[price]:-</span></a></li>";
     }
 
-    $output .= "</ul>";
+    $output .= "</ul></main>";
 }
 
 require_once "header.php";
