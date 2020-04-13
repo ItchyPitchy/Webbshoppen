@@ -14,15 +14,14 @@ $jsonArr = json_decode($json, true);
     $stock = $jsonArr[0]['stock'];
     $img = $jsonArr[0]['images'];
  
-$productContainer = '<section>';
+$productContainer = "<main><section><div class='imgContainer'>";
 
 foreach ($img as $key => $value) {
     $productContainer .= "<div>
                             <img src='$value' alt='' width='100' height='100' >
                         </div>";
 }
-
-$length = count($jsonArr[0]['images']);
+$productContainer .= '</div>';
 
 $productContainer .= "<article>
                         <h1>$name</h1>
@@ -31,9 +30,11 @@ $productContainer .= "<article>
                         <br>
                         <p>$stock st finns i lager</p>
                         <br>
-                    <input type='num' id='quantityInput'>
-                    <button id='' type='submit'>Lägg till i varukorg</button>
-                    </article></section>";    
+                        <input type='num' id='quantityInput'>
+                        <button id='' type='submit'>Lägg till i varukorg</button>
+                    </article>
+                </section>
+            </main>";    
 
 echo $productContainer;
 require_once 'footer.php';
