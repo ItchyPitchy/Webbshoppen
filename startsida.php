@@ -14,14 +14,13 @@ for ($x = 0; $x < 9; $x++ ) {
 
         $name = $jsonArr[$x]['name'];
         $price = $jsonArr[$x]['price'];
-        $description = $jsonArr[$x]['description'];
         $img = $jsonArr[$x]['images'][0];
 
-        $productContainer  .=  " <a href='http://example.com' class='product-link'> <ul class='product-ul'>
+        $productContainer  .=  " <ul class='product-ul'> <a href='http://example.com' class='product-link'>
           <li class='product-li'><img src=$img></li>
           <li class='product-li product-li-name'><h3>$name</h3></li>
           <li class='product-li product-li-price'>$price kr</li>
-        </ul></a>";    
+          </a></ul>";    
 
 }
 

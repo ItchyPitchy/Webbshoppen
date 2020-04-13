@@ -186,7 +186,22 @@ header {
 
 .startpageHeading {
   text-align: center;
-  padding: 3%;
+  padding: 5%;
+  font-size: 15px;
+}
+
+@media (min-width: 600px) {
+  .startpageHeading {
+    padding: 3%;
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .startpageHeading {
+    padding: 3%;
+    font-size: 28px;
+  }
 }
 
 .productContainer {
@@ -195,13 +210,25 @@ header {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 0px auto;
+  padding-bottom: 100px;
+  width: 80%;
+}
+
+@media (min-width: 600px) {
+  .productContainer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 
 .product-ul {
@@ -214,10 +241,22 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 25vw;
   -webkit-box-shadow: 0 17px 17px -7px lightgray;
           box-shadow: 0 17px 17px -7px lightgray;
-  margin: 35px 15px;
+  width: 60vw;
+  margin: 20px auto;
+}
+
+@media (min-width: 700px) {
+  .product-ul {
+    width: 35vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-ul {
+    width: 25vw;
+  }
 }
 
 .product-li {
@@ -241,7 +280,7 @@ header {
 
 .product-li-name {
   font-size: 11px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
