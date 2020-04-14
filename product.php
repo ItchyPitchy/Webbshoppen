@@ -27,7 +27,7 @@ $productContainer = "<main><section><div class='imgContainer'>";
 
 foreach ($img as $key => $value) {
     $productContainer .= "<div>
-                            <img src='$value' alt=''>
+                            <img src='$value' alt='Produkt bild'>
                         </div>";
 }
 $productContainer .= '</div>';
