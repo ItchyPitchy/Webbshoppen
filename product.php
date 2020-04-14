@@ -2,23 +2,32 @@
 require_once 'header.php';
 
 $id = htmlspecialchars($_GET['id']);
-$url = "http://localhost/Webbshoppen/fetchProduct.php?id=" . $id;
+$url = "http://localhost/Webbshoppen/api.php";
+
 
 $json = file_get_contents($url);
 $jsonArr = json_decode($json, true);
 
-    $id = $jsonArr[0]['id'];
-    $name = $jsonArr[0]['name'];
-    $description = $jsonArr[0]['description'];
-    $price = $jsonArr[0]['price'];
-    $stock = $jsonArr[0]['stock'];
-    $img = $jsonArr[0]['images'];
+$product = '';
+for($i=0; $i < count($jsonArr); $i++) {
+
+    if($jsonArr[$i]['id'] == $id){
+        $product = $jsonArr[$i];
+    }
+}
+
+    $id = $product['id'];
+    $name = $product['name'];
+    $description = $product['description'];
+    $price = $product['price'];
+    $stock = $product['stock'];
+    $img = $product['images'];
  
 $productContainer = "<main><section><div class='imgContainer'>";
 
 foreach ($img as $key => $value) {
     $productContainer .= "<div>
-                            <img src='$value' alt='' width='100' height='100' >
+                            <img src='$value' alt=''>
                         </div>";
 }
 $productContainer .= '</div>';
