@@ -1,0 +1,57 @@
+.startpageHeading {
+    text-align: center;
+    padding: 3%;
+  }
+  
+  .productContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .product-ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 25vw;
+    box-shadow: 0 17px 17px -7px lightgray;
+    margin: 35px 15px;
+  }
+  
+  .product-li {
+    display:flex;
+    list-style: none;
+    justify-content: center;
+  }
+  
+  .product-li img {  
+    display: flex;
+    width: 10vw;
+    height: 10vw;
+    padding: 30px 0px 50px 0px;
+  }
+  
+  .product-li-name {
+    font-size: 11px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: gray;
+    padding-bottom: 20px;
+    
+    @media (min-width: 400px) {
+        font-size: 12px;  
+          }
+    @media (min-width: 600px) {
+            font-size: 18px;  
+           }
+  }
+  
+  
+  .product-li-price{
+    padding-bottom: 30px;
+    color:black;
+  }
+  
+  .product-link{
+    text-decoration: none;
+  }
