@@ -12,11 +12,12 @@ $productContainer = '<div class="product-link"><div class="productContainer">';
 
 for ($x = 0; $x < 9; $x++ ) {
 
+        $id = $jsonArr[$x]['id'];
         $name = $jsonArr[$x]['name'];
         $price = $jsonArr[$x]['price'];
         $img = $jsonArr[$x]['images'][0];
 
-        $productContainer  .=  " <ul class='product-ul'> <a href='http://example.com' class='product-link'>
+        $productContainer  .=  " <ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
           <li class='product-li'><img src=$img></li>
           <li class='product-li product-li-name'><h3>$name</h3></li>
           <li class='product-li product-li-price'>$price kr</li>
