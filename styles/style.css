@@ -184,6 +184,128 @@ header {
   }
 }
 
+.startpageHeading {
+  text-align: center;
+  padding: 5%;
+  font-size: 15px;
+}
+
+@media (min-width: 600px) {
+  .startpageHeading {
+    padding: 3%;
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .startpageHeading {
+    padding: 3%;
+    font-size: 28px;
+  }
+}
+
+.productContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0px auto;
+  padding-bottom: 100px;
+  width: 80%;
+}
+
+@media (min-width: 600px) {
+  .productContainer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.product-ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0 17px 17px -7px lightgray;
+          box-shadow: 0 17px 17px -7px lightgray;
+  width: 60vw;
+  margin: 20px auto;
+}
+
+@media (min-width: 700px) {
+  .product-ul {
+    width: 35vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-ul {
+    width: 25vw;
+  }
+}
+
+.product-li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.product-li img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 10vw;
+  height: 10vw;
+  padding: 30px 0px 50px 0px;
+}
+
+.product-li-name {
+  font-size: 11px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: gray;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 400px) {
+  .product-li-name {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 600px) {
+  .product-li-name {
+    font-size: 18px;
+  }
+}
+
+.product-li-price {
+  padding-bottom: 30px;
+  color: black;
+}
+
+.product-link {
+  text-decoration: none;
+}
+
 footer {
   font-size: 0.7em;
   color: lightgray;
