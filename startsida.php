@@ -17,11 +17,11 @@ for ($x = 0; $x < 9; $x++ ) {
         $price = $jsonArr[$x]['price'];
         $img = $jsonArr[$x]['images'][0];
 
-        $productContainer  .=  "<a href='product.php?id=$id' class='product-link'> <ul class='product-ul'>
-        <li class='product-li'><img src=$img></li>
-        <li class='product-li product-li-name'><h3>$name</h3></li>
-        <li class='product-li product-li-price'>$price kr</li>
-         </ul></a>";   
+        $productContainer  .=  " <ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
+          <li class='product-li'><img src=$img></li>
+          <li class='product-li product-li-name'><h3>$name</h3></li>
+          <li class='product-li product-li-price'>$price kr</li>
+          </a></ul>";    
 
 }
 
