@@ -12,21 +12,24 @@ if(isset($_GET["q"])) {
         return strpos($v["name"], $_GET["q"]) || strpos($v["description"], $_GET["q"]);
     }, ARRAY_FILTER_USE_BOTH);
 
-    $output = "<main><h2>Du fick " . count($filtered) . " träffar för \"$_GET[q]\":</h2><ul class='list'>";
+    $output = "";
 
     foreach($filtered as $value) {
         $output .= "<li class='list-item'><a href='product.php?id=$value[id]'><h3 class='title'>$value[name]</h3>";
         $output .= "<img class='search-img' src=" . $value["images"][0] . ">";
         $output .= "<span class='price'>$value[price]:-</span></a></li>";
     }
-
-    $output .= "</ul></main>";
 }
 
 require_once "header.php";
 
-echo $output;
-
-require_once "footer.php";
-
 ?>
+
+<main>
+    <h2>Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h2>
+    <ul class="list">
+        <?php echo $output; ?>
+    </ul>
+</main>
+
+<?php require_once "footer.php"; ?>
