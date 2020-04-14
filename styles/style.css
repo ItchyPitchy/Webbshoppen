@@ -287,6 +287,8 @@ header {
   width: 20vw;
   height: 20vw;
   padding: 30px 0px 50px 0px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 @media (min-width: 1000px) {
