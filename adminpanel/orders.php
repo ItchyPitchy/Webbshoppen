@@ -16,17 +16,15 @@
     <label for="slutförda">Slutförda beställningar</label>
     </div>
 
-<div class="width80">
-  <div class="dropdown">
-  <button class="mainmenubtn">Sortera efter ⇩</button>
-  <div class="dropdown-child">
-    <a href="">Beställnings datum</a>
-    <a href="">Ordersumma</a>
-    <a href="">Status</a>
+  <div class="selectbox-div">
+  <select id="sort">
+  <option value="senaste">Senaste beställningarna</option>
+  <option value="tidgaste">Äldsta beställningarna</option>
+  <option value="dyraste">Dyraste beställningarna</option>
+  <option value="billigaste">Billigaste beställningarna</option>
+  <option value="Obehandlade">Obehandlade beställningar</option>
+  <option value="behandlas">Behandlade beställningarna</option>
+</select>
   </div>
-  </div>
-  </div>
-</div>
-  
-</div>
 
+</div>
