@@ -1,6 +1,6 @@
 header {
   height: 40vh;
-  background-image: url(./images/header_img.jpeg);
+  background-image: url(./images/header-photo.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -11,13 +11,13 @@ header {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  background-color: #424b54;
+  background-color: #93a8ac;
   border-bottom: #93a8ac solid 2px;
 }
 
 .header-category-link {
   text-decoration: none;
-  color: lightgrey;
+  color: white;
   padding: 0px 20px;
 }
 
