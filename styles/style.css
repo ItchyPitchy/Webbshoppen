@@ -188,6 +188,8 @@ header {
   text-align: center;
   padding: 5%;
   font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #424b54;
 }
 
 @media (min-width: 600px) {
@@ -200,7 +202,7 @@ header {
 @media (min-width: 1000px) {
   .startpageHeading {
     padding: 3%;
-    font-size: 28px;
+    font-size: 30px;
   }
 }
 
@@ -241,10 +243,12 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-shadow: 0 17px 17px -7px lightgray;
-          box-shadow: 0 17px 17px -7px lightgray;
   width: 60vw;
   margin: 20px auto;
+  webkit-box-shadow: 0px 0px 15px -3px #93a8ac;
+  -webkit-box-shadow: 0px 0px 15px -3px #93a8ac;
+          box-shadow: 0px 0px 15px -3px #93a8ac;
+  border-radius: 10px;
 }
 
 @media (min-width: 700px) {
@@ -257,6 +261,12 @@ header {
   .product-ul {
     width: 25vw;
   }
+}
+
+.product-ul:hover {
+  webkit-box-shadow: 0px 0px 21px -3px #93a8ac;
+  -webkit-box-shadow: 0px 0px 21px -3px #050f11;
+          box-shadow: 0px 0px 21px -3px #050f11;
 }
 
 .product-li {
@@ -273,14 +283,23 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 10vw;
-  height: 10vw;
+  width: 20vw;
+  height: 20vw;
   padding: 30px 0px 50px 0px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+@media (min-width: 1000px) {
+  .product-li img {
+    width: 10vw;
+    height: 10vw;
+  }
 }
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -298,12 +317,26 @@ header {
 }
 
 .product-li-price {
-  padding-bottom: 30px;
-  color: black;
+  margin-bottom: 30px;
+  padding: 1.5%;
+  color: white;
+  background-color: #424b54;
+  width: 20%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 10px;
 }
 
 .product-link {
   text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 footer {
