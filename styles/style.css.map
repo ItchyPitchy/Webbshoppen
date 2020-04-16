@@ -5,6 +5,7 @@
         "style.scss",
         "_nav.scss",
         "_header.scss",
+        "_search-page.scss",
         "_startpage.scss",
         "_footer.scss"
     ],
