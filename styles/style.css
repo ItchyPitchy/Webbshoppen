@@ -366,8 +366,7 @@ main .list .list-item .search-img {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
- "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -405,7 +404,6 @@ main .list .list-item .search-img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-
 }
 
 .productContainer1 {
@@ -521,8 +519,7 @@ main .list .list-item .search-img {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
- "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -598,7 +595,6 @@ main .list .list-item .search-img {
   background-color: #93A8AC;
   border: solid 2px #93A8AC;
   color: white;
-
 }
 
 footer {
@@ -751,10 +747,6 @@ footer .footer_categories {
 }
 
 .cart-container li .qty-container .decrease-btn {
-  background-image: url("./images/minus.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 2;
@@ -788,10 +780,6 @@ footer .footer_categories {
 }
 
 .cart-container li .qty-container .increase-btn {
-  background-image: url("./images/more.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 4;

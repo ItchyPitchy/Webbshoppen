@@ -33,11 +33,11 @@ fetch("http://localhost/Webbshoppen/api.php")
             const qtyContainer = document.createElement("div");
             qtyContainer.classList.add("qty-container");
 
-            const decreaseBtn = document.createElement("div");
+            const decreaseBtn = document.createElement("button");
             decreaseBtn.setAttribute("data-id", products[i].id);
             decreaseBtn.classList.add("decrease-btn");
             if (products[i].qty <= 1) decreaseBtn.classList.add("hide");
-            // decreaseBtn.textContent = "-";
+            decreaseBtn.textContent = "-";
             qtyContainer.appendChild(decreaseBtn);
 
             const qtyInput = document.createElement("input");
@@ -46,11 +46,11 @@ fetch("http://localhost/Webbshoppen/api.php")
             qtyInput.value = products[i].qty;
             qtyContainer.appendChild(qtyInput);
 
-            const increaseBtn = document.createElement("div");
+            const increaseBtn = document.createElement("button");
             increaseBtn.setAttribute("data-id", products[i].id);
             increaseBtn.classList.add("increase-btn");
-            if (products[i].qty >= 100) increaseBtn.classList.add("hide");
-            // increaseBtn.textContent = "+";
+            if (products[i].qty >= 99) increaseBtn.classList.add("hide");
+            increaseBtn.textContent = "+";
             qtyContainer.appendChild(increaseBtn);
 
             li.appendChild(qtyContainer);
@@ -97,31 +97,51 @@ fetch("http://localhost/Webbshoppen/api.php")
 
             element.addEventListener("input", function (e) {
 
-                const input = e.currentTarget.value.trim();
+                const inputValue = e.currentTarget.value;
+
+                if (isNaN(parseInt(inputValue))) {
+                    e.currentTarget.value = "";
+                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                } else if (parseInt(inputValue) >= 99) {
+                    e.currentTarget.value = "99";
+                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                } else if (parseInt(inputValue) <= 1) {
+                    parseInt(inputValue) < 1 ? e.currentTarget.value = "1" : e.currentTarget.value = parseInt(inputValue);
+
+                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                } else {
+                    e.currentTarget.value = parseInt(inputValue);
+                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                }
+                
+                changePrice(e.currentTarget);
 
                 // if (isNaN(input) || parseInt(input) < 1) {
                 //     e.currentTarget.value = "1";
                 // }
 
-                if (input >= 99) {
-                    e.currentTarget.value = "99";
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                }
-                else if (isNaN(input) || parseInt(input) < 1) {
-                    e.currentTarget.value = "1";
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                } 
-                else if (input <= 1) {
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                } else {
-                    e.currentTarget.value = parseInt(input);
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                }
-
+                // if (input >= 99) {
+                //     e.currentTarget.value = "99";
+                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
+                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                // }
+                // else if (isNaN(input) || parseInt(input) < 1) {
+                //     e.currentTarget.value = "1";
+                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                // } 
+                // else if (input <= 1) {
+                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                // } else {
+                //     e.currentTarget.value = parseInt(input);
+                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                // }
             });
 
             element.addEventListener("keypress", function(e) {
@@ -139,7 +159,7 @@ fetch("http://localhost/Webbshoppen/api.php")
                     e.currentTarget.value = "1";
                 }
 
-                changeQty(e.currentTarget);
+                changePrice(e.currentTarget);
             });
         });
 
@@ -148,7 +168,7 @@ fetch("http://localhost/Webbshoppen/api.php")
         })
 
 
-        function changeQty(input) {
+        function changePrice(input) {
 
             cartArr.products.forEach(function(element, index) {
 
@@ -161,7 +181,7 @@ fetch("http://localhost/Webbshoppen/api.php")
                     input.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
                 }
 
-                input.value <= 1 ? input.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide") : input.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                // input.value <= 1 ? input.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide") : input.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
             });
 
             total.textContent = `Totalsumma: ${cartArr.sum}kr`;
