@@ -9,7 +9,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="loggoplaceholder.jpg" alt=""/>
+      <img src="" alt=""/>
       <div class="navigation-links">
         <div class="header_categories">
           <a class="navigation-link" href="">» Till butiken</a>
@@ -26,3 +26,6 @@
     <a class="create-btn" href="">Skapa produkter</a>
     <a class="delete-btn" href="">Radera kategori</a>
     </div>
+
+
+
