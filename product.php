@@ -4,9 +4,18 @@ require_once 'header.php';
 $id = htmlspecialchars($_GET['id']);
 $url = "http://localhost/Webbshoppen/api.php";
 
-
 $json = file_get_contents($url);
 $jsonArr = json_decode($json, true);
+
+if(isset($_GET['id'])){
+  $id = $_GET['id'];
+
+  $allProducts = count($jsonArr);
+  if($id > $allProducts || $id <= 0){
+    echo '<h2>Produkten du söker kan inte hittas</h2>';
+    die;  
+  }
+}
 
 $product = '';
 for($i=0; $i < count($jsonArr); $i++) {
