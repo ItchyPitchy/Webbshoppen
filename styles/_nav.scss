@@ -2,10 +2,10 @@
   height: 20vh;
   display: flex;
   flex-direction: column;
-  background-color: #424b54;
+  background-color: #93a8ac;
   justify-content: space-between;
   align-items: center;
-  color: lightgrey;
+  color: white;
 
   img {
     margin-top: 2%;
@@ -26,7 +26,7 @@
   border: none;
   border-bottom: 1px solid lightgrey;
   margin-right: 15px;
-  color: lightgrey;
+  color: white;
   font-size: 18px;
 }
 
@@ -57,7 +57,7 @@ a {
 
 .navigation-link {
   text-decoration: none;
-  color: lightgrey;
+  color: white;
   padding: 0px 20px;
 }
 
@@ -82,10 +82,12 @@ a {
     width: 60%;
     justify-content: space-around;
     margin-right: 4%;
+
   }
 
   .navigation-link {
     padding: 0px 10px;
+    color: white;
   }
 }
 
