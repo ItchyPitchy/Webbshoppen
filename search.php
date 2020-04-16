@@ -12,13 +12,15 @@ if(isset($_GET["q"])) {
         return strpos($v["name"], $_GET["q"]) || strpos($v["description"], $_GET["q"]);
     }, ARRAY_FILTER_USE_BOTH);
 
-    $output = "";
+    $output = "<div class='productContainer'>";
 
     foreach($filtered as $value) {
-        $output .= "<li class='list-item'><a href='product.php?id=$value[id]'><h3 class='title'>$value[name]</h3>";
-        $output .= "<img class='search-img' src=" . $value["images"][0] . ">";
-        $output .= "<span class='price'>$value[price]:-</span></a></li>";
+        $output .= "<ul class='product-ul'><a href='product.php?id=$value[id]' class='product-link'>
+                    <li class='product-li'><img class='search-img' src=" . $value["images"][0] . "></li>";
+        $output .= "<li class='product-li product-li-name'><h3 class='title'>$value[name]</h3></li>";
+        $output .= "<li class='product-li product-li-price'> $value[price]kr</li></a></ul>";
     }
+    $output .= "</div>";
 }
 
 require_once "header.php";
@@ -26,10 +28,8 @@ require_once "header.php";
 ?>
 
 <main>
-    <h2>Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h2>
-    <ul class="list">
+    <h1 class='startpageHeading'>Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h1>
         <?php echo $output; ?>
-    </ul>
 </main>
 
 <?php require_once "footer.php"; ?>
