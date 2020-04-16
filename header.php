@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
     <title>Webshop</title>
   </head>
   <body>
@@ -11,8 +11,8 @@
       <img src="./styles/images/loggoplaceholder.jpg" alt=""/>
 
       <div class="navigation-links">
-        <form class="search-form" action="" method="post">
-          <input class="search-input" type="text" />
+        <form class="search-form" action="search.php" method="GET">
+          <input class="search-input" type="text" name="q"/>
           <button class="search-submit-btn" type="submit">Sök</button>
         </form>
         <div class="header_categories">
