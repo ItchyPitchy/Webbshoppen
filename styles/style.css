@@ -269,6 +269,10 @@ textarea:required {
   color: #e5e6e7;
 }
 
+#error {
+  color: red;
+}
+
 @media only screen and (min-width: 1025px) {
   #contact-form {
     max-width: 40%;
