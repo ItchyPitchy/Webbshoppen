@@ -706,6 +706,12 @@ footer .footer_categories {
   margin: auto;
 }
 
+.cart-container > div {
+  padding: 80px 20px 20px;
+  border: solid 5px #93A8AC;
+  margin: 20px 20px 20px 0;
+}
+
 .cart-container li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -747,10 +753,6 @@ footer .footer_categories {
 }
 
 .cart-container li .qty-container .decrease-btn {
-  background-image: url("./images/minus.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 2;
@@ -784,10 +786,6 @@ footer .footer_categories {
 }
 
 .cart-container li .qty-container .increase-btn {
-  background-image: url("./images/more.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 4;
@@ -816,8 +814,5 @@ footer .footer_categories {
 
 .cart-container #total {
   display: block;
-  margin: 20px 20px 20px 0;
-  padding: 80px 20px 20px;
-  border: solid 5px #93A8AC;
 }
 /*# sourceMappingURL=style.css.map */

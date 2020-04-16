@@ -7,7 +7,7 @@
         <div>
             <span id="total"></span>
             <a href="#">Till kassan</a>
-            <button id="dropCartBtn">Töm varukorgen</button>
+            <a href="./index.php" id="dropCartBtn">Töm varukorgen</a>
         </div>
     </div>
 </main>
