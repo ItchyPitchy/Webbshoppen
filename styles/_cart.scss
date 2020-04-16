@@ -1,0 +1,75 @@
+.cart-container {
+    display: grid;
+    grid-template: 1fr / 1fr 300px;
+    max-width: 1200px;
+    margin: auto;
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // background-color: #93A8AC;
+        border: solid 5px #93A8AC;
+        padding: 20px 50px 20px 20px;
+        margin: 20px;
+        .dlt-btn {
+            width: 25px;
+            height: 25px;
+        }
+        .product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin: 0 30px;
+        }
+        .qty-container {
+            flex-grow: 1;
+            display: grid;
+            grid-template: auto / 1fr 15px 44px 15px;
+            margin: 0 30px;
+            .decrease-btn {
+                background-image: url("./images/minus.svg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                grid-area: 1 / 2 / span 1 / span 1;
+                background-color: #93A8AC;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &.hide {
+                    display: none;
+                }
+            }
+            .qty-input {
+                width: 30px;
+                padding: 5px;
+                margin: 0;
+                grid-area: 1 / 3 / span 1 / span 1;
+            }
+            .increase-btn {
+                background-image: url("./images/more.svg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                grid-area: 1 / 4 / span 1 / span 1;
+                background-color: #93A8AC;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &.hide {
+                    display: none;
+                }
+            }
+        }
+        .price {
+            width: 100px;
+            text-align: right;
+        }
+    }
+    #total {
+        display: block;
+        margin: 20px 20px 20px 0;
+        padding: 80px 20px 20px;
+        border: solid 5px #93A8AC;
+    }
+}
