@@ -33,14 +33,15 @@ foreach ($img as $key => $value) {
 $productContainer .= '</div>';
 
 $productContainer .= "<article>
-                        <h1>$name</h1>
-                        <p>$description</p>
-                        <p>$price Kr</p>
+                        <h1 id='product'>$name</h1>
+                        <p id='desc'>$description</p>
+                        <p id='price'>$price Kr</p>
                         <br>
                         <p>$stock st finns i lager</p>
                         <br>
                         <input type='num' id='quantityInput'>
-                        <button id='' type='submit'>Lägg till i varukorg</button>
+                        <button id='addBtn' type='submit'>Lägg till i varukorg</button>
+                        <input type='hidden' id='id' value='$id'>
                     </article>
                 </section>
             </main>";    
@@ -49,3 +50,4 @@ echo $productContainer;
 require_once 'footer.php';
 ?>
 
+<script src="cartfunc.js" type="module"></script>
