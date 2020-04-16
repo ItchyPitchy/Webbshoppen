@@ -10,7 +10,8 @@ $jsonArr = json_decode($json, true);
 
 $get_category = $_GET['category'];
 
-$productContainer = '<div class="product-link"><div class="productContainer">';
+$productContainer = '<div class="productContainer">';
+
 
 echo "<h2 class='startpageHeading'>". $_GET['kategori'] . "</h2>";
 
@@ -26,18 +27,18 @@ for ($x = 0; $x < sizeof($jsonArr); $x++ ) {
         $id = $jsonArr[$x]['id'];
 
 
-        $productContainer  .=  " <a href='product.php?id=$id' class='product-link'> <ul class='product-ul'>
+        $productContainer  .=  "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
           <li class='product-li'><img src=$img></li>
           <li class='product-li product-li-name'><h3>$name</h3></li>
           <li class='product-li product-li-price'>$price kr</li>
-        </ul></a>";   
+          </a></ul>";    
 
     }
 
 }
 
 
-$productContainer .= '</div></a>';
+$productContainer .= '</div>';
 
 echo $productContainer;
 
