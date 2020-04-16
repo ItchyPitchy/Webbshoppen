@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,5 +26,6 @@
     <a class="create-btn" href="">Skapa produkter</a>
     <a class="delete-btn" href="">Radera kategori</a>
     </div>
+
 
 
