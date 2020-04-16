@@ -7,6 +7,7 @@
         "_header.scss",
         "_search-page.scss",
         "_startpage.scss",
+        "_product.scss",
         "_footer.scss",
         "_cart.scss"
     ],
