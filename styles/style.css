@@ -185,42 +185,6 @@ header {
   }
 }
 
-<<<<<<< HEAD
-main {
-  background-color: #93A8AC;
-  padding: 100px 0;
-  text-align: center;
-}
-
-main h2 {
-  margin: 0 auto 30px;
-  max-width: 80%;
-}
-
-main .list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  list-style-type: none;
-}
-
-main .list .list-item {
-  margin: 1em;
-}
-
-main .list .list-item a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-=======
 .startpageHeading {
   text-align: center;
   padding: 5%;
@@ -276,41 +240,10 @@ main .list .list-item a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
->>>>>>> master
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-<<<<<<< HEAD
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: min-width;
-  background-color: white;
-  color: initial;
-  text-decoration: none;
-}
-
-main .list .list-item .title {
-  margin: .5em;
-}
-
-main .list .list-item .price {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  margin: .5em;
-}
-
-main .list .list-item .search-img {
-  width: 200px;
-  height: 200px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  padding: 0 20px;
-=======
   width: 60vw;
   margin: 20px auto;
   webkit-box-shadow: 0px 0px 15px -3px #93a8ac;
@@ -405,7 +338,6 @@ main .list .list-item .search-img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
->>>>>>> master
 }
 
 footer {
