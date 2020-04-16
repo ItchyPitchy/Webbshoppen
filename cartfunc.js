@@ -1,13 +1,9 @@
-if (localStorage.getItem("cartArr") === null) {
-    localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
-}
-
 fetch("http://localhost/Webbshoppen/api.php")
     .then(response => response.json())
     .then(json => {
 
         console.log(json);
-        const productID = document.querySelector("#id").value;
+        const productID = document.querySelector("#productID").value;
         const productInfo = getProductInfo(productID, json);
 
         document.querySelector("#addBtn").addEventListener("click", function(e) {
@@ -15,6 +11,9 @@ fetch("http://localhost/Webbshoppen/api.php")
         });
         
         function addToCart() {
+
+            if (localStorage.getItem("cartArr") === null)  localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
+            
             const cartArr = JSON.parse(localStorage.getItem("cartArr"));
             const qtyInput = document.querySelector("#quantityInput");
         

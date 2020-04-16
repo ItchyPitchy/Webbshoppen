@@ -41,7 +41,8 @@ $productContainer .= "<article class='productInfo'>
                         <p class='productInfo__stock'>$stock st finns i lager</p>
                         <input type='num' id='quantityInput'class='quantityInput' placeholder='ange antal'>
                         <br>
-                        <button id='' type='submit'class='addToCartBtn'>Lägg till i varukorg</button>
+                        <button id='addBtn' type='submit'class='addToCartBtn'>Lägg till i varukorg</button>
+                        <input type='hidden' id='productID' value='$id'></input>
                     </article>
                 </section>
             </main>";    

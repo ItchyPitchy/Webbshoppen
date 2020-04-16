@@ -164,20 +164,26 @@ fetch("http://localhost/Webbshoppen/api.php")
         });
 
         document.querySelector("#dropCartBtn").addEventListener("click", function(e) {
+            dropCart();
+        });
 
-        })
-
+        function dropCart() {
+            localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
+            document.querySelector("#cart").innerHTML = "";
+        }
 
         function changePrice(input) {
+            
+            const inputValue = input.value.trim() === "" ? 0 : input.value;
 
             cartArr.products.forEach(function(element, index) {
 
                 if (element.id === input.dataset.id) {
                     const unitPrice = parseInt(getProductInfo(element.id).price);
 
-                    cartArr.sum = parseInt(cartArr.sum) - parseInt(element.qty) * unitPrice + parseInt(input.value) * unitPrice;
-                    element.qty = input.value;
-                    element.price = input.value * unitPrice;
+                    cartArr.sum = parseInt(cartArr.sum) - parseInt(element.qty) * unitPrice + parseInt(inputValue) * unitPrice;
+                    element.qty = inputValue;
+                    element.price = inputValue * unitPrice;
                     input.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
                 }
 

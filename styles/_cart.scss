@@ -3,6 +3,11 @@
     grid-template: 1fr / 1fr 300px;
     max-width: 1200px;
     margin: auto;
+    &>div {
+        padding: 80px 20px 20px;
+        border: solid 5px #93A8AC;
+        margin: 20px 20px 20px 0;
+    }
     li {
         display: flex;
         justify-content: center;
@@ -60,8 +65,8 @@
     }
     #total {
         display: block;
-        margin: 20px 20px 20px 0;
-        padding: 80px 20px 20px;
-        border: solid 5px #93A8AC;
+        // margin: 20px 20px 20px 0;
+        // padding: 80px 20px 20px;
+        // border: solid 5px #93A8AC;
     }
 }

@@ -706,6 +706,12 @@ footer .footer_categories {
   margin: auto;
 }
 
+.cart-container > div {
+  padding: 80px 20px 20px;
+  border: solid 5px #93A8AC;
+  margin: 20px 20px 20px 0;
+}
+
 .cart-container li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -808,8 +814,5 @@ footer .footer_categories {
 
 .cart-container #total {
   display: block;
-  margin: 20px 20px 20px 0;
-  padding: 80px 20px 20px;
-  border: solid 5px #93A8AC;
 }
 /*# sourceMappingURL=style.css.map */
