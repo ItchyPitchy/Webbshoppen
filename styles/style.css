@@ -366,7 +366,7 @@ main .list .list-item .search-img {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -519,7 +519,7 @@ main .list .list-item .search-img {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -529,6 +529,7 @@ main .list .list-item .search-img {
 }
 
 .productInfo {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -599,6 +600,16 @@ main .list .list-item .search-img {
 
 .hide {
   display: none;
+}
+
+#maxLimitAlert, #stockAlert {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  font-size: 9px;
+  text-align: center;
 }
 
 footer {
@@ -728,7 +739,7 @@ footer .footer_categories {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
 }
 
@@ -745,7 +756,7 @@ footer .footer_categories {
       grid-template-rows: auto;
   max-width: 1200px;
   margin: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 980px) {
@@ -874,7 +885,7 @@ footer .footer_categories {
   left: 50%;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
-  font-size: 8px;
+  font-size: 9px;
   text-align: center;
 }
 
