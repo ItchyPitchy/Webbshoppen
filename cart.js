@@ -57,14 +57,14 @@ fetch("http://localhost/Webbshoppen/api.php")
 
             const price = document.createElement("span");
             price.classList.add("price");
-            price.textContent = `${products[i].price}kr`;
+            price.textContent = `${products[i].price} kr`;
             li.appendChild(price);
 
             cart.appendChild(li);
         }
 
         const total = document.querySelector("#total");
-        total.textContent = `Totalsumma: ${cartArr.sum}kr`;
+        total.textContent = `Totalsumma: ${cartArr.sum} kr`;
         // cart.innerHTML = content;
 
 
