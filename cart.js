@@ -106,33 +106,36 @@ fetch("http://localhost/Webbshoppen/api.php")
 
             element.addEventListener("input", function (e) {
 
-                const inputValue = e.currentTarget.value;
+                const inputValue = parseInt(e.currentTarget.value);
                 const productID = e.currentTarget.dataset.id;
-                const stock = getProductInfo(productID).stock;
+                const stock = parseInt(getProductInfo(productID).stock);
+                console.log(parseInt(inputValue));
 
-                if (isNaN(parseInt(inputValue))) {
+
+                if (isNaN(inputValue)) {
                     e.currentTarget.value = "";
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
-                } else if (parseInt(inputValue) >= stock) {
-                    e.currentTarget.value = stock;
+                } else if (inputValue >= stock || inputValue >= 99) {
+                    e.currentTarget.value = inputValue >= stock && stock <= 99 ? stock : 99;
+                    // e.currentTarget.value = stock;
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
-                } else if (parseInt(inputValue) >= 99) {
-                    e.currentTarget.value = "99";
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
-                } else if (parseInt(inputValue) <= 1) {
-                    parseInt(inputValue) < 1 ? e.currentTarget.value = "1" : e.currentTarget.value = parseInt(inputValue);
+                // } else if (parseInt(inputValue) >= 99) {
+                //     e.currentTarget.value = "99";
+                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
+                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                //     e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
+                } else if (inputValue <= 1) {
+                    inputValue < 1 ? e.currentTarget.value = "1" : e.currentTarget.value = inputValue;
 
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
                 } else {
-                    e.currentTarget.value = parseInt(inputValue);
+                    e.currentTarget.value = inputValue;
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
@@ -177,9 +180,9 @@ fetch("http://localhost/Webbshoppen/api.php")
 
                 if (input < 1) {
                     e.currentTarget.value = "1";
+                    changePrice(e.currentTarget);
                 }
 
-                changePrice(e.currentTarget);
             });
         });
 
@@ -194,14 +197,14 @@ fetch("http://localhost/Webbshoppen/api.php")
 
         function changePrice(input) {
             
-            const inputValue = input.value.trim() === "" ? 0 : input.value;
+            const inputValue = input.value.trim() === "" ? 0 : parseInt(input.value);
 
             cartArr.products.forEach(function(element, index) {
 
                 if (element.id === input.dataset.id) {
                     const unitPrice = parseInt(getProductInfo(element.id).price);
 
-                    cartArr.sum = parseInt(cartArr.sum) - parseInt(element.qty) * unitPrice + parseInt(inputValue) * unitPrice;
+                    cartArr.sum = cartArr.sum - element.qty * unitPrice + inputValue * unitPrice;
                     element.qty = inputValue;
                     element.price = inputValue * unitPrice;
                     input.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;

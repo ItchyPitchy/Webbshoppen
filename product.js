@@ -72,14 +72,25 @@ fetch("http://localhost/Webbshoppen/api.php")
             console.log(totalQty);
             
             if (totalQty <= parseInt(productInfo.stock)) {
-                product ? mergeProduct(cartArr, qty) : addProduct(cartArr, qty);
-                document.querySelector("#qtyInput").value = "1";
+
+                if (totalQty <= 99) {
+                    product ? mergeProduct(cartArr, qty) : addProduct(cartArr, qty);
+                    document.querySelector("#qtyInput").value = "1";
+
+                } else {
+                    document.querySelector("#maxLimitAlert").classList.remove("hide");
+                
+                    setTimeout(function() {
+                        document.querySelector("#maxLimitAlert").classList.add("hide");
+                    }, 2000);
+                    
+                }
 
             } else {
-                document.querySelector("#stock-alert").classList.remove("hide");
+                document.querySelector("#stockAlert").classList.remove("hide");
                 
                 setTimeout(function() {
-                    document.querySelector("#stock-alert").classList.add("hide");
+                    document.querySelector("#stockAlert").classList.add("hide");
                 }, 2000);
 
             }
