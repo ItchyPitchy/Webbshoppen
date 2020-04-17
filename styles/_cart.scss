@@ -7,6 +7,9 @@
         padding: 80px 20px 20px;
         border: solid 5px #93A8AC;
         margin: 20px 20px 20px 0;
+        align-self: flex-start;
+        position: sticky;
+        top: 20px;
     }
     li {
         display: flex;

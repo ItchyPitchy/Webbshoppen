@@ -710,6 +710,11 @@ footer .footer_categories {
   padding: 80px 20px 20px;
   border: solid 5px #93A8AC;
   margin: 20px 20px 20px 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
 }
 
 .cart-container li {
