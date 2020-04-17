@@ -40,9 +40,9 @@ $productContainer .= "<article class='productInfo'>
                         <p class='productInfo__price'>$price Kr</p>
                         <p class='productInfo__stock'>$stock st finns i lager</p>
                         <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
-                        <span id='stock-alert' class='hide'>Out of stock :P</span>
                         <br>
                         <button id='addBtn' type='submit'class='addToCartBtn'>Lägg till i varukorg</button>
+                        <span id='stock-alert' class='hide'>Out of stock :P</span>
                     </article>
                 </section>
             </main>";    
