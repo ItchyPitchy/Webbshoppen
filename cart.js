@@ -33,7 +33,11 @@ fetch("http://localhost/Webbshoppen/api.php")
             const qtyContainer = document.createElement("div");
             qtyContainer.classList.add("qty-container");
 
-            // const decreaseBtn = document.createElement("div");
+            const maxLimitAlert = document.createElement("span");
+            maxLimitAlert.classList.add("max-limit-alert");
+            maxLimitAlert.textContent = "Maxgränsen är nådd";
+            qtyContainer.appendChild(maxLimitAlert);
+
             const decreaseBtn = document.createElement("button");
             decreaseBtn.setAttribute("data-id", products[i].id);
             decreaseBtn.classList.add("decrease-btn");
@@ -47,11 +51,14 @@ fetch("http://localhost/Webbshoppen/api.php")
             qtyInput.value = products[i].qty;
             qtyContainer.appendChild(qtyInput);
 
-            // const increaseBtn = document.createElement("div");
             const increaseBtn = document.createElement("button");
             increaseBtn.setAttribute("data-id", products[i].id);
             increaseBtn.classList.add("increase-btn");
-            if (products[i].qty >= 99) increaseBtn.classList.add("hide");
+            if (products[i].qty >= 99 || products[i].qty >= getProductInfo(products[i].id).stock) {
+                increaseBtn.classList.add("hide");
+            } else {
+                maxLimitAlert.classList.add("hide");
+            }
             increaseBtn.textContent = "+";
             qtyContainer.appendChild(increaseBtn);
 
@@ -100,27 +107,42 @@ fetch("http://localhost/Webbshoppen/api.php")
             element.addEventListener("input", function (e) {
 
                 const inputValue = e.currentTarget.value;
+                const productID = e.currentTarget.dataset.id;
+                const stock = getProductInfo(productID).stock;
 
                 if (isNaN(parseInt(inputValue))) {
                     e.currentTarget.value = "";
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+                } else if (parseInt(inputValue) >= stock) {
+                    e.currentTarget.value = stock;
+                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
                 } else if (parseInt(inputValue) >= 99) {
                     e.currentTarget.value = "99";
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
                 } else if (parseInt(inputValue) <= 1) {
                     parseInt(inputValue) < 1 ? e.currentTarget.value = "1" : e.currentTarget.value = parseInt(inputValue);
 
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
                 } else {
                     e.currentTarget.value = parseInt(inputValue);
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
                     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
                 }
                 
                 changePrice(e.currentTarget);
+
+                // if (isNaN(input) || parseInt(input) < 1) {
+                //     e.currentTarget.value = "1";
+                // }
 
                 // if (input >= 99) {
                 //     e.currentTarget.value = "99";
@@ -171,7 +193,7 @@ fetch("http://localhost/Webbshoppen/api.php")
         }
 
         function changePrice(input) {
-
+            
             const inputValue = input.value.trim() === "" ? 0 : input.value;
 
             cartArr.products.forEach(function(element, index) {
@@ -184,6 +206,8 @@ fetch("http://localhost/Webbshoppen/api.php")
                     element.price = inputValue * unitPrice;
                     input.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
                 }
+
+                // input.value <= 1 ? input.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide") : input.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
             });
 
             total.textContent = `Totalsumma: ${cartArr.sum}kr`;
@@ -204,7 +228,10 @@ fetch("http://localhost/Webbshoppen/api.php")
                     
                     btn.nextElementSibling.value = element.qty;
                     btn.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
-                    if (element.qty < 99) btn.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                    if (parseInt(element.qty) < getProductInfo(btn.dataset.id).stock || element.qty < 99) {
+                        btn.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                        btn.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+                    }
                     if (element.qty <= 1) btn.classList.add("hide");
                 }
             });
@@ -227,8 +254,11 @@ fetch("http://localhost/Webbshoppen/api.php")
                     
                     btn.previousElementSibling.value = element.qty;
                     btn.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
-                    if (element.qty > 1) btn.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                    if (element.qty >= 99) btn.classList.add("hide");
+                    if (element.qty > 1) btn.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                    if (element.qty >= 99 || parseInt(element.qty) >= getProductInfo(btn.dataset.id).stock) {
+                        btn.classList.add("hide");
+                        btn.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
+                    }
                 }
             });
 
@@ -249,7 +279,7 @@ fetch("http://localhost/Webbshoppen/api.php")
 
             listItem = btn.parentElement;
             listItem.parentElement.removeChild(listItem);
-            total.textContent = `Totalsumma: ${cartArr.sum}`;
+            total.textContent = `Totalsumma: ${cartArr.sum}kr`;
 
             localStorage.setItem("cartArr", JSON.stringify(cartArr));
         }

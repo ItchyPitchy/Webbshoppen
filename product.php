@@ -39,10 +39,10 @@ $productContainer .= "<article class='productInfo'>
                         <p class='productInfo__description'>$description</p>
                         <p class='productInfo__price'>$price Kr</p>
                         <p class='productInfo__stock'>$stock st finns i lager</p>
-                        <input type='num' id='quantityInput'class='quantityInput' placeholder='ange antal'>
+                        <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
+                        <span id='stock-alert' class='hide'>Out of stock :P</span>
                         <br>
                         <button id='addBtn' type='submit'class='addToCartBtn'>Lägg till i varukorg</button>
-                        <input type='hidden' id='productID' value='$id'></input>
                     </article>
                 </section>
             </main>";    
@@ -79,4 +79,4 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
 }
 </script>
-<script src="cartfunc.js" type="module"></script>
+<script src="product.js"></script>
