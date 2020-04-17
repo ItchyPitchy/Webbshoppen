@@ -9,13 +9,13 @@ $jsonArr = json_decode($json, true);
 if(isset($_GET["q"])) {
 
     $q = htmlspecialchars($_GET["q"]);
-    $output = "";
     $filtered = [];
+    $output = "";
 
     if(strlen($q) >= 2 && strlen($q) <= 50) {
 
         $filtered = array_filter($jsonArr, function($v, $k) {
-            return strpos(strtolower($v["name"]), strtolower($_GET["q"])) || strpos(strtolower($v["description"]), strtolower($_GET["q"]));
+            return strpos(strtolower($v["name"]), strtolower($_GET["q"])) !== false || strpos(strtolower($v["description"]), strtolower($_GET["q"])) !== false;
         }, ARRAY_FILTER_USE_BOTH);
 
         foreach($filtered as $value) {
