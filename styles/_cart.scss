@@ -39,17 +39,6 @@
 
   @media (min-width: 980px) {
     grid-template: 1fr / 1fr 300px;
-<<<<<<< HEAD
-    max-width: 1200px;
-    margin: auto;
-    &>div {
-        padding: 80px 20px 20px;
-        border: solid 5px #93A8AC;
-        margin: 20px 20px 20px 0;
-        align-self: flex-start;
-        position: sticky;
-        top: 20px;
-=======
   }
 
   & > .cart-total-box {
@@ -65,7 +54,6 @@
 
     @media (min-width: 600px) {
       margin: 20px 20px;
->>>>>>> f5fe6b72f9c194d4a939ccc41fc18e675eba3f02
     }
   }
 
