@@ -8,7 +8,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="./styles/images/loggoplaceholder.jpg" alt=""/>
+      <img src="./styles/images/logga.png" alt=""/>
 
       <div class="navigation-links">
         <form class="search-form" action="search.php" method="GET">

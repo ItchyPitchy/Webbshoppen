@@ -90,6 +90,7 @@
 }
 
 .productInfo{
+    position: relative;
     display: flex;
     flex-direction: column;
     margin: 9%;
@@ -140,4 +141,17 @@
         border: solid 2px #93A8AC ;
         color: white;    
     }  
+}
+
+.hide {
+    display: none;
+}
+
+#maxLimitAlert, #stockAlert {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 9px;
+    text-align: center;
 }

@@ -8,16 +8,24 @@ $jsonArr = json_decode($json, true);
 
 if(isset($_GET["q"])) {
 
-    $filtered = array_filter($jsonArr, function($v, $k) {
-        return strpos($v["name"], $_GET["q"]) || strpos($v["description"], $_GET["q"]);
-    }, ARRAY_FILTER_USE_BOTH);
-
+    $q = htmlspecialchars($_GET["q"]);
     $output = "";
+    $filtered = [];
 
-    foreach($filtered as $value) {
-        $output .= "<li class='list-item'><a href='product.php?id=$value[id]'><h3 class='title'>$value[name]</h3>";
-        $output .= "<img class='search-img' src=" . $value["images"][0] . ">";
-        $output .= "<span class='price'>$value[price]:-</span></a></li>";
+    if(strlen($q) >= 2 && strlen($q) <= 50) {
+
+        $filtered = array_filter($jsonArr, function($v, $k) {
+            return strpos(strtolower($v["name"]), strtolower($_GET["q"])) !== false || strpos(strtolower($v["description"]), strtolower($_GET["q"])) !== false;
+        }, ARRAY_FILTER_USE_BOTH);
+
+        foreach($filtered as $value) {
+            $output .= "<ul class='product-ul'><a href='product.php?id=$value[id]' class='product-link'>
+                        <li class='product-li'><img class='search-img' src=" . $value["images"][0] . "></li>";
+            $output .= "<li class='product-li product-li-name'><h3 class='title'>$value[name]</h3></li>";
+            $output .= "<li class='product-li product-li-price'>$value[price]kr</li></a></ul>";
+        }
+    } else {
+        $output = "<h2>Fel: Sökordet måste innehålla mellan 2-50 tecken</h2>";
     }
 }
 
@@ -25,11 +33,9 @@ require_once "header.php";
 
 ?>
 
-<main>
-    <h2>Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h2>
-    <ul class="list">
-        <?php echo $output; ?>
-    </ul>
+<h1 class="startpageHeading">Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h1>
+<main class="productContainer">
+    <?php echo $output; ?>
 </main>
 
 <?php require_once "footer.php"; ?>

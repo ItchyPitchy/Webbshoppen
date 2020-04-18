@@ -9,7 +9,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="" alt=""/>
+      <img src="../styles/images/logga.png" alt=""/>
       <div class="navigation-links">
         <div class="header_categories">
           <a class="navigation-link" href="">» Till butiken</a>
