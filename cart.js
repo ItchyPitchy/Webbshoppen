@@ -109,7 +109,6 @@ fetch("http://localhost/Webbshoppen/api.php")
                 const stock = parseInt(getProductInfo(productID).stock);
                 console.log(parseInt(inputValue));
 
-
                 if (isNaN(inputValue)) {
                     e.currentTarget.value = "";
                     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
