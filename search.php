@@ -33,8 +33,8 @@ require_once "header.php";
 
 ?>
 
-<main>
-    <h1 class="startpageHeading">Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h1>
+<h1 class="startpageHeading">Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h1>
+<main class="productContainer">
     <?php echo $output; ?>
 </main>
 
