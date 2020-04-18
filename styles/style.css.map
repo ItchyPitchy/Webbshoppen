@@ -5,6 +5,7 @@
         "style.scss",
         "_nav.scss",
         "_header.scss",
+        "_contact_form.scss",
         "_startpage.scss",
         "_product.scss",
         "_footer.scss",
