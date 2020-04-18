@@ -1,9 +1,7 @@
 fetch("http://localhost/Webbshoppen/api.php")
     .then(response => response.json())
     .then(json => {
-        
-        console.log(json);
-        
+                
         const cartArr = JSON.parse(localStorage.getItem("cartArr"));
         const products = cartArr.products;
 
@@ -110,7 +108,6 @@ fetch("http://localhost/Webbshoppen/api.php")
                 const productID = e.currentTarget.dataset.id;
                 const stock = parseInt(getProductInfo(productID).stock);
                 console.log(parseInt(inputValue));
-
 
                 if (isNaN(inputValue)) {
                     e.currentTarget.value = "";
