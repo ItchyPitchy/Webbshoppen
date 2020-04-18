@@ -17,7 +17,7 @@
         </form>
         <div class="header_categories">
           <a class="navigation-link" href="http://localhost/Webbshoppen/">Start</a>
-          <a class="navigation-link" href="">Kontakt</a>
+          <a class="navigation-link" href="http://localhost/Webbshoppen/contact.php">Kontakt</a>
         </div>
         <a class="navigation-link" href="http://localhost/Webbshoppen/cart.php"><img src="./styles/images/cart.svg" alt="" class="cart-img" height="25px" width="25px"> </a>
       </div>

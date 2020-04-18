@@ -1,3 +1,5 @@
+<?php require_once "./header.php"; ?>
+
 <script type = "text/javascript">
 
 function validateForm(){
@@ -95,6 +97,4 @@ function validateForm(){
     </div>
 </div>
 
-<?php
-
-?>
+<?php require_once "./footer.php"; ?>
