@@ -14,12 +14,12 @@ $headers = [
   
 ];
 $headers = implode("\r\n", $headers);
-$send = mail($to, $name, $message);
+$send = mail($to, $name, $from, $message);
 
 
 if($send == true){
     header('Location: index.php');
-    // echo 'Mailet har skickat';
+
     exit();
 }
 else{
