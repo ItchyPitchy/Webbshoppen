@@ -19,9 +19,10 @@ if(isset($_GET["q"])) {
         }, ARRAY_FILTER_USE_BOTH);
 
         foreach($filtered as $value) {
-            $output .= "<li class='list-item'><a href='product.php?id=$value[id]'><h3 class='title'>$value[name]</h3>";
-            $output .= "<img class='search-img' src=" . $value["images"][0] . ">";
-            $output .= "<span class='price'>$value[price]:-</span></a></li>";
+            $output .= "<ul class='product-ul'><a href='product.php?id=$value[id]' class='product-link'>
+                        <li class='product-li'><img class='search-img' src=" . $value["images"][0] . "></li>";
+            $output .= "<li class='product-li product-li-name'><h3 class='title'>$value[name]</h3></li>";
+            $output .= "<li class='product-li product-li-price'>$value[price]kr</li></a></ul>";
         }
     } else {
         $output = "<h2>Fel: Sökordet måste innehålla mellan 2-50 tecken</h2>";
@@ -32,11 +33,9 @@ require_once "header.php";
 
 ?>
 
-<main>
-    <h2>Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h2>
-    <ul class="list">
-        <?php echo $output; ?>
-    </ul>
+<h1 class="startpageHeading">Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h1>
+<main class="productContainer">
+    <?php echo $output; ?>
 </main>
 
 <?php require_once "footer.php"; ?>
