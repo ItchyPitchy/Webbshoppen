@@ -55,14 +55,14 @@ function validateForm(){
 		<h4 class="headerForm">Har ni frågor eller funderingar?<br> Fyll i formuläret nedan så hör vi av oss så snart vi kan.</h4> 
 	</div>
 
-		   <form id="form" method="POST" action="mail.php"  content-type="text/plain" accect-charset="utf-8"  name="myForm" onsubmit="return validateForm()">
+		   <form id="form" method="POST" action="mail.php"  content-type="text/plain" accept-charset="utf-8"  name="myForm" onsubmit="return validateForm()">
 			<div>
 	  			
 		      <label for="name">
 			 
 				  <span class="required">Namn: *</span> 
 				  <div id="error"></div>
-				  <input type="text" id="name" name="name" accect-charset="utf-8" placeholder="Ditt namn" tabindex="1" autofocus="autofocus"  />
+				  <input type="text" id="name" name="name" accept-charset="utf-8" placeholder="Ditt namn" tabindex="1" autofocus="autofocus"  />
 				
 		      </label> 
 			</div>
@@ -84,7 +84,7 @@ function validateForm(){
 			<div>		          
 		      <label for="message">
 		      	<span class="required">Meddelande: *</span> 
-		      	<textarea id="message" name="message" accect-charset="utf-8"  placeholder="Ditt meddelande här." tabindex="3" required="required"></textarea> 
+		      	<textarea id="message" name="message" accept-charset="utf-8"  placeholder="Ditt meddelande här." tabindex="3" required="required"></textarea> 
 		      </label>  
 			</div>
 			<div>		           
