@@ -608,7 +608,7 @@ textarea:required {
 .quantityInput {
   margin: 28px auto 10px;
   border: unset;
-  border-bottom: 1px solid #424B54;
+  border-bottom: 1px solid #424b54;
   text-align: center;
   padding: 2px;
   max-width: 79px;
@@ -623,13 +623,13 @@ textarea:required {
           transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 15px;
-  border: solid 2px #424B54;
-  background-color: #424B54;
+  border: solid 2px #424b54;
+  background-color: #424b54;
 }
 
 .addToCartBtn:hover {
-  background-color: #93A8AC;
-  border: solid 2px #93A8AC;
+  background-color: #93a8ac;
+  border: solid 2px #93a8ac;
   color: white;
 }
 
@@ -637,7 +637,8 @@ textarea:required {
   display: none;
 }
 
-#maxLimitAlert, #stockAlert {
+#maxLimitAlert,
+#stockAlert {
   position: absolute;
   top: calc(100% + 10px);
   left: 50%;
