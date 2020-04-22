@@ -1,40 +1,45 @@
 <?php
 require_once 'header.php';
+require_once 'db.php';
 
-$id = htmlspecialchars($_GET['id']);
-$url = "http://localhost/Webbshoppen/api.php";
+$id = isset($_GET['id']) ? $_GET['id'] : die();
 
+$sql = "SELECT * FROM products WHERE id= :id";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
 
-$json = file_get_contents($url);
-$jsonArr = json_decode($json, true);
+if ($stmt->rowcount() !== 0) {
 
-$product = '';
-for($i=0; $i < count($jsonArr); $i++) {
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);  
+    $name = htmlspecialchars($row['name']);
+    $description = htmlspecialchars($row['description']);
+    $price = htmlspecialchars($row['price']);
+    $stock = htmlspecialchars($row['stock']);
+    $productId = $row['id'];
 
-    if($jsonArr[$i]['id'] == $id){
-        $product = $jsonArr[$i];
+    $sql1 = " SELECT image FROM product_images WHERE product_images.product_id = ? ";
+    $selectImages = $db->prepare($sql1);
+    $selectImages->execute([$productId]);
+
+    $images = [];
+
+    while ($imgRow = $selectImages->fetch(PDO::FETCH_ASSOC)) { 
+            array_push($images, $imgRow['image']);
     }
-}
+        
+    $productContainer = "<main>
+                        <section class='productContainer1'>
+                            <div class='imgContainer'>";
 
-    $id = $product['id'];
-    $name = $product['name'];
-    $description = $product['description'];
-    $price = $product['price'];
-    $stock = $product['stock'];
-    $img = $product['images'];
- 
-$productContainer = "<main><section class='productContainer1'><div class='imgContainer'>";
-
-foreach ($img as $key => $value) {
-    $productContainer .= "<div class='mySlides fade'>
-                            <img src='$value' alt='Produkt bild'>
+    foreach ($images as $value) {
+        $productContainer .= "<div class='mySlides fade'>
+                            <img class='search-img' src=./images/" . $value . ">
                          </div>";
-}
-$productContainer .= "<a class='prev'>&#10094;</a>
-                      <a class='next'>&#10095;</a>";
-$productContainer .= '</div>';
-
-$productContainer .= "<article class='productInfo'>
+    }
+    $productContainer .= "<a class='prev'>&#10094;</a>
+                      <a class='next'>&#10095;</a></div>
+                    <article class='productInfo'>
                         <h1 class='productName'>$name</h1>
                         <p class='productInfo__description'>$description</p>
                         <p class='productInfo__price'>$price Kr</p>
@@ -46,38 +51,46 @@ $productContainer .= "<article class='productInfo'>
                         <span id='maxLimitAlert' class='hide'>Maxgränsen är nådd</span>
                     </article>
                 </section>
-            </main>";    
+            </main>";
 
-echo $productContainer;
+    echo $productContainer;
+} else {
+    echo '<h2>Produkten du söker kan inte hittas</h2>';
+}
 require_once 'footer.php';
 ?>
 
 <script>
-let prev = document.querySelector(".prev");
-prev.addEventListener("click", function(){
-    plusSlides(-1);
-});
+    let prev = document.querySelector(".prev");
+    prev.addEventListener("click", function() {
+        plusSlides(-1);
+    });
 
-let next = document.querySelector(".next");
-next.addEventListener("click", function(){
-    plusSlides(1);
-});
+    let next = document.querySelector(".next");
+    next.addEventListener("click", function() {
+        plusSlides(1);
+    });
 
-let slideIndex = 1;
-showSlides(slideIndex);
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-}
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+    }
 </script>
 <script src="product.js"></script>
