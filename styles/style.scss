@@ -1,15 +1,15 @@
 * {
-  margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow-x: hidden;
 }
-
 
 @import "_nav.scss";
 @import "_header.scss";
+@import "_contact_form.scss";
 @import "_startpage.scss";
 @import "_product.scss";
 @import "_footer.scss";
