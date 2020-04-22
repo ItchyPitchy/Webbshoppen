@@ -4,6 +4,8 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
 
     const cartArr = JSON.parse(localStorage.getItem("cartArr"));
     const products = cartArr.products;
+    const total = document.querySelector("#total");
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
 
     for (let i = 0; i < cartArr.products.length; i++) {
 
@@ -62,8 +64,6 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
 
         cart.appendChild(li);
     }
-    const total = document.querySelector("#total");
-    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
 
     const decreaseBtns = document.querySelectorAll(".decrease-btn");
     decreaseBtns.forEach(function(element) {
@@ -151,14 +151,18 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
         dropCart();
     });
 } else {
-    cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2>";
+    total.textContent = "Totalsumma: 0 kr";
+    cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
+    document.querySelector("#cashier").removeAttribute("href");
 }
 
 
 
 function dropCart() {
+    total.textContent = "Totalsumma: 0 kr";
+    document.querySelector("#cart").innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
+    document.querySelector("#cashier").removeAttribute("href");
     localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
-    document.querySelector("#cart").innerHTML = "";
 }
 
 function changePrice(input) {
@@ -170,7 +174,7 @@ function changePrice(input) {
         if (element.id === input.dataset.id) {
             cartArr.sum = cartArr.sum - element.qty * element.unitPrice + inputValue * element.unitPrice;
             element.qty = inputValue;
-            input.parentElement.parentElement.querySelector(".price").textContent = `${inputValue * element.unitPrice}kr`;
+            input.parentElement.parentElement.querySelector(".price").textContent = `${inputValue * element.unitPrice} kr`;
         }
     });
 
@@ -187,7 +191,7 @@ function decreaseEvent(btn) {
             element.qty = element.qty - 1;
             cartArr.sum = cartArr.sum - element.unitPrice;
             btn.nextElementSibling.value = element.qty;
-            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice}kr`;
+            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice} kr`;
 
             if (element.qty < element.stock) {
                 btn.parentElement.querySelector(".increase-btn").classList.remove("hide");
@@ -211,7 +215,7 @@ function increaseEvent(btn) {
             element.qty = element.qty + 1;
             cartArr.sum = cartArr.sum + element.unitPrice;
             btn.previousElementSibling.value = element.qty;
-            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice}kr`;
+            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice} kr`;
 
             if (element.qty > 1) btn.parentElement.querySelector(".decrease-btn").classList.remove("hide");
 
@@ -242,4 +246,10 @@ function deleteEvent(btn) {
     listItem.parentElement.removeChild(listItem);
     total.textContent = `Totalsumma: ${cartArr.sum} kr`;
     localStorage.setItem("cartArr", JSON.stringify(cartArr));
+
+    if (cartArr.products.length === 0) {
+        total.textContent = "Totalsumma: 0 kr";
+        cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
+        document.querySelector("#cashier").removeAttribute("href");
+    }
 }
