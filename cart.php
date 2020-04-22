@@ -11,7 +11,7 @@
             <span id="total"></span>
             <a href="#" id="cashier">Till kassan</a>
         </div>
-        <a href="./index.php" id="dropCartBtn">Töm varukorgen</a>
+        <div id="dropCartBtn">Töm varukorgen</div>
     </div>
 </main>
 <script src="cart.js"></script>

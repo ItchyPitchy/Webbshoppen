@@ -1023,4 +1023,9 @@ footer .footer_categories {
 .cart-container a {
   text-decoration: none;
 }
+
+.empty {
+  text-align: center;
+  margin: 60px;
+}
 /*# sourceMappingURL=style.css.map */
