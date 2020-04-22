@@ -1,291 +1,245 @@
-fetch("http://localhost/Webbshoppen/api.php")
-    .then(response => response.json())
-    .then(json => {
-                
-        const cartArr = JSON.parse(localStorage.getItem("cartArr"));
-        const products = cartArr.products;
+const cart = document.querySelector("#cart");
 
-        const cart = document.querySelector("#cart");
-        // let content = "";
+if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
 
-        for (let i = 0; i < cartArr.products.length; i++) {
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+    const products = cartArr.products;
 
-            const li = document.createElement("li");
+    for (let i = 0; i < cartArr.products.length; i++) {
 
-            const dltBtn = document.createElement("img");
-            dltBtn.setAttribute("src", "./styles/images/delete.svg");
-            dltBtn.setAttribute("data-id", products[i].id);
-            dltBtn.classList.add("dlt-btn");
-            li.appendChild(dltBtn);
-            
-            const productImage = document.createElement("img");
-            productImage.setAttribute("src", products[i].image);
-            productImage.classList.add("product-image");
-            li.appendChild(productImage);
+        const li = document.createElement("li");
 
-            const productTitle = document.createElement("span");
-            productTitle.classList.add("product-title");
-            productTitle.textContent = products[i].name;
-            li.appendChild(productTitle);
+        const dltBtn = document.createElement("img");
+        dltBtn.setAttribute("src", "./styles/images/delete.svg");
+        dltBtn.setAttribute("data-id", products[i].id);
+        dltBtn.classList.add("dlt-btn");
+        li.appendChild(dltBtn);
+        
+        const productImage = document.createElement("img");
+        productImage.setAttribute("src", products[i].image);
+        productImage.classList.add("product-image");
+        li.appendChild(productImage);
 
-            const qtyContainer = document.createElement("div");
-            qtyContainer.classList.add("qty-container");
+        const productTitle = document.createElement("span");
+        productTitle.classList.add("product-title");
+        productTitle.textContent = products[i].name;
+        li.appendChild(productTitle);
 
-            const maxLimitAlert = document.createElement("span");
-            maxLimitAlert.classList.add("max-limit-alert");
-            maxLimitAlert.textContent = "Maxgränsen är nådd";
-            qtyContainer.appendChild(maxLimitAlert);
+        const qtyContainer = document.createElement("div");
+        qtyContainer.classList.add("qty-container");
 
-            const decreaseBtn = document.createElement("button");
-            decreaseBtn.setAttribute("data-id", products[i].id);
-            decreaseBtn.classList.add("decrease-btn");
-            if (products[i].qty <= 1) decreaseBtn.classList.add("hide");
-            decreaseBtn.textContent = "-";
-            qtyContainer.appendChild(decreaseBtn);
+        const maxLimitAlert = document.createElement("span");
+        maxLimitAlert.classList.add("max-limit-alert");
+        maxLimitAlert.textContent = "Maxgränsen är nådd";
+        qtyContainer.appendChild(maxLimitAlert);
 
-            const qtyInput = document.createElement("input");
-            qtyInput.setAttribute("data-id", products[i].id);
-            qtyInput.classList.add("qty-input");
-            qtyInput.value = products[i].qty;
-            qtyContainer.appendChild(qtyInput);
+        const decreaseBtn = document.createElement("button");
+        decreaseBtn.setAttribute("data-id", products[i].id);
+        decreaseBtn.classList.add("decrease-btn");
+        if (products[i].qty <= 1) decreaseBtn.classList.add("hide");
+        decreaseBtn.textContent = "-";
+        qtyContainer.appendChild(decreaseBtn);
 
-            const increaseBtn = document.createElement("button");
-            increaseBtn.setAttribute("data-id", products[i].id);
-            increaseBtn.classList.add("increase-btn");
-            if (products[i].qty >= 99 || products[i].qty >= getProductInfo(products[i].id).stock) {
-                increaseBtn.classList.add("hide");
-            } else {
-                maxLimitAlert.classList.add("hide");
-            }
-            increaseBtn.textContent = "+";
-            qtyContainer.appendChild(increaseBtn);
+        const qtyInput = document.createElement("input");
+        qtyInput.setAttribute("data-id", products[i].id);
+        qtyInput.classList.add("qty-input");
+        qtyInput.value = products[i].qty;
+        qtyContainer.appendChild(qtyInput);
 
-            li.appendChild(qtyContainer);
+        const increaseBtn = document.createElement("button");
+        increaseBtn.setAttribute("data-id", products[i].id);
+        increaseBtn.classList.add("increase-btn");
+        products[i].qty >= products[i].stock ? increaseBtn.classList.add("hide") : maxLimitAlert.classList.add("hide");
+        increaseBtn.textContent = "+";
+        qtyContainer.appendChild(increaseBtn);
 
-            const price = document.createElement("span");
-            price.classList.add("price");
-            price.textContent = `${products[i].price} kr`;
-            li.appendChild(price);
+        li.appendChild(qtyContainer);
 
-            cart.appendChild(li);
-        }
+        const price = document.createElement("span");
+        price.classList.add("price");
+        price.textContent = `${products[i].unitPrice * products[i].qty} kr`;
+        li.appendChild(price);
 
-        const total = document.querySelector("#total");
-        total.textContent = `Totalsumma: ${cartArr.sum} kr`;
-        // cart.innerHTML = content;
+        cart.appendChild(li);
+    }
+    const total = document.querySelector("#total");
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
 
+    const decreaseBtns = document.querySelectorAll(".decrease-btn");
+    decreaseBtns.forEach(function(element) {
 
-        const decreaseBtns = document.querySelectorAll(".decrease-btn");
-        decreaseBtns.forEach(function(element) {
-
-            element.addEventListener("click", function(e) {
-                decreaseEvent(e.currentTarget);
-            });
+        element.addEventListener("click", function(e) {
+            decreaseEvent(e.currentTarget);
         });
+    });
 
-        const increaseBtns = document.querySelectorAll(".increase-btn");
-        increaseBtns.forEach(function(element) {
+    const increaseBtns = document.querySelectorAll(".increase-btn");
+    increaseBtns.forEach(function(element) {
 
-            element.addEventListener("click", function(e) {
-                increaseEvent(e.currentTarget);
-            });
+        element.addEventListener("click", function(e) {
+            increaseEvent(e.currentTarget);
         });
+    });
 
-        const dltBtns = document.querySelectorAll(".dlt-btn");
-        dltBtns.forEach(function(element) {
+    const dltBtns = document.querySelectorAll(".dlt-btn");
+    dltBtns.forEach(function(element) {
 
-            element.addEventListener("click", function(e) {
-                deleteEvent(e.currentTarget);
-            });
+        element.addEventListener("click", function(e) {
+            deleteEvent(e.currentTarget);
         });
+    });
 
-        const qtyInputs = document.querySelectorAll(".qty-input");
-        qtyInputs.forEach(function(element) {
+    const qtyInputs = document.querySelectorAll(".qty-input");
+    qtyInputs.forEach(function(element) {
 
-            element.addEventListener("input", function (e) {
-
-                const inputValue = parseInt(e.currentTarget.value);
-                const productID = e.currentTarget.dataset.id;
-                const stock = parseInt(getProductInfo(productID).stock);
-                console.log(parseInt(inputValue));
-
-                if (isNaN(inputValue)) {
-                    e.currentTarget.value = "";
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
-                } else if (inputValue >= stock || inputValue >= 99) {
-                    e.currentTarget.value = inputValue >= stock && stock <= 99 ? stock : 99;
-                    // e.currentTarget.value = stock;
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
-                // } else if (parseInt(inputValue) >= 99) {
-                //     e.currentTarget.value = "99";
-                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
-                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                //     e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
-                } else if (inputValue <= 1) {
-                    inputValue < 1 ? e.currentTarget.value = "1" : e.currentTarget.value = inputValue;
-
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
-                } else {
-                    e.currentTarget.value = inputValue;
-                    e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                    e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
-                }
-                
-                changePrice(e.currentTarget);
-
-                // if (isNaN(input) || parseInt(input) < 1) {
-                //     e.currentTarget.value = "1";
-                // }
-
-                // if (input >= 99) {
-                //     e.currentTarget.value = "99";
-                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
-                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                // }
-                // else if (isNaN(input) || parseInt(input) < 1) {
-                //     e.currentTarget.value = "1";
-                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                // } 
-                // else if (input <= 1) {
-                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                // } else {
-                //     e.currentTarget.value = parseInt(input);
-                //     e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                //     e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                // }
-            });
-
-            element.addEventListener("keypress", function(e) {
-
-                if (e.which < 48 || e.which > 57) {
-                    e.preventDefault();
-                }
-            })
-
-            element.addEventListener("blur", function(e) {
-
-                const input = e.currentTarget.value.trim();
-
-                if (input < 1) {
-                    e.currentTarget.value = "1";
-                    changePrice(e.currentTarget);
-                }
-
-            });
-        });
-
-        document.querySelector("#dropCartBtn").addEventListener("click", function(e) {
-            dropCart();
-        });
-
-        function dropCart() {
-            localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
-            document.querySelector("#cart").innerHTML = "";
-        }
-
-        function changePrice(input) {
-            
-            const inputValue = input.value.trim() === "" ? 0 : parseInt(input.value);
+        element.addEventListener("input", function (e) {
+            const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+            const inputValue = parseInt(e.currentTarget.value);
+            let stock = 0;
 
             cartArr.products.forEach(function(element, index) {
 
-                if (element.id === input.dataset.id) {
-                    const unitPrice = parseInt(getProductInfo(element.id).price);
+                if (element.id === e.currentTarget.dataset.id) stock = element.stock;
 
-                    cartArr.sum = cartArr.sum - element.qty * unitPrice + inputValue * unitPrice;
-                    element.qty = inputValue;
-                    element.price = inputValue * unitPrice;
-                    input.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
-                }
-
-                // input.value <= 1 ? input.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide") : input.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
             });
 
-            total.textContent = `Totalsumma: ${cartArr.sum}kr`;
+            if (isNaN(inputValue)) {
+                e.currentTarget.value = "";
+                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+            } else if (inputValue >= stock) {
+                e.currentTarget.value = stock;
+                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
+            } else if (inputValue <= 1) {
+                inputValue < 1 ? e.currentTarget.value = "1" : e.currentTarget.value = inputValue;
+                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+            } else {
+                e.currentTarget.value = inputValue;
+                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+            }
+            
+            changePrice(e.currentTarget);
+        });
 
-            localStorage.setItem("cartArr", JSON.stringify(cartArr));
+        element.addEventListener("keypress", function(e) {
+
+            if (e.which < 48 || e.which > 57) {
+                e.preventDefault();
+            }
+        })
+
+        element.addEventListener("blur", function(e) {
+
+            const input = e.currentTarget.value.trim();
+
+            if (input < 1) {
+                e.currentTarget.value = "1";
+                changePrice(e.currentTarget);
+            }
+
+        });
+    });
+
+    document.querySelector("#dropCartBtn").addEventListener("click", function(e) {
+        dropCart();
+    });
+} else {
+    cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2>";
+}
+
+
+
+function dropCart() {
+    localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
+    document.querySelector("#cart").innerHTML = "";
+}
+
+function changePrice(input) {
+    const inputValue = input.value.trim() === "" ? 0 : parseInt(input.value);
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+
+    cartArr.products.forEach(function(element, index) {
+
+        if (element.id === input.dataset.id) {
+            cartArr.sum = cartArr.sum - element.qty * element.unitPrice + inputValue * element.unitPrice;
+            element.qty = inputValue;
+            input.parentElement.parentElement.querySelector(".price").textContent = `${inputValue * element.unitPrice}kr`;
         }
+    });
 
-        function decreaseEvent(btn) {
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
+    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+}
 
-            cartArr.products.forEach((element, index) => {
+function decreaseEvent(btn) {
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
 
-                if (element.id === btn.dataset.id) {
-                    const unitPrice = parseInt(getProductInfo(element.id).price);
+    cartArr.products.forEach((element, index) => {
 
-                    element.qty = parseInt(element.qty) - 1;
-                    element.price = parseInt(element.price) - unitPrice;
-                    cartArr.sum = parseInt(cartArr.sum) - parseInt(unitPrice);
-                    
-                    btn.nextElementSibling.value = element.qty;
-                    btn.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
-                    if (parseInt(element.qty) < getProductInfo(btn.dataset.id).stock || element.qty < 99) {
-                        btn.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                        btn.parentElement.querySelector(".max-limit-alert").classList.add("hide");
-                    }
-                    if (element.qty <= 1) btn.classList.add("hide");
-                }
-            });
+        if (element.id === btn.dataset.id) {
+            element.qty = element.qty - 1;
+            cartArr.sum = cartArr.sum - element.unitPrice;
+            btn.nextElementSibling.value = element.qty;
+            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice}kr`;
 
-            total.textContent = `Totalsumma: ${cartArr.sum}kr`;
+            if (element.qty < element.stock) {
+                btn.parentElement.querySelector(".increase-btn").classList.remove("hide");
+                btn.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+            }
 
-            localStorage.setItem("cartArr", JSON.stringify(cartArr));
+            if (element.qty <= 1) btn.classList.add("hide");
         }
+    });
 
-        function increaseEvent(btn) {
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
+    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+}
 
-            cartArr.products.forEach((element, index) => {
+function increaseEvent(btn) {
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
 
-                if (element.id === btn.dataset.id) {
-                    const unitPrice = parseInt(getProductInfo(element.id).price);
+    cartArr.products.forEach((element, index) => {
 
-                    element.qty = parseInt(element.qty) + 1;
-                    element.price = parseInt(element.price) + unitPrice;
-                    cartArr.sum = parseInt(cartArr.sum) + parseInt(unitPrice);
-                    
-                    btn.previousElementSibling.value = element.qty;
-                    btn.parentElement.parentElement.querySelector(".price").textContent = `${element.price}kr`;
-                    if (element.qty > 1) btn.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                    if (element.qty >= 99 || parseInt(element.qty) >= getProductInfo(btn.dataset.id).stock) {
-                        btn.classList.add("hide");
-                        btn.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
-                    }
-                }
-            });
+        if (element.id === btn.dataset.id) {
+            element.qty = element.qty + 1;
+            cartArr.sum = cartArr.sum + element.unitPrice;
+            btn.previousElementSibling.value = element.qty;
+            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice}kr`;
 
-            total.textContent = `Totalsumma: ${cartArr.sum}kr`;
+            if (element.qty > 1) btn.parentElement.querySelector(".decrease-btn").classList.remove("hide");
 
-            localStorage.setItem("cartArr", JSON.stringify(cartArr));
+            if (element.qty >= element.stock) {
+                btn.classList.add("hide");
+                btn.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
+            }
         }
+    });
 
-        function deleteEvent(btn) {
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
+    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+}
 
-            cartArr.products.forEach((element, index) => {
+function deleteEvent(btn) {
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
 
-                if (element.id === btn.dataset.id) {
-                    cartArr.sum = parseInt(cartArr.sum) - parseInt(element.price);
-                    cartArr.products.splice(index, 1);
-                }
-            });
+    cartArr.products.forEach((element, index) => {
 
-            listItem = btn.parentElement;
-            listItem.parentElement.removeChild(listItem);
-            total.textContent = `Totalsumma: ${cartArr.sum}kr`;
-
-            localStorage.setItem("cartArr", JSON.stringify(cartArr));
+        if (element.id === btn.dataset.id) {
+            cartArr.sum = cartArr.sum - element.qty * element.unitPrice;
+            cartArr.products.splice(index, 1);
         }
-    
-        function getProductInfo(productID) {
-            return json.find(element => element.id === productID);
-        }
-    })
-    .catch(error => console.error(error));
+    });
+
+    const listItem = btn.parentElement;
+
+    listItem.parentElement.removeChild(listItem);
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
+    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+}
