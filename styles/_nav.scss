@@ -1,5 +1,4 @@
 .navigation {
-  height: 30vh;
   display: flex;
   flex-direction: column;
   background-color: #93a8ac;
@@ -71,7 +70,6 @@ a {
 
 @media (min-width: 800px) {
   .navigation {
-    height: 10vh;
     flex-direction: row;
 
     .logo_header_start {

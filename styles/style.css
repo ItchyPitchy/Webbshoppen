@@ -9,7 +9,6 @@ body {
 }
 
 .navigation {
-  height: 30vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -102,7 +101,6 @@ a {
 
 @media (min-width: 800px) {
   .navigation {
-    height: 10vh;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -146,7 +144,6 @@ header {
 }
 
 .header-category-links {
-  height: 15vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -165,6 +162,8 @@ header {
   text-decoration: none;
   color: white;
   padding: 0px 20px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .header_categories {
@@ -180,6 +179,7 @@ header {
       justify-content: space-around;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin-top: 2%;
 }
 
 @media (min-width: 800px) {
