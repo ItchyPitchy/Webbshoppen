@@ -21,8 +21,8 @@
         <input id="phone" name="phone" placeholder="Ange telefon-nummer" required><br>
         <label for="street">Gatuadress*</label>
         <input id="street" name="street" placeholder="Ange gatuadress" required><br>
-        <label for="zip-code">Postnummer*</label>
-        <input id="zip-code" name="zip-code" placeholder="Ange postnummer" required><br>
+        <label for="zipcode">Postnummer*</label>
+        <input id="zipcode" name="zipcode" placeholder="Ange postnummer" required><br>
         <label for="city">Ort*</label>
         <input id="city" name="city" placeholder="Ange ort" required><br>
         <input id="submitBtn" type="submit" name="submit" value="Slutför köp">

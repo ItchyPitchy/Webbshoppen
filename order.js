@@ -1,6 +1,6 @@
 const cart = document.querySelector("#cart");
 const name = document.querySelector("#name");
-const zipcode = document.querySelector("#zip-code");
+const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
 if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
@@ -107,6 +107,7 @@ function validateForm() {
     if (error) {
         return false;
     } else {
+        zipcode.value = zipcode.value.trim().split(" ").join("");
         return true;
     }
 }
