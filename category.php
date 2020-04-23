@@ -1,42 +1,65 @@
 <?php
 
 require_once "header.php";
+require_once "db.php";
 
-$url = "http://localhost/Webbshoppen/api.php";
-
-$json = file_get_contents($url);
-
-$jsonArr = json_decode($json, true);
+$sql = "SELECT * FROM category";
+$stmt = $db->prepare($sql);
+$stmt->execute();
 
 $get_category = $_GET['category'];
 
 $productContainer = '<div class="productContainer">';
 
-
 echo "<h2 class='startpageHeading'>". $_GET['kategori'] . "</h2>";
 
-for ($x = 0; $x < sizeof($jsonArr); $x++ ) {
 
-    if ($jsonArr[$x]['category'] == $get_category) {
+while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+    if ($get_category == $row['category']) {
+    $category_id = $row['category_id'];
+
+    $sql = "SELECT * FROM products";
+    $stmt2 = $db->prepare($sql);
+    $stmt2->execute();
+
+        while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
+
+            if ($category_id == $row2['category_id']) {
+
+                $sql = "SELECT * FROM product_images";
+                $stmt3 = $db->prepare($sql);
+                $stmt3->execute();
+
+                while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)){
+
+                    
+
+                    if ($row2['id'] == $row3['product_id']) {
+                        
+                        $name = $row2['name']; 
+                    
+                        $price = $row2['price'];
+                        $id = $row2['id'];
+                        $img = "images/" . $row3['image'];
+            
+
+                        $productContainer  .=  "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
+                            <li class='product-li'><img src=$img></li>
+                            <li class='product-li product-li-name'><h3>$name</h3></li>
+                            <li class='product-li product-li-price'>$price kr</li>
+                            </a></ul>"; 
+                            
+                        break;
+
+
+                    }
+                }
         
-
-        $name = $jsonArr[$x]['name'];
-        $price = $jsonArr[$x]['price'];
-        $stock = $jsonArr[$x]['stock'];
-        $img = $jsonArr[$x]['images'][0];
-        $id = $jsonArr[$x]['id'];
-
-
-        $productContainer  .=  "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
-          <li class='product-li'><img src=$img></li>
-          <li class='product-li product-li-name'><h3>$name</h3></li>
-          <li class='product-li product-li-price'>$price kr</li>
-          </a></ul>";    
-
+            }
+        }
     }
-
 }
-
 
 $productContainer .= '</div>';
 
