@@ -215,6 +215,10 @@
     top: 100%;
     right: 0;
     padding: 0 15px;
+    
+    @media (min-width: 600px) {
+      font-size: 11px;
+    }
   }
 
   a {

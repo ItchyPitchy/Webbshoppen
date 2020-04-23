@@ -1,0 +1,65 @@
+.orderForm{
+    margin: 10% 5%;
+    background: #ffffff;
+    box-shadow: 0 4px 15px gray;
+    display: grid;
+    gap: 1em;
+    max-width: 1180px;
+    padding: 5%;
+    @media (min-width: 900px) {
+        margin-bottom: 80px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1.5fr 1fr 1fr 1fr;
+        max-width: 1000px;
+    }
+    @media (min-width: 1200px) {
+        margin: 80px auto;
+    }
+}
+
+.formTitle{
+    text-align: center;
+     margin: 29px auto;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     justify-self: center;
+     color:  #424B54;
+    @media (min-width: 900px) {
+        grid-column: span 2;
+        margin: 0px;
+        max-width: 50%;
+    }
+}
+
+.orderForm input {
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1.5px solid #424B54;
+    width: 100%;
+    margin-top: 20px;
+    @media (min-width: 900px) {
+        margin-top: 30px;
+        width: 85%;
+    }
+}
+.orderForm .orderConfirmBtn{
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #424B54;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+
+   &:hover {
+        background:  #93A8AC;
+        -webkit-transition: background 0.5s ease-in-out;
+        -moz-transition: background 0.5s ease-in-out;
+        transition: background 0.5s ease-in-out;
+    }
+    @media (min-width: 900px) {
+        width: 70%;
+        margin-top: 55px;
+        justify-self: center;
+        grid-column: span 2;
+    }
+}
