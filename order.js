@@ -45,7 +45,7 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
         if (e.which < 48 || e.which > 57) {
             e.preventDefault();
         }
-    })
+    });
 
     const city = document.querySelector("#city");
     
@@ -68,6 +68,13 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     name.addEventListener("keypress", function(e) {
     
         if (e.which >= 48 && e.which <= 57) {
+            e.preventDefault();
+        }
+    });
+
+    zipcode.addEventListener("keypress", function(e) {
+
+        if (e.which < 48 || e.which > 57) {
             e.preventDefault();
         }
     });
@@ -107,7 +114,6 @@ function validateForm() {
     if (error) {
         return false;
     } else {
-        zipcode.value = zipcode.value.trim().split(" ").join("");
         return true;
     }
 }
