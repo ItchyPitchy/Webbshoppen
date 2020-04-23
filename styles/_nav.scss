@@ -1,5 +1,4 @@
 .navigation {
-  height: 20vh;
   display: flex;
   flex-direction: column;
   background-color: #93a8ac;
@@ -7,7 +6,7 @@
   align-items: center;
   color: white;
 
-  img {
+  .logo_header_start {
     margin-top: 2%;
     width: 30vw;
   }
@@ -61,12 +60,19 @@ a {
   padding: 0px 0px;
 }
 
+@media (min-width: 450px) {
+  .navigation {
+    .logo_header_start {
+      width: 20vw;
+    }
+  }
+}
+
 @media (min-width: 800px) {
   .navigation {
-    height: 10vh;
     flex-direction: row;
 
-    img {
+    .logo_header_start {
       margin-left: 6%;
       margin-top: 0%;
       width: 10vw;

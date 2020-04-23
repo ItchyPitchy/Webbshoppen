@@ -6,7 +6,6 @@ header {
 }
 
 .header-category-links {
-  height: 15vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -19,6 +18,8 @@ header {
   text-decoration: none;
   color: white;
   padding: 0px 20px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .header_categories {
@@ -27,6 +28,7 @@ header {
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-top: 2%;
 }
 
 @media (min-width: 800px) {
