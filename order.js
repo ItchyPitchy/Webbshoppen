@@ -39,21 +39,39 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     if (cartArr.sum > 500) {
         shipping.style = "text-decoration: line-through;"
     }
+    
+    document.querySelector("#phone").addEventListener("keypress", function(e) {
 
-    document.querySelector("#city").addEventListener("input", function(e) {
-        if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
-            shipping.style = "text-decoration: line-through;"
-        } else {
-            shipping.style = "text-decoration: none;"
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
         }
     })
+
+    const city = document.querySelector("#city");
     
+    city.addEventListener("input", function(e) {
+        
+        if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
+            shipping.style = "text-decoration: line-through;"
+        } else if (cartArr.sum <= 500) {
+            shipping.style = "text-decoration: none;"
+        }
+    });
+
+    city.addEventListener("keypress", function(e) {
+
+        if (e.which >= 48 && e.which <= 57) {
+            e.preventDefault();
+        }
+    });
+
     name.addEventListener("keypress", function(e) {
     
         if (e.which >= 48 && e.which <= 57) {
             e.preventDefault();
         }
     });
+
 } else {
     total.textContent = "Totalsumma: 0 kr";
     cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
