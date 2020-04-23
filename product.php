@@ -16,7 +16,7 @@ if ($stmt->rowcount() !== 0) {
     $description = htmlspecialchars($row['description']);
     $price = htmlspecialchars($row['price']);
     $stock = htmlspecialchars($row['stock']);
-    $productId = $row['id'];
+    $productId = htmlspecialchars($row['id']);
 
     $sql1 = " SELECT image FROM product_images WHERE product_images.product_id = ? ";
     $selectImages = $db->prepare($sql1);
