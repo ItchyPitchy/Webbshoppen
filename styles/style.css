@@ -699,12 +699,14 @@ textarea:required {
   border: none;
   border-bottom: 1.5px solid #424B54;
   width: 100%;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-top: 20px;
 }
 
 @media (min-width: 900px) {
   .orderForm input {
-    margin-top: 30px;
+    font-size: 18px;
     width: 85%;
   }
 }
@@ -717,6 +719,7 @@ textarea:required {
   color: #ffffff;
   padding: 10px;
   border-radius: 5px;
+  font-size: 12px;
 }
 
 .orderForm .orderConfirmBtn:hover {
@@ -727,6 +730,7 @@ textarea:required {
 
 @media (min-width: 900px) {
   .orderForm .orderConfirmBtn {
+    font-size: 13px;
     width: 70%;
     margin-top: 55px;
     -ms-grid-column-align: center;
