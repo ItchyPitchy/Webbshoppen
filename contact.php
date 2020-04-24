@@ -7,11 +7,9 @@ function validateForm(){
 	const name = document.getElementById('name');
 	const form = document.getElementById('form');
 	const errorElement = document.getElementById('error');
-	messages = []
 	
 
 	if(name.value.trim() == null || name.value.trim() == ''){
-		console.log('Tom')
 		errorElement.innerText = 'Vänligen ange ditt namn.'
 		setTimeout(function(){
 			errorElement.innerText = ''
@@ -42,8 +40,7 @@ function validateForm(){
 		}, 3000);
 		return false;
 	}
-
-	return true;
+		return true;
 
 }
 
@@ -78,7 +75,6 @@ function validateForm(){
 						   placeholder="Din e-postadress" 
 						   tabindex="2" required="required"  
 						   pattern="(?![^@]{30})[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*"
-						 
 						   title="Ogiltig e-postadress. Får max innehålla 30 tecken. T.ex. dittnamn@epost.se"/>
 		      </label>  
 			</div>

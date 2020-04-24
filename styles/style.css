@@ -280,6 +280,30 @@ textarea:required {
   color: red;
 }
 
+.popMessage {
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 150px 150px;
+}
+
+.popMessage .popMessage-text {
+  font-size: 15px;
+  color: #424b54;
+  padding-bottom: 20px;
+}
+
+.popMessage a {
+  color: #9b6a6c;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.popMessage a:hover {
+  text-decoration: underline;
+  color: red;
+}
+
 @media only screen and (min-width: 1025px) {
   #contact-form {
     max-width: 40%;
@@ -401,7 +425,7 @@ textarea:required {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -554,7 +578,7 @@ textarea:required {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -799,7 +823,7 @@ footer .footer_categories {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
 }
 
@@ -820,7 +844,7 @@ footer .footer_categories {
       grid-template-rows: auto;
   max-width: 1200px;
   margin: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 980px) {

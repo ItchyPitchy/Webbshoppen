@@ -84,6 +84,28 @@ textarea:required {
 #error {
     color: red;
 }
+///POPMessage i mail.php
+.popMessage {
+    text-align: center;
+    align-content: center;
+    padding: 150px 150px;
+
+    .popMessage-text {
+        font-size: 15px;
+        color: #424b54;
+        padding-bottom: 20px;
+    }
+
+    a {
+        color: #9b6a6c;
+        margin-top: 20px;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+        color: red;
+    }
+}
 
 @media only screen and (min-width: 1025px) {
     #contact-form {
