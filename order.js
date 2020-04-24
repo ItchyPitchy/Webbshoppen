@@ -1,5 +1,6 @@
 const cart = document.querySelector("#cart");
 const name = document.querySelector("#name");
+const email = document.querySelector("#email");
 const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
@@ -108,6 +109,16 @@ function validateForm() {
         alert.classList.add("alert");
         alert.textContent = "Vänligen ange ett giltigt postnummer";
         zipcode.after(alert);
+        error = true;
+    }
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+        error = false;
+    } else {
+        let alert = document.createElement("span");
+        alert.classList.add("alert");
+        alert.textContent = "Vänligen ange en giltig e-post";
+        email.after(alert);
         error = true;
     }
 
