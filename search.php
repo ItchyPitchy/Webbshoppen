@@ -2,30 +2,49 @@
 
 require_once "db.php";
 
-$url = "http://localhost/Webbshoppen/api.php";
-$json = file_get_contents($url);
-$jsonArr = json_decode($json, true);
+$output = "";
+$arr = [];
 
-if(isset($_GET["q"])) {
-
+if (isset($_GET["q"])) {
     $q = htmlspecialchars($_GET["q"]);
-    $output = "";
-    $filtered = [];
 
-    if(strlen($q) >= 2 && strlen($q) <= 50) {
+    if (strlen($q) >= 2 && strlen($q) <= 20) {
+        $sql = "SELECT id, name, price
+                FROM products
+                WHERE name LIKE CONCAT('%', :q, '%')";
+        $stmt1 = $db->prepare($sql);
+        $stmt1->bindParam(":q", $q);
+        $stmt1->execute();
 
-        $filtered = array_filter($jsonArr, function($v, $k) {
-            return strpos(strtolower($v["name"]), strtolower($_GET["q"])) !== false || strpos(strtolower($v["description"]), strtolower($_GET["q"])) !== false;
-        }, ARRAY_FILTER_USE_BOTH);
+        while ($row = $stmt1->fetch(PDO::FETCH_ASSOC)):
 
-        foreach($filtered as $value) {
-            $output .= "<ul class='product-ul'><a href='product.php?id=$value[id]' class='product-link'>
-                        <li class='product-li'><img class='search-img' src=" . $value["images"][0] . "></li>";
-            $output .= "<li class='product-li product-li-name'><h3 class='title'>$value[name]</h3></li>";
-            $output .= "<li class='product-li product-li-price'>$value[price]kr</li></a></ul>";
+            $sql = "SELECT image FROM product_images WHERE product_id = :id";
+            $stmt2 = $db->prepare($sql);
+            $stmt2->bindParam(":id", $row["id"]);
+            $stmt2->execute();
+            $image = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+            $arr[] = array(
+                "id" => $row["id"],
+                "name" => $row["name"],
+                "price" => $row["price"],
+                "image" => $image["image"]
+            );
+
+        endwhile;
+
+        foreach ($arr as $value) {
+            $output .= 
+            "<ul class='product-ul'>
+                <a href='product.php?id=$value[id]' class='product-link'>
+                    <li class='product-li'><img class='search-img' src=./images/" . $value["image"] . "></li>
+                    <li class='product-li product-li-name'><h3 class='title'>$value[name]</h3></li>
+                    <li class='product-li product-li-price'>$value[price]kr</li>
+                </a>
+            </ul>";
         }
     } else {
-        $output = "<h2>Fel: Sökordet måste innehålla mellan 2-50 tecken</h2>";
+        $output = "<h2>Fel: Sökordet måste innehålla mellan 2-20 tecken</h2>";
     }
 }
 
@@ -33,7 +52,7 @@ require_once "header.php";
 
 ?>
 
-<h1 class="startpageHeading">Du fick <?php echo count($filtered); ?> träffar för "<?php echo $_GET["q"] ?>":</h1>
+<h1 class="startpageHeading">Du fick <?php echo count($arr); ?> träffar för "<?php echo $q ?>":</h1>
 <main class="productContainer">
     <?php echo $output; ?>
 </main>

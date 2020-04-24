@@ -8,7 +8,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="./styles/images/logga.png" alt=""/>
+      <img src="./styles/images/logga.png" alt="" class="logo_header_start"/>
 
       <div class="navigation-links">
         <form class="search-form" action="search.php" method="GET">
@@ -18,8 +18,9 @@
         <div class="header_categories">
           <a class="navigation-link" href="http://localhost/Webbshoppen/">Start</a>
           <a class="navigation-link" href="http://localhost/Webbshoppen/contact.php">Kontakt</a>
+                  <a class="navigation-link" href="http://localhost/Webbshoppen/cart.php"><img src="./styles/images/cart.svg" alt="" class="cart-img" height="25px" width="25px"> </a>
         </div>
-        <a class="navigation-link" href="http://localhost/Webbshoppen/cart.php"><img src="./styles/images/cart.svg" alt="" class="cart-img" height="25px" width="25px"> </a>
+
       </div>
     </nav>
 
