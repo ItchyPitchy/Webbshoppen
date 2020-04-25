@@ -401,7 +401,7 @@ textarea:required {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -554,7 +554,7 @@ textarea:required {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -646,6 +646,97 @@ textarea:required {
           transform: translate(-50%, 0);
   font-size: 9px;
   text-align: center;
+}
+
+.orderForm {
+  margin: 10% 5%;
+  background: #ffffff;
+  -webkit-box-shadow: 0 4px 15px gray;
+          box-shadow: 0 4px 15px gray;
+  display: -ms-grid;
+  display: grid;
+  gap: 1em;
+  max-width: 1180px;
+  padding: 5%;
+}
+
+@media (min-width: 900px) {
+  .orderForm {
+    margin-bottom: 80px;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 1.5fr 1fr 1fr 1fr;
+        grid-template-rows: 1.5fr 1fr 1fr 1fr;
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .orderForm {
+    margin: 80px auto;
+  }
+}
+
+.formTitle {
+  text-align: center;
+  margin: 29px auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  color: #424B54;
+}
+
+@media (min-width: 900px) {
+  .formTitle {
+    grid-column: span 2;
+    margin: 0px;
+    max-width: 50%;
+  }
+}
+
+.orderForm input {
+  background-color: #ffffff;
+  border: none;
+  border-bottom: 1.5px solid #424B54;
+  width: 100%;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 20px;
+}
+
+@media (min-width: 900px) {
+  .orderForm input {
+    font-size: 18px;
+    width: 85%;
+  }
+}
+
+.orderForm .orderConfirmBtn {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #424B54;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.orderForm .orderConfirmBtn:hover {
+  background: #93A8AC;
+  -webkit-transition: background 0.5s ease-in-out;
+  transition: background 0.5s ease-in-out;
+}
+
+@media (min-width: 900px) {
+  .orderForm .orderConfirmBtn {
+    font-size: 13px;
+    width: 70%;
+    margin-top: 55px;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    grid-column: span 2;
+  }
 }
 
 footer {
@@ -799,13 +890,17 @@ footer .footer_categories {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
 }
 
 .heading-box .cart-img {
   width: 40px;
   height: 40px;
+}
+
+.to-start {
+  margin-left: 35px;
 }
 
 .cart-container {
@@ -816,7 +911,7 @@ footer .footer_categories {
       grid-template-rows: auto;
   max-width: 1200px;
   margin: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 980px) {
@@ -835,7 +930,7 @@ footer .footer_categories {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 15px 20px 20px;
+  padding: 20px;
   border: solid 5px #93a8ac;
   border-radius: 1rem;
   -ms-flex-item-align: start;
@@ -901,7 +996,7 @@ footer .footer_categories {
 }
 
 .cart-container li .product-image {
-  margin: 0px auto;
+  margin: 20px auto 0;
   width: 50vw;
   -o-object-fit: contain;
      object-fit: contain;
@@ -1013,12 +1108,12 @@ footer .footer_categories {
 @media (min-width: 600px) {
   .cart-container li .price {
     text-align: right;
+    margin: 0;
   }
 }
 
 .cart-container #total {
   display: block;
-  margin: 25px 10px;
   font-weight: bolder;
   text-align: center;
 }
@@ -1042,6 +1137,7 @@ footer .footer_categories {
   text-align: center;
   color: white;
   padding: 18px 10px;
+  margin-top: 20px;
   cursor: pointer;
   border-radius: 2rem;
   background-color: #93a8ac;
@@ -1049,6 +1145,26 @@ footer .footer_categories {
 
 .cart-container #cashier:hover {
   background-color: #c5c5c5;
+}
+
+.cart-container #shipping {
+  font-size: 14px;
+  text-align: center;
+}
+
+.cart-container .shipping-info {
+  margin-top: 20px;
+  font-size: 9px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 0 15px;
+}
+
+@media (min-width: 600px) {
+  .cart-container .shipping-info {
+    font-size: 11px;
+  }
 }
 
 .cart-container a {

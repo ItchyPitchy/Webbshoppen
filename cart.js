@@ -152,7 +152,7 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     });
 } else {
     total.textContent = "Totalsumma: 0 kr";
-    cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
+    cart.innerHTML = "<h3 class='empty'>Varukorgen är tom</h3><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
     document.querySelector("#cashier").removeAttribute("href");
 }
 
