@@ -357,6 +357,18 @@ select {
   height: 100%;
 }
 
+.secondContainer {
+  margin-bottom: 7%;
+}
+
+.secondContainer .order-td {
+  background-color: #838586;
+}
+
+.secondHeadingOrders {
+  margin-top: 8%;
+}
+
 @media (min-width: 700px) {
   .main-container {
     -ms-grid-row: 1;
@@ -658,6 +670,7 @@ footer {
 
 @media (min-width: 700px) {
   footer {
+    height: auto;
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;

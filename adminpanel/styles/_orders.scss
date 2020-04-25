@@ -139,6 +139,17 @@ select {
   height: 100%;
 }
 
+.secondContainer {
+  margin-bottom: 7%;
+  .order-td {
+    background-color: #838586;
+  }
+}
+
+.secondHeadingOrders {
+  margin-top: 8%;
+}
+
 @media (min-width: 700px) {
   .main-container {
     grid-row: 1/2;
