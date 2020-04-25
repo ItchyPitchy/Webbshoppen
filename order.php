@@ -31,8 +31,8 @@
             <input id="street" name="street" required>
         </div>
         <div>
-            <label for="zip-code">Postnummer*</label><br>
-            <input id="zip-code" name="zip-code"  required>
+            <label for="zipcode">Postnummer*</label><br>
+            <input id="zipcode" name="zipcode"  required>
         </div>
         <div>
             <label for="city">Ort*</label><br>
