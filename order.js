@@ -4,15 +4,10 @@ const email = document.querySelector("#email");
 const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
-if (
-  localStorage.getItem("cartArr") !== null &&
-  JSON.parse(localStorage.getItem("cartArr")).products.length !== 0
-) {
+if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
   const cartArr = JSON.parse(localStorage.getItem("cartArr"));
   const products = cartArr.products;
-  document.querySelector(
-    "#total"
-  ).textContent = `Totalsumma: ${cartArr.sum} kr`;
+  document.querySelector("#total").textContent = `Totalsumma: ${cartArr.sum} kr`;
   document.querySelector("#json").value = localStorage.getItem("cartArr");
 
   for (let i = 0; i < cartArr.products.length; i++) {
@@ -50,6 +45,7 @@ if (
     } else {
       shipping.style = "text-decoration: none;";
     }
+    })
     
     document.querySelector("#phone").addEventListener("keypress", function(e) {
 
