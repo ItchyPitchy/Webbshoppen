@@ -352,9 +352,44 @@ select {
 .orderstatus-select {
   color: white;
   background-color: #424b54;
-  border: none;
+  border: 0.5px solid #424b65;
   width: 100%;
   height: 100%;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.orderstatus-select:hover {
+  background-color: #93a8ac;
+}
+
+.statusBtn {
+  color: white;
+  background-color: #424b54;
+  border: 0.5px solid white;
+  padding: 1.5%;
+  width: 30%;
+  margin-top: 1.5%;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.statusBtn:hover {
+  color: #93a8ac;
+  cursor: pointer;
+  border-color: #93a8ac;
+}
+
+.secondContainer {
+  margin-bottom: 7%;
+}
+
+.secondContainer .order-td {
+  background-color: #838586;
+}
+
+.secondHeadingOrders {
+  margin-top: 8%;
 }
 
 @media (min-width: 700px) {
@@ -658,6 +693,7 @@ footer {
 
 @media (min-width: 700px) {
   footer {
+    height: auto;
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;

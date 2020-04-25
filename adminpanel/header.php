@@ -21,7 +21,7 @@
     <div class="side-container">
     <h1>Adminpanelen</h1>
     <a class="show-btn" href="startAdm.php">Hem/kategorilista</a>
-    <a class="show-btn" href="">Beställningar</a>
+    <a class="show-btn" href="orders.php">Beställningar</a>
     <a class="update-btn" href="">Redigera kategorier</a>
     <a class="create-btn" href="">Skapa produkter</a>
     <a class="delete-btn" href="">Radera kategori</a>
