@@ -49,6 +49,7 @@
     // border-bottom: 1px solid #bac9cc;
     padding-bottom: 5px;
     padding-top: 10px;
+    position: relative;
 }
 
 .categoryHead {
@@ -210,4 +211,12 @@
     .admProductName {
         font-size: 18px;
     }
+}
+
+.dlt-error {
+    position: absolute;
+    left: 70px;
+    font-size: 9px;
+    width: max-content;
+    transform: translate(0, 50%);
 }

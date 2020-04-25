@@ -1,7 +1,6 @@
 * {
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden;
 }
 
 body {
@@ -10,7 +9,7 @@ body {
 
 .navigation {
   height: 10vh;
-  width: 100vw;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -458,6 +457,7 @@ select {
 .catTable td {
   padding-bottom: 5px;
   padding-top: 10px;
+  position: relative;
 }
 
 .categoryHead {
@@ -630,6 +630,17 @@ select {
   .admProductName {
     font-size: 18px;
   }
+}
+
+.dlt-error {
+  position: absolute;
+  left: 70px;
+  font-size: 9px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-transform: translate(0, 50%);
+          transform: translate(0, 50%);
 }
 
 footer {

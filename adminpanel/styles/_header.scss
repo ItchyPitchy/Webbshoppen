@@ -1,7 +1,6 @@
 * {
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden;
 }
 
 body {
@@ -10,7 +9,7 @@ body {
 
 .navigation {
     height: 10vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     background-color: #424b54;

@@ -23,7 +23,29 @@ require_once 'header.php';
     
 
 
-<?php 
+<?php
+
+$dlt_error = "";
+
+if (isset($_GET["delete"])) {
+  
+  $sql2 = "SELECT * FROM products WHERE category_id = :dlt_id";
+  $stmt2 = $db->prepare($sql2);
+  $stmt2->bindParam(":dlt_id", $dlt_id);
+  $dlt_id = $_GET["delete"];
+  $stmt2->execute();
+
+  if ($stmt2->rowCount() === 0) {
+    $sql3 = "DELETE FROM category WHERE category_id = :dlt_id";
+    $stmt3 = $db->prepare($sql3);
+    $stmt3->bindParam(":dlt_id", $dlt_id);
+    $stmt3->execute();
+  } else {
+    $dlt_error = "Fel: kategorin innehåller produkter";
+  }
+  
+}
+
 $sql = "SELECT * FROM category";
 $stmt = $db->prepare($sql);
 $stmt->execute();
@@ -32,20 +54,27 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $category = htmlspecialchars($row['category']);
   $category_id = htmlspecialchars($row['category_id']);
   
-$output ="<tr>
+  $output ="<tr>
 
-            <td>
-              <a class='categoryName' href='productAdm.php?category_id=$category_id'>$category</a>
-            </td>
+              <td>
+                <a class='categoryName' href='productAdm.php?category_id=$category_id'>$category</a>
+              </td>
 
-            <td>
-              <a class='updateBtn' href='productAdm.php?category_id=$category_id'>Redigera </a>
-            </td>
+              <td>
+                <a class='updateBtn' href='productAdm.php?category_id=$category_id'>Redigera</a>
+              </td>
 
-            <td>
-              <a href='#' class='deleteBtn' >  Radera </a>
-          </td>
-          </tr>";
+              <td>
+                <a href='./startAdm.php?delete=$category_id' class='deleteBtn' >  Radera </a>";
+
+  if (strlen($dlt_error) && $category_id === $_GET["delete"]) {
+
+    $output .= "<span class='dlt-error'>$dlt_error</span>";
+    
+  }
+
+  $output .= "</td>
+            </tr>";
 
   echo $output;
 }
