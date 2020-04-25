@@ -1,37 +1,43 @@
 <?php
 
-$url = "http://localhost/Webbshoppen/api.php";
-
-$json = file_get_contents($url);
-
-$jsonArr = json_decode($json, true);
+$x = 0;
 
 $startpageHeading = '<h1 class="startpageHeading">Vårens bästsäljare</h1>';
 $productContainer = '<div class="productContainer">';
 
+$sql = "SELECT * FROM products";
+$stmt2 = $db->prepare($sql);
+$stmt2->execute();
 
-for ($x = 0; $x < 9; $x++ ) {
+while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
 
-        $id = $jsonArr[$x]['id'];
-        $name = $jsonArr[$x]['name'];
-        $price = $jsonArr[$x]['price'];
-        $img = $jsonArr[$x]['images'][0];
+  $sql = "SELECT image FROM product_images WHERE product_id = :product_id";
+  $stmt3 = $db->prepare($sql);
+  $stmt3->bindParam(":product_id", $row2["id"]);
+  $stmt3->execute();
 
-        $productContainer  .=  "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
-          <li class='product-li'><img src=$img></li>
-          <li class='product-li product-li-name'><h3>$name</h3></li>
-          <li class='product-li product-li-price'>$price kr</li>
-          </a></ul>";    
+  $name   = $row2['name'];        
+  $price  = $row2['price'];
+  $id     = $row2['id'];
+  $img    = "images/" . $stmt3->fetch(PDO::FETCH_ASSOC)['image'];
 
+
+  $productContainer .= "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
+      <li class='product-li'><img src=$img></li>
+      <li class='product-li product-li-name'><h3>$name</h3></li>
+      <li class='product-li product-li-price'>$price kr</li>
+      </a></ul>";
+    
+    $x++;
+
+    if ($x >= 9) {
+      break;
+    }
 }
-
-
-
-
+        
 
 $productContainer .= '</div>';
 
 echo $startpageHeading;
 echo $productContainer;
-
 ?>
