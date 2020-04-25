@@ -460,6 +460,17 @@ select {
   position: relative;
 }
 
+.catTable td form {
+  margin: 0 20px;
+}
+
+.catTable td form input {
+  width: 100px;
+  color: #9b6a6c;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .categoryHead {
   color: #93a8ac;
   font-size: 20px;
@@ -641,6 +652,10 @@ select {
   width: max-content;
   -webkit-transform: translate(0, 50%);
           transform: translate(0, 50%);
+}
+
+.hide {
+  display: none;
 }
 
 footer {

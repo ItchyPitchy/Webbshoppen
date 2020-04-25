@@ -50,6 +50,17 @@
     padding-bottom: 5px;
     padding-top: 10px;
     position: relative;
+
+    form {
+        margin: 0 20px;
+
+        input {
+            width: 100px;
+            color: #9b6a6c;
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    }
 }
 
 .categoryHead {
@@ -219,4 +230,8 @@
     font-size: 9px;
     width: max-content;
     transform: translate(0, 50%);
+}
+
+.hide {
+    display: none;
 }
