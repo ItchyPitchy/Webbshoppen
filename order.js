@@ -1,6 +1,7 @@
 const cart = document.querySelector("#cart");
 const name = document.querySelector("#name");
-const zipcode = document.querySelector("#zip-code");
+const email = document.querySelector("#email");
+const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
 if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
@@ -39,21 +40,46 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     if (cartArr.sum > 500) {
         shipping.style = "text-decoration: line-through;"
     }
+    
+    document.querySelector("#phone").addEventListener("keypress", function(e) {
 
-    document.querySelector("#city").addEventListener("input", function(e) {
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+
+    const city = document.querySelector("#city");
+    
+    city.addEventListener("input", function(e) {
+        
         if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
             shipping.style = "text-decoration: line-through;"
-        } else {
+        } else if (cartArr.sum <= 500) {
             shipping.style = "text-decoration: none;"
         }
-    })
-    
+    });
+
+    city.addEventListener("keypress", function(e) {
+
+        if (e.which >= 48 && e.which <= 57) {
+            e.preventDefault();
+        }
+    });
+
     name.addEventListener("keypress", function(e) {
     
         if (e.which >= 48 && e.which <= 57) {
             e.preventDefault();
         }
     });
+
+    zipcode.addEventListener("keypress", function(e) {
+
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+
 } else {
     total.textContent = "Totalsumma: 0 kr";
     cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
@@ -83,6 +109,16 @@ function validateForm() {
         alert.classList.add("alert");
         alert.textContent = "Vänligen ange ett giltigt postnummer";
         zipcode.after(alert);
+        error = true;
+    }
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+        error = false;
+    } else {
+        let alert = document.createElement("span");
+        alert.classList.add("alert");
+        alert.textContent = "Vänligen ange en giltig e-post";
+        email.after(alert);
         error = true;
     }
 
