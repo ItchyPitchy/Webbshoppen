@@ -8,6 +8,7 @@
         "_contact_form.scss",
         "_startpage.scss",
         "_product.scss",
+        "_orderConfirmation.scss",
         "_order_form.scss",
         "_footer.scss",
         "_cart.scss"

@@ -4,41 +4,51 @@ const email = document.querySelector("#email");
 const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
-if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
-    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
-    const products = cartArr.products;
-    document.querySelector("#total").textContent = `Totalsumma: ${cartArr.sum} kr`;
-    document.querySelector("#json").value = localStorage.getItem("cartArr");
+if (
+  localStorage.getItem("cartArr") !== null &&
+  JSON.parse(localStorage.getItem("cartArr")).products.length !== 0
+) {
+  const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+  const products = cartArr.products;
+  document.querySelector(
+    "#total"
+  ).textContent = `Totalsumma: ${cartArr.sum} kr`;
+  document.querySelector("#json").value = localStorage.getItem("cartArr");
 
-    for (let i = 0; i < cartArr.products.length; i++) {
+  for (let i = 0; i < cartArr.products.length; i++) {
+    const li = document.createElement("li");
 
-        const li = document.createElement("li");
-        
-        const productImage = document.createElement("img");
-        productImage.setAttribute("src", products[i].image);
-        productImage.classList.add("product-image");
-        li.appendChild(productImage);
+    const productImage = document.createElement("img");
+    productImage.setAttribute("src", products[i].image);
+    productImage.classList.add("product-image");
+    li.appendChild(productImage);
 
-        const productTitle = document.createElement("span");
-        productTitle.classList.add("product-title");
-        productTitle.textContent = products[i].name;
-        li.appendChild(productTitle);
+    const productTitle = document.createElement("span");
+    productTitle.classList.add("product-title");
+    productTitle.textContent = products[i].name;
+    li.appendChild(productTitle);
 
-        const qty = document.createElement("span");
-        qty.textContent = `${products[i].qty} st`;
-        li.appendChild(qty);
+    const qty = document.createElement("span");
+    qty.textContent = `${products[i].qty} st`;
+    li.appendChild(qty);
 
-        const price = document.createElement("span");
-        price.classList.add("price");
-        price.textContent = `${products[i].unitPrice * products[i].qty} kr`;
-        li.appendChild(price);
+    const price = document.createElement("span");
+    price.classList.add("price");
+    price.textContent = `${products[i].unitPrice * products[i].qty} kr`;
+    li.appendChild(price);
 
-        cart.appendChild(li);
-    }
+    cart.appendChild(li);
+  }
 
+  if (cartArr.sum > 500) {
+    shipping.style = "text-decoration: line-through;";
+  }
 
-    if (cartArr.sum > 500) {
-        shipping.style = "text-decoration: line-through;"
+  document.querySelector("#city").addEventListener("input", function (e) {
+    if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
+      shipping.style = "text-decoration: line-through;";
+    } else {
+      shipping.style = "text-decoration: none;";
     }
     
     document.querySelector("#phone").addEventListener("keypress", function(e) {
@@ -81,36 +91,41 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     });
 
 } else {
-    total.textContent = "Totalsumma: 0 kr";
-    cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
-    const form = document.querySelector("#form");
-    form.parentElement.removeChild(form);
-    // form.style = "display: none;";
+  total.textContent = "Totalsumma: 0 kr";
+  cart.innerHTML =
+    "<h2 class='empty'>Varukorgen är tom</h2><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
+  const form = document.querySelector("#form");
+  form.parentElement.removeChild(form);
+  // form.style = "display: none;";
 }
 
 function validateForm() {
-    const alerts = document.querySelectorAll(".alert");
-    let error = false;
+  const alerts = document.querySelectorAll(".alert");
+  let error = false;
 
-    for (let i = 0; i < alerts.length; i++) {
-        alerts[i].parentElement.removeChild(alerts[i]);
-    }
+  for (let i = 0; i < alerts.length; i++) {
+    alerts[i].parentElement.removeChild(alerts[i]);
+  }
 
-    if (name.value.trim().length < 2 || name.value.trim().length > 20 || /\d/.test(name.value)) {
-        let alert = document.createElement("span");
-        alert.classList.add("alert");
-        alert.textContent = "Namn måste vara mellan 2-20 tecken";
-        name.after(alert);
-        error = true;
-    }
+  if (
+    name.value.trim().length < 2 ||
+    name.value.trim().length > 20 ||
+    /\d/.test(name.value)
+  ) {
+    let alert = document.createElement("span");
+    alert.classList.add("alert");
+    alert.textContent = "Namn måste vara mellan 2-20 tecken";
+    name.after(alert);
+    error = true;
+  }
 
-    if (zipcode.value.trim().split(" ").join("").length !== 5) {
-        let alert = document.createElement("span");
-        alert.classList.add("alert");
-        alert.textContent = "Vänligen ange ett giltigt postnummer";
-        zipcode.after(alert);
-        error = true;
-    }
+  if (zipcode.value.trim().split(" ").join("").length !== 5) {
+    let alert = document.createElement("span");
+    alert.classList.add("alert");
+    alert.textContent = "Vänligen ange ett giltigt postnummer";
+    zipcode.after(alert);
+    error = true;
+  }
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
         error = false;
