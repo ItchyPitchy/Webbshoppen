@@ -1,5 +1,6 @@
 const cart = document.querySelector("#cart");
 const name = document.querySelector("#name");
+const email = document.querySelector("#email");
 const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
@@ -49,13 +50,46 @@ if (
     } else {
       shipping.style = "text-decoration: none;";
     }
-  });
+    
+    document.querySelector("#phone").addEventListener("keypress", function(e) {
 
-  name.addEventListener("keypress", function (e) {
-    if (e.which >= 48 && e.which <= 57) {
-      e.preventDefault();
-    }
-  });
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+
+    const city = document.querySelector("#city");
+    
+    city.addEventListener("input", function(e) {
+        
+        if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
+            shipping.style = "text-decoration: line-through;"
+        } else if (cartArr.sum <= 500) {
+            shipping.style = "text-decoration: none;"
+        }
+    });
+
+    city.addEventListener("keypress", function(e) {
+
+        if (e.which >= 48 && e.which <= 57) {
+            e.preventDefault();
+        }
+    });
+
+    name.addEventListener("keypress", function(e) {
+    
+        if (e.which >= 48 && e.which <= 57) {
+            e.preventDefault();
+        }
+    });
+
+    zipcode.addEventListener("keypress", function(e) {
+
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+
 } else {
   total.textContent = "Totalsumma: 0 kr";
   cart.innerHTML =
@@ -93,10 +127,19 @@ function validateForm() {
     error = true;
   }
 
-  if (error) {
-    return false;
-  } else {
-    zipcode.value = zipcode.value.trim().split(" ").join("");
-    return true;
-  }
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+        error = false;
+    } else {
+        let alert = document.createElement("span");
+        alert.classList.add("alert");
+        alert.textContent = "Vänligen ange en giltig e-post";
+        email.after(alert);
+        error = true;
+    }
+
+    if (error) {
+        return false;
+    } else {
+        return true;
+    }
 }
