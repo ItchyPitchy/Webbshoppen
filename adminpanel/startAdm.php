@@ -43,7 +43,14 @@ if (isset($_GET["delete"])) {
   } else {
     $dlt_error = "Fel: kategorin innehåller produkter";
   }
-  
+} else if (isset($_POST["category"]) && isset($_POST["update_id"])) {
+  $sql4 = "UPDATE category SET category = :category WHERE category_id = :update_id";
+  $stmt4 = $db->prepare($sql4);
+  $stmt4->bindParam(":category", $category);
+  $stmt4->bindParam(":update_id", $category_id);
+  $category = htmlspecialchars($_POST["category"]);
+  $category_id = htmlspecialchars($_POST["update_id"]);
+  $stmt4->execute();
 }
 
 $sql = "SELECT * FROM category";
@@ -54,14 +61,29 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $category = htmlspecialchars($row['category']);
   $category_id = htmlspecialchars($row['category_id']);
   
-  $output ="<tr>
+  $output ="<tr>";
 
-              <td>
-                <a class='categoryName' href='productAdm.php?category_id=$category_id'>$category</a>
-              </td>
+  if (isset($_GET["update"]) && $category_id === $_GET["update"]) {
 
-              <td>
-                <a class='updateBtn' href='productAdm.php?category_id=$category_id'>Redigera</a>
+    $output .= "<td>
+                  <form action='./startAdm.php' method='POST'>
+                    <input name='category' value='$category'>
+                    <input class='hide' type='submit' name='submit' value='submit'>
+                    <input type='hidden' name='update_id' value='$_GET[update]'>
+                  </form>
+                </td>";
+
+  } else {
+
+    $output .= "<td>
+                  <a class='categoryName' href='productAdm.php?category_id=$category_id'>$category</a>
+                </td>";
+  }
+
+            
+
+              $output .= "<td>
+                <a class='updateBtn' href='./startAdm.php?update=$category_id'>Redigera</a>
               </td>
 
               <td>
@@ -86,4 +108,3 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 <?php
 require_once 'footer.php';
 ?>
-
