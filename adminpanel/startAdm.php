@@ -48,7 +48,7 @@ function validateForm(){
 		return false;
 	}
 
-  
+
   
 	return true;
 
@@ -60,7 +60,7 @@ function validateForm(){
 
 <div class="main-container">
     
-      <form id="categoryForm" action="newCategory.php" method="POST" class="catForm" onsubmit="return validateForm()">
+      <form id="categoryForm" action="newCategory.php#newCategoryMessage" method="POST" class="catForm" accept-charset="utf8mb4_unicode_ci" onsubmit="return validateForm()">
       
         <label for="category" class="textLabel">Skapa en ny kategori</label>
         <input type="text" name="category" id="category" placeholder="Kategori" class="catInput">

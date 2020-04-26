@@ -34,9 +34,9 @@ if (isset($_POST['save'])){
                     $stmt->bindParam(':category', $category);
                     $stmt->execute();
 
-                        $output = "<div class='newCategoryMessage'>
+                        $output = "<div id='newCategoryMessage' class='newCategoryMessage'>
                         <p class='newCategoryMessage-text'>Kategorin är tillagt.</p>
-                        <a href='index.php'>OK</a>
+                        <a href='index.php#category'>OK</a>
                         </div>";
                    
                 echo $output;
