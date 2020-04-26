@@ -8,7 +8,7 @@ $arr = [];
 if (isset($_GET["q"])) {
     $q = htmlspecialchars($_GET["q"]);
 
-    if (strlen($q) >= 2 && strlen($q) <= 20) {
+    if (strlen(trim($q)) >= 2 && strlen(trim($q)) <= 20) {
         $sql = "SELECT id, name, price
                 FROM products
                 WHERE name LIKE CONCAT('%', :q, '%')";
