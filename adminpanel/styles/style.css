@@ -1,7 +1,6 @@
 * {
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden;
 }
 
 body {
@@ -10,7 +9,7 @@ body {
 
 .navigation {
   height: 10vh;
-  width: 100vw;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,8 +67,6 @@ h1 {
 }
 
 .container-over-all {
-  display: -ms-grid;
-  display: grid;
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
   -ms-grid-rows: 3fr 4fr 1fr;
@@ -170,7 +167,6 @@ h1 {
         -ms-flex-align: center;
             align-items: center;
     background-color: #424b54;
-    height: 100vh;
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1/2;
@@ -278,6 +274,7 @@ input:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 2%;
 }
 
 #sort {
@@ -293,6 +290,70 @@ input:focus {
 
 select {
   background-color: #424b54;
+}
+
+.orderContainer {
+  margin: 2%;
+  font-size: 10px;
+  width: 100%;
+}
+
+.order-table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.order-td {
+  padding: 3%;
+  margin: 0.5%;
+  background-color: #424b54;
+  border-radius: 2px;
+  color: white;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.column-div {
+  width: 30%;
+}
+
+.order-tr {
+  border-bottom: #424b54 1px solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
+  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.order-tr:nth-child(1) {
+  border-top: #424b54 1px solid;
+}
+
+.orderstatus-select {
+  color: white;
+  background-color: #424b54;
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 700px) {
@@ -336,6 +397,265 @@ select {
         -ms-flex-pack: end;
             justify-content: flex-end;
   }
+  .orderContainer {
+    width: 80%;
+  }
+}
+
+.adm-container {
+  background: white;
+}
+
+.catForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 40px 0 20px;
+}
+
+.catForm .textLabel {
+  font-size: 20px;
+  color: #93a8ac;
+  padding-right: 20px;
+}
+
+.catForm input {
+  margin-top: 20px;
+  font-size: 15px;
+  border: 1px solid #93a8ac;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.catForm button {
+  margin-top: 20px;
+  background: #14aa25;
+  font-size: 15px;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.categoryContainer {
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.categoryContainer .catTable {
+  width: 85%;
+  margin: auto;
+}
+
+.catTable tr {
+  text-align: start;
+}
+
+.catTable td {
+  padding-bottom: 5px;
+  padding-top: 10px;
+  position: relative;
+}
+
+.catTable td form {
+  margin: 0 20px;
+}
+
+.catTable td form input {
+  width: 100px;
+  color: #9b6a6c;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.categoryHead {
+  color: #93a8ac;
+  font-size: 20px;
+  padding-bottom: 20px;
+  padding-left: 5px;
+}
+
+.updateBtn {
+  background: #5bc0de;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+}
+
+.deleteBtn {
+  background: #bb2124;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+}
+
+.categoryName {
+  color: #9b6a6c;
+  font-size: 15px;
+}
+
+.admUpdateBtn {
+  background: #5bc0de;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+}
+
+.admDeleteBtn {
+  background: #bb2124;
+  margin: 50px;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+}
+
+.admProductName {
+  color: #9b6a6c;
+  font-size: 25px;
+  padding-top: 20px;
+}
+
+.productContainer {
+  width: 100%;
+  padding-bottom: 50px;
+  padding-top: 20px;
+}
+
+.productContainer .productTable {
+  width: 85%;
+  margin: auto;
+}
+
+.admDeleteTd {
+  padding: 10px;
+}
+
+.admDeleteTd .admDeleteBtn {
+  padding: 7px;
+}
+
+.admUpdateTd {
+  padding: 10px;
+  margin: 20px;
+}
+
+.admUpdateTd .admUpdateBtn {
+  padding: 7px;
+}
+
+.imgAdm img {
+  width: 130px;
+}
+
+.productHead {
+  font-size: 20px;
+  color: #93a8ac;
+  padding-top: 50px;
+  padding-left: 10px;
+  text-align: start;
+}
+
+.linkToNewProduct {
+  color: red;
+  font-size: 25px;
+}
+
+.productContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #bac9cc;
+}
+
+@media (min-width: 700px) {
+  .catForm {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .catForm input {
+    margin-top: 0;
+  }
+  .catForm button {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+  .categoryContainer {
+    width: 100%;
+  }
+  .categoryContainer .catTable {
+    width: 70%;
+  }
+  .imgAdm img {
+    width: 85px;
+  }
+  .productContainer {
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    max-width: 1000px;
+  }
+  .admDeleteTd {
+    padding: 10px;
+  }
+  .admDeleteTd .admDeleteBtn {
+    padding: 5px;
+    font-size: 13px;
+  }
+  .admUpdateTd {
+    padding: 10px;
+  }
+  .admUpdateTd .admUpdateBtn {
+    padding: 5px;
+    font-size: 13px;
+  }
+  .productTable td {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .admProductName {
+    font-size: 18px;
+  }
+}
+
+.dlt-error {
+  position: absolute;
+  left: 70px;
+  font-size: 9px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-transform: translate(0, 50%);
+          transform: translate(0, 50%);
+}
+
+.hide {
+  display: none;
 }
 
 .productForm {
@@ -526,6 +846,7 @@ label {
 }
 
 footer {
+  height: 100px;
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   grid-row: 3/4;

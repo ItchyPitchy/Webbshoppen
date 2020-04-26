@@ -8,11 +8,10 @@ $arr = [];
 if (isset($_GET["q"])) {
     $q = htmlspecialchars($_GET["q"]);
 
-    if (strlen($q) >= 2) {
+    if (strlen($q) >= 2 && strlen($q) <= 20) {
         $sql = "SELECT id, name, price
                 FROM products
-                WHERE name LIKE CONCAT('%', :q, '%')
-                OR description LIKE CONCAT('%', :q, '%')";
+                WHERE name LIKE CONCAT('%', :q, '%')";
         $stmt1 = $db->prepare($sql);
         $stmt1->bindParam(":q", $q);
         $stmt1->execute();
@@ -45,7 +44,7 @@ if (isset($_GET["q"])) {
             </ul>";
         }
     } else {
-        $output = "<h2>Fel: Sökordet måste innehålla mellan minst 2 tecken</h2>";
+        $output = "<h2>Fel: Sökordet måste innehålla mellan 2-20 tecken</h2>";
     }
 }
 
