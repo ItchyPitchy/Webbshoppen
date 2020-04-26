@@ -38,14 +38,6 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
   if (cartArr.sum > 500) {
     shipping.style = "text-decoration: line-through;";
   }
-
-  document.querySelector("#city").addEventListener("input", function (e) {
-    if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
-      shipping.style = "text-decoration: line-through;";
-    } else {
-      shipping.style = "text-decoration: none;";
-    }
-    })
     
     document.querySelector("#phone").addEventListener("keypress", function(e) {
 
@@ -103,11 +95,7 @@ function validateForm() {
     alerts[i].parentElement.removeChild(alerts[i]);
   }
 
-  if (
-    name.value.trim().length < 2 ||
-    name.value.trim().length > 20 ||
-    /\d/.test(name.value)
-  ) {
+  if (name.value.trim().length < 2 || name.value.trim().length > 20 || /\d/.test(name.value)) {
     let alert = document.createElement("span");
     alert.classList.add("alert");
     alert.textContent = "Namn måste vara mellan 2-20 tecken";
@@ -124,7 +112,7 @@ function validateForm() {
   }
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
-        error = false;
+        
     } else {
         let alert = document.createElement("span");
         alert.classList.add("alert");
