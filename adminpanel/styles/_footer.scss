@@ -1,4 +1,5 @@
 footer {
+
  // 23-April.Vanessa satt in height 100px.
  height: 100px;
  grid-row: 3/4;
@@ -17,6 +18,7 @@ footer {
 
 @media (min-width: 700px) {
   footer {
+
  //25 april Vanessa satt in height auto.
  height: auto;
  grid-row: 2/3;
