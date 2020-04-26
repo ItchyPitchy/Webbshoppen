@@ -154,6 +154,7 @@ h1 {
         grid-template-columns: 1fr 3fr;
     -ms-grid-rows: 9fr 1fr;
         grid-template-rows: 9fr 1fr;
+    height: 90vh;
   }
   .side-container {
     display: -webkit-box;
