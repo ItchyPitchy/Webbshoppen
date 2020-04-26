@@ -68,8 +68,6 @@ h1 {
 }
 
 .container-over-all {
-  display: -ms-grid;
-  display: grid;
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
   -ms-grid-rows: 3fr 4fr 1fr;
@@ -170,7 +168,6 @@ h1 {
         -ms-flex-align: center;
             align-items: center;
     background-color: #424b54;
-    height: 100vh;
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1/2;
@@ -362,20 +359,24 @@ select {
   }
 }
 
-label {
+.labelss {
   display: block;
   padding: 1rem 0 0.25rem;
   text-transform: uppercase;
   font-size: 18px;
 }
 
-.formTitle {
+.formTitle22 {
+  display: block;
+  padding: 1rem 0 0.25rem;
+  text-transform: uppercase;
+  font-size: 18px;
   text-align: center;
   margin: 29px auto;
 }
 
 @media (min-width: 900px) {
-  .formTitle {
+  .formTitle22 {
     grid-column: span 2;
   }
 }
@@ -400,7 +401,7 @@ label {
   }
 }
 
-.productForm .productConfirmBtn {
+.productForm .productConfirmBtnn {
   cursor: pointer;
   width: 50%;
   border: none;
@@ -412,14 +413,224 @@ label {
   display: block;
 }
 
-.productForm .productConfirmBtn:hover {
+.productForm .productConfirmBtnn:hover {
   background: #93a8ac;
   -webkit-transition: background 0.5s ease-in-out;
   transition: background 0.5s ease-in-out;
 }
 
 @media (min-width: 900px) {
-  .productForm .productConfirmBtn {
+  .productForm .productConfirmBtnn {
+    grid-column: span 2;
+  }
+}
+
+/* The alert message box */
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: auto;
+  top: 35%;
+  padding: 20px;
+  background: -webkit-gradient(linear, left top, right bottom, from(#93a8ac), to(#ffffff));
+  background: linear-gradient(to bottom right, #93a8ac, #ffffff);
+  border-radius: 60px;
+  min-width: 350px;
+  width: 30%;
+  height: 10%;
+  position: relative;
+  -webkit-transition: all 5s ease-in-out;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+  position: absolute;
+  top: 55%;
+  right: 50%;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  font-size: 35px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.popup .close:hover {
+  color: #e2b4bd;
+}
+
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .popup {
+    width: 70%;
+  }
+}
+
+.divProductForm {
+  margin: 5%;
+  background: #ffffff;
+  -webkit-box-shadow: 0 4px 15px gray;
+          box-shadow: 0 4px 15px gray;
+  display: -ms-grid;
+  display: grid;
+  max-width: 1180px;
+  padding: 5%;
+  padding-top: 0em;
+}
+
+@media (max-width: 700px) {
+  .divProductForm {
+    margin-bottom: 50px;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+}
+
+.updateProductForm {
+  margin: 5%;
+  margin-bottom: 0em;
+  background: #ffffff;
+  display: -ms-grid;
+  display: grid;
+  gap: 1em;
+  max-width: 1180px;
+  padding: 5%;
+  padding-top: 0em;
+}
+
+.productForms {
+  margin: 5%;
+  margin-top: 0em;
+  background: #ffffff;
+  display: -ms-grid;
+  display: grid;
+  gap: 1em;
+  max-width: 1180px;
+  padding: 5%;
+  padding-top: 0em;
+}
+
+.labelsss {
+  display: block;
+  padding: 1rem 0 0.25rem;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.updateProductFormTitle {
+  text-align: center;
+  margin: 29px auto;
+  display: block;
+  padding: 1rem 0 0.25rem;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+@media (min-width: 900px) {
+  .updateProductFormTitle {
+    grid-column: span 2;
+  }
+}
+
+.updateProductGroupForm {
+  background-color: #ffffff;
+  border: none;
+  border-bottom: 2px solid #424b54;
+  width: 100%;
+  margin-top: 20px;
+  resize: none;
+}
+
+@media (min-width: 900px) {
+  .updateProductGroupForm {
+    width: 100%;
+  }
+}
+
+.divProductForm .productConfirmBtnnn {
+  cursor: pointer;
+  width: 50%;
+  border: none;
+  background: #424b54;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  margin: auto;
+  display: block;
+}
+
+.divProductForm .productConfirmBtnnn:hover {
+  background: #93a8ac;
+  -webkit-transition: background 0.5s ease-in-out;
+  transition: background 0.5s ease-in-out;
+}
+
+@media (min-width: 900px) {
+  .divProductForm .productConfirmBtnnn {
     grid-column: span 2;
   }
 }
@@ -526,6 +737,7 @@ label {
 }
 
 footer {
+  height: 100px;
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   grid-row: 3/4;
@@ -550,6 +762,7 @@ footer {
 
 @media (min-width: 700px) {
   footer {
+    height: auto;
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;

@@ -51,7 +51,8 @@ h1 {
 }
 
 .container-over-all {
-  display: grid;
+  //23 April, Vanessa tog bort display grid.
+  // display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 3fr 4fr 1fr;
 }
@@ -112,29 +113,30 @@ h1 {
 
 @media (min-width: 700px) {
   h1 {
-    margin: 50px 0px;
+      margin: 50px 0px;
   }
 
   .container-over-all {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 9fr 1fr;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: 9fr 1fr;
   }
 
   .side-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #424b54;
-    height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #424b54;
+      //23 april Vanessa tog bort height.
+      // height: 100vh;
 
-    grid-column: 1/2;
-    grid-row: 1/2;
+      grid-column: 1/2;
+      grid-row: 1/2;
   }
 }
 
 @media (min-width: 820px) {
   h1 {
-    font-size: 25px;
+      font-size: 25px;
   }
 }
