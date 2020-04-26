@@ -1,16 +1,72 @@
 <?php
 require_once '../db.php';
-require_once 'header.php';
+
 
 ?>
 
+
+<!-- Test ner-->
+<script type = "text/javascript">
+
+function validateForm(){
+
+	const category = document.getElementById('category');
+	const popMessage = document.getElementById('popMessage');
+
+	
+
+	if(category.value.trim() == null || category.value.trim() == ''){
+
+		popMessage.innerText = 'Ange en title till kategorin.'
+		setTimeout(function(){
+			popMessage.innerText = ''
+		}, 3000);
+		return false;
+	}
+	if(category.value.match(/\d+/g)){
+		
+		popMessage.innerText = 'Title på kategorin får inte innehålla siffror.'
+		setTimeout(function(){
+			popMessage.innerText = ''
+		}, 3000);
+		return false;
+	}
+	if(category.value.length < 2){
+		
+		popMessage.innerText = 'Title på kategorin måste innehålla minst vara 2 tecken.'
+		setTimeout(function(){
+			popMessage.innerText = ''
+		}, 3000);
+		return false;
+	}
+	if(category.value.length > 20){
+		
+		popMessage.innerText = 'Title får vara max 20 tecken.'
+		setTimeout(function(){
+			popMessage.innerText = ''
+		}, 3000);
+		return false;
+	}
+
+
+  
+	return true;
+
+}
+
+</script>
+
+<!-- Test up -->
+
 <div class="main-container">
     
-      <form action="process.php" method="POST" class="catForm">
+      <form id="categoryForm" action="newCategory.php#newCategoryMessage" method="POST" class="catForm" accept-charset="utf8mb4_unicode_ci" onsubmit="return validateForm()">
+      
         <label for="category" class="textLabel">Skapa en ny kategori</label>
-        <input type="text" name="category" placeholder="Kategori" class="catInput">
-        <button type="submit" name="save" class="catSaveBtn">Spara</button>
+        <input type="text" name="category" id="category" placeholder="Kategori" class="catInput">
+        <button type="submit" name="save" class="catSaveBtn" value="Save">Spara</button>
       </form>
+      <div id="popMessage"></div>
 
 
 <div class="categoryContainer">
@@ -105,6 +161,4 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 </div>
 </div>
 
-<?php
-require_once 'footer.php';
-?>
+
