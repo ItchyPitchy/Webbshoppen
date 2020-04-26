@@ -11,7 +11,7 @@ $get_category = $_GET['category'];
 
 $productContainer = '<div class="productContainer">';
 
-echo "<h2 class='startpageHeading'>". $_GET['kategori'] . "</h2>";
+echo "<h2 class='startpageHeading'>". ucfirst($_GET['category']) . "</h2>";
 
 
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
