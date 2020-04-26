@@ -1,8 +1,8 @@
 <?php
 require_once "db.php";
 require_once 'header.php';
+$ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:index.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
-
   
     $name = htmlspecialchars($_POST['name']);
     $description = htmlspecialchars($_POST['description']);
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
             // Insert image file name into database 
 
             $sql= "INSERT INTO product_images (image, product_id) VALUES $insertValuesSQL";
-           // echo $sql;
+            //echo $sql;
             $insert = $db->prepare($sql);
             $insert->execute();
 
@@ -99,30 +99,30 @@ function function_alert() {
 
 <form action="#" method="POST" class="productForm" enctype="multipart/form-data">
 <div>
-<label class="formTitle2">Skapa produkt</label>
+<label class="formTitle22">Skapa produkt</label>
 </div>
 <div class="">
-        <label for="name">Produkts namn:</label>
+        <label class="labelss" for="name">Produkts namn:</label>
         <input name="name" type="text" maxlength="100" autofocus required class="productGroupForm" >
     </div>
     <div>
-        <label for="description">Beskrivning:</label>
+        <label class="labelss" for="description">Beskrivning:</label>
         <textarea name="description" rows="3" maxlength="600" class="productGroupForm" ></textarea>
     </div>
     <div>
-        <label for="stock">Antal i lager:</label>
+        <label class="labelss" for="stock">Antal i lager:</label>
         <input id="stock" type="number" name="stock" min="0"  class="productGroupForm" placeholder="">
     </div>
     <div>
-        <label for="price">pris:</label>
+        <label class="labelss" for="price">pris:</label>
         <input name="price" type="number" min="0" class="productGroupForm">
     </div>
     <div>
-        <label for="image">Ladda upp bilder på produkten! (MAX 5)</label>
+        <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
         <input type='file' class="productGroupForm" name='files[]' multiple />
     </div>
     <div>
-        <input type="submit" value="Skapa" class="productConfirmBtn"> 
+        <input type="submit" value="Skapa" class="productConfirmBtnn"> 
     </div>
 </form>
 
