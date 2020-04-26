@@ -26,10 +26,31 @@
 
     <header></header>
 
-    <div class="header-category-links">
+    <!--<div class="header-category-links">
       <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=light&kategori=Lampor">Lampor</a>
       <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=table&kategori=Bord">Bord</a>
       <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=armchair&kategori=Fåtöljer">Fåtöljer</a>
       <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=pillow&kategori=Kuddar">Kuddar</a>
       <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=sofa&kategori=Soffor">Soffor</a>
-    </div>
+    </div>-->
+
+
+<?php
+
+require_once "db.php";
+
+  $category_list = "<div class='header-category-links'>";
+  $sql = "SELECT * FROM category";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  
+  while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    $category = $row['category'];
+    $ucCategory = ucfirst($category);
+    $category_list .= "<a class='header-category-link' href='http://localhost/Webbshoppen/category.php?category=$category'>$ucCategory</a>";
+  }
+  $category_list .= "</div>";
+  echo $category_list;
+  ?>
+
+
