@@ -5,6 +5,8 @@
         "style.scss",
         "_header.scss",
         "_orders.scss",
+        "_newProduct.scss",
+        "_updateProduct.scss",
         "_startAdm.scss",
         "_footer.scss"
     ],

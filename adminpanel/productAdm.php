@@ -56,7 +56,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                             <td class='admProductName'> $name </td>
     
                             <td class='admUpdateTd'>
-                                <a class='admUpdateBtn' href='#' >Redigera </a>
+                                <a class='admUpdateBtn' href='updateProduct.php?id=$id' >Redigera </a>
                             </td>
     
                             <td class='admDeleteTd'>
