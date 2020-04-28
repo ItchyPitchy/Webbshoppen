@@ -45,7 +45,7 @@ if (isset($_GET["q"])) {
             </ul>";
         }
     } else {
-        $output = "<h2>Fel: Sökordet måste innehålla mellan 2-20 tecken</h2>";
+        $output = "<h2>Fel: Sökordet måste innehålla mellan 2-50 tecken</h2>";
     }
 }
 
