@@ -1,0 +1,33 @@
+.lastChanceHeading {
+    font-size: 30px;
+}
+
+.product-li-sale {
+    color: red;
+    font-size: 20px;
+    font-weight: 700;
+}
+.oldPrice {
+    background: none;
+    color: #424b54;
+    text-align: center;
+    min-width: 100px;
+    font-size: 10px;
+
+    span {
+        text-decoration: line-through;
+    }
+}
+.product-ul {
+    .product-li-buy {
+        min-width: 70%;
+        margin-bottom: 20px;
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 700px) {
+    .lastChanceHeading {
+        font-size: 40px;
+    }
+}
