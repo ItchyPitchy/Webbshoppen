@@ -5,7 +5,7 @@ if(isset($_GET['id'])){
   
 $id = htmlspecialchars($_GET['id']); 
 
-  $sql = "DELETE FROM products WHERE id = :id";
+  $sql = "UPDATE products SET deleted = 1  WHERE  id = :id";
   $stmt = $db->prepare($sql);
   $stmt->bindParam(':id', $id);
   $stmt->execute();
