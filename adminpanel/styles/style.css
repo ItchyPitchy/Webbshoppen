@@ -438,6 +438,10 @@ select {
   }
 }
 
+.hide {
+  display: none;
+}
+
 .productForm {
   margin: 5%;
   background: #ffffff;

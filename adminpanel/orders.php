@@ -9,8 +9,9 @@ require_once "header.php";
       <h2 class="admin_h2">Beställningar</h2>
       <p class="filtrera-p">Filtrera beställningar</p>
           <form class="search-form" action="" method="post">
-        <input class="search-input" type="text" />
-        <button class="search-submit-btn" type="submit">Sök</button>
+            <label for="search">Sök ort:</label>
+        <input class="search-input" type="text" name="search" />
+
     </form>
 
   
@@ -39,7 +40,7 @@ require_once "header.php";
 /***********************************************************Active orders table**************************************************************** */
 
 $orderContainer = '<div class="orderContainer">';
-
+$orderCount = 0;
 echo "<h2 class='startpageHeading'>Aktiva Beställningar</h2>";
 
 
@@ -132,15 +133,18 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   }
   
   $products = implode($product_list);
-    $orderContainer  .=  "<ul class='order-tr'>
+    $orderContainer  .=  "<ul class='order-tr order-ul' id='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street, $city </li></div>
+      <li class='order-td'>$street</li>
+      <li class='order-td' id='$orderCount" . "city'>$city</li></div>
       <div class='column-div'><li class='order-td'>$date</li>
       <li class='order-td'>$products</li>
       <li class='order-td'>$sum:-</li></div>
       <div class='column-div'><li class='order-td'>$statusform</li>
       </ul>"; 
+
+      $orderCount ++;
 }
 
 
@@ -237,14 +241,17 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
   
   $products = implode($product_list);
-    $completedOrderContainer  .=  "<ul class='order-tr'>
+    $completedOrderContainer  .=  "<ul class='order-tr order-ul' id ='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street, $city </li></div>
+      <li class='order-td'>$street</li>
+      <li class='order-td' id='$orderCount" . "city'>$city</li></div>
       <div class='column-div'><li class='order-td'>$date</li>
       <li class='order-td'>$products</li>
       <li class='order-td'>$sum:-</li></div>
       </ul>"; 
+
+      $orderCount ++;
 }
 
 
@@ -358,6 +365,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 require_once "footer.php";
 ?>
+
+<script src="orders.js"></script>
 
 
 
