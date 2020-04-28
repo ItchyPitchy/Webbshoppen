@@ -4,7 +4,7 @@ require_once 'db.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : die();
 
-$sql = "SELECT * FROM products WHERE id= :id";
+$sql = "SELECT * FROM products WHERE id= :id AND stock != 0 AND deleted = 0";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':id', $id);
 $stmt->execute();
