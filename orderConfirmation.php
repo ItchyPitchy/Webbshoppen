@@ -115,18 +115,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         <p id="date"></p>
     </div>
     <div class="customerInfo-box">
-    <p class="customer customer-id"></p>
+    <p class="customer customer-order-id"></p>
     <p class="customer customer-name"></p>
     <p class="customer customer-email"></p>
     <p class="customer customer-phone"></p>
     <p class="customer customer-street"></p>
-    <p class="customer customer-zipcode"></p>
-    <p class="customer customer-city"></p>
     </div>
     <div class="overview-container">
         <ul id="order-ul"></ul>
         <div class="overview-total">
-            <span id="total"></span>
+            <p id="total-sum"></p>
+            <p id="shipping-span"></p>
         </div>
     </div>
   </div>
@@ -138,8 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 <script>
-
-let id = "<?php echo $order_id ?>";
+let orderId = "<?php echo $order_id ?>";
 let name = "<?php echo $name ?>";
 let email = "<?php echo $email ?>";
 let phone = "<?php echo $phone ?>";

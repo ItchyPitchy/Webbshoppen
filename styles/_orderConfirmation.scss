@@ -39,6 +39,7 @@
   justify-self: center;
   width: 80vw;
   margin: 10px auto;
+  padding-bottom: 10px;
 
   @media (min-width: 700px) {
     width: 50vw;
@@ -65,17 +66,27 @@
   }
 
   & > .overview-total {
-    display: flex;
     padding: 20px;
-    border: solid 5px #93a8ac;
-    border-radius: 1rem;
-    align-self: center;
-    position: sticky;
-    top: 20px;
     margin: 20px;
+    font-weight: lighter;
+    font-size: 20px;
 
     @media (min-width: 600px) {
       margin: 20px 20px;
+    }
+
+    #total-sum {
+      display: block;
+      font-weight: bolder;
+      text-align: center;
+    }
+
+    #shipping-span {
+      display: block;
+      color: grey;
+      font-size: 12px;
+      text-align: center;
+      padding: 5px 0px;
     }
   }
 
@@ -130,12 +141,6 @@
         margin: 0;
       }
     }
-  }
-
-  #total {
-    display: block;
-    font-weight: bolder;
-    text-align: center;
   }
 }
 
