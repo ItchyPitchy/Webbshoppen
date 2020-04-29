@@ -45,7 +45,7 @@ echo $productContainer;
 <?php
 $y = 0;
 
-$startpageHeading2 = '<a class="navigation-link" href="newCome.php"><h1 class="startpageHeading">Nyinkommet</h1></a>';
+$startpageHeading2 ='<h1 class="titleNew"><a class="titleNewLink" href="newCome.php">Nyinkommet</a></h1>';
 $productContainer2 = '<div class="productContainer">';
 
 $sql = "SELECT * FROM products ORDER BY create_date desc LIMIT 3";
