@@ -6,7 +6,7 @@ $x = 0;
 $startpageHeading = '<h1 class="startpageHeading">Nyinkommet</h1>';
 $productContainer = '<div class="productContainer">';
 
-$sql = "SELECT * FROM products ORDER BY create_date desc LIMIT 9";
+$sql = "SELECT * FROM products ORDER BY create_date desc LIMIT 6";
 $stmt2 = $db->prepare($sql);
 $stmt2->execute();
 
@@ -32,7 +32,7 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
     
     $x++;
 
-    if ($x >= 9) {
+    if ($x >= 6) {
       break;
     }
 }
