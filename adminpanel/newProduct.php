@@ -121,7 +121,6 @@ function function_alert() {
     <div>
         <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
         <input type='file' id="file" onchange="loadFile(event)" class="productGroupForm" name='files[]' multiple/>
-        <img id="output" width="200" />	
         <ul id="imgUl"></ul>
     </div>
     <div>
@@ -143,8 +142,6 @@ var loadFile = function (event) {
         let image = document.createElement("img")
         image.classList.add("selected-img");
         image.src = URL.createObjectURL(event.target.files[i]);
-        image.style.width = "100px";
-        image.style.height = "100px";
         li.appendChild(image);
         imgUl.appendChild(li);
 

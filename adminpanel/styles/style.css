@@ -629,7 +629,8 @@ select {
   }
 }
 
-#imgUl {
+#imgUl,
+#updated-imgUl {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -644,7 +645,11 @@ li {
 }
 
 .selected-img {
-  padding: 0px 5px;
+  padding: 15px 5px;
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .divProductForm {
@@ -855,6 +860,12 @@ li {
   .popup {
     width: 70%;
   }
+}
+
+#new-file-p {
+  font-size: 12px;
+  color: grey;
+  padding-left: 3px;
 }
 
 .adm-container {

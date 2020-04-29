@@ -162,7 +162,8 @@
   }
 }
 
-#imgUl {
+#imgUl,
+#updated-imgUl {
   display: flex;
   flex-direction: row;
 }
@@ -172,5 +173,8 @@ li {
 }
 
 .selected-img {
-  padding: 0px 5px;
+  padding: 15px 5px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }

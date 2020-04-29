@@ -2,6 +2,7 @@
 require_once 'header.php';
 require_once 'db.php';
 
+
 $id = isset($_GET['id']) ? $_GET['id'] : die();
 
 $sql = "SELECT * FROM products WHERE id= :id";
@@ -27,6 +28,16 @@ if ($stmt->rowcount() !== 0) {
     while ($imgRow = $selectImages->fetch(PDO::FETCH_ASSOC)) { 
             array_push($images, $imgRow['image']);
     }
+
+    $output = "<ul id='imgUl'>";
+
+    foreach ($images as $value) {
+        $output .= "<li>
+                            <img class='selected-img' src=../images/" . $value . ">
+                    </li>";
+
+    }
+
 
 
 } else {
@@ -65,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 } 
 
+$thumbnails = json_encode($images);
 
 
     ?>
@@ -86,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm" placeholder="">
     </div>
     <div>
-        <label class="labelsss" for="price">pris:</label>
+        <label class="labelsss" for="price">Pris:</label>
         <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm">
     </div>
 
@@ -101,7 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form action="updateImage.php" method="POST" class="productForms" enctype="multipart/form-data">
 <div>
         <label class="labelsss" for="image">Ladda upp nya bilder på produkten! (MAX 5)</label>
-        <input type='file' class="updateProductGroupForm" name='files[]' multiple />
+        <input type='file' id="file" onchange="loadFile(event)" class="updateProductGroupForm" name='files[]' multiple />
+        <ul id="imgUl">
+            <li class="selected-image"><?php echo $output?> </li>
+        </ul>
+        <p style="display:none" id="new-file-p">Nyvalda bilder:</p>
+        <ul id="updated-imgUl">
+            <li class="selected-image"></li>
+        </ul>
     </div>
     <input type="hidden" name="id" value="<?php echo $id; ?>">
     <div>
@@ -110,6 +129,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 
 </div>
+
+<script type="text/javascript">
+
+var loadFile = function (event) {   
+
+    const imgUl = document.querySelector("#updated-imgUl");
+    const newP = document.querySelector("#new-file-p").style= "display:unset;";
+
+    
+    for(i = 0; i < event.target.files.length; i++) {
+        
+        const li = document.createElement("li");
+
+        let image = document.createElement("img")
+        image.classList.add("selected-img");
+        image.src = URL.createObjectURL(event.target.files[i]);
+        li.appendChild(image);
+        imgUl.appendChild(li);
+
+    }
+};
+
+</script>
+
+
+
+
 
 
 
