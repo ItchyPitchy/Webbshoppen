@@ -66,10 +66,11 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   if (isset($_GET["update"]) && $category_id === $_GET["update"]) {
 
     $output .= "<td>
-                  <form action='./startAdm.php' method='POST'>
-                    <input name='category' value='$category'>
+                  <form action='./startAdm.php' method='POST' onsubmit='return validateForm()'>
+                    <input id='category-input' name='category' value='$category' required>
                     <input class='hide' type='submit' name='submit' value='submit'>
                     <input type='hidden' name='update_id' value='$_GET[update]'>
+                    <div id='input-length-counter'></div>
                   </form>
                 </td>";
 
@@ -101,9 +102,11 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   echo $output;
 }
 ?>
-</table>
+
+   </table>
+  </div>
 </div>
-</div>
+<script src="startAdm.js"></script>
 
 <?php
 require_once 'footer.php';

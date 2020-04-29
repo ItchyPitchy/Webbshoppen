@@ -53,7 +53,7 @@
 
     form {
         margin: 0 20px;
-
+        position: relative;
         input {
             width: 100px;
             color: #9b6a6c;
@@ -230,6 +230,15 @@
     font-size: 9px;
     width: max-content;
     transform: translate(0, 50%);
+}
+
+#input-length-counter {
+    position: absolute;
+    bottom: 100%;
+    left: 99px;
+    font-size: 9px;
+    width: max-content;
+    // transform: translate(-50%, 0);
 }
 
 .hide {
