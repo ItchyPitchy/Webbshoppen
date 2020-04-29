@@ -629,6 +629,24 @@ select {
   }
 }
 
+#imgUl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+li {
+  list-style-type: none;
+}
+
+.selected-img {
+  padding: 0px 5px;
+}
+
 .divProductForm {
   margin: 5%;
   background: #ffffff;

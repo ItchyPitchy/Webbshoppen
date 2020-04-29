@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 $db_server   = "localhost";
 $db_database = "webshop";
 $db_username = "root";
-$db_password = "";
+$db_password = "root";
 
 try {
     $db = new PDO("mysql:host=$db_server;dbname=$db_database;charset=utf8mb4", $db_username, $db_password);

@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     
     
     if(!empty($fileNames)){ 
+
         foreach($_FILES['files']['name'] as $key=>$val){ 
             // File upload path 
             $fileName = basename($_FILES['files']['name'][$key]); 
@@ -44,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
                 if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
                     // Image db insert sql 
                     $insertValuesSQL .= "('".$fileName."','".$last_id."'),"; 
+
                 }else{ 
                     $errorUpload .= $_FILES['files']['name'][$key].' | '; 
                 } 
@@ -51,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
                 $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
             } 
         } 
+
 
         if(!empty($insertValuesSQL)){ 
             $insertValuesSQL = trim($insertValuesSQL, ','); 
@@ -60,8 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
             //echo $sql;
             $insert = $db->prepare($sql);
             $insert->execute();
-
-
 
             if($insert){ 
                 $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):''; 
@@ -96,7 +97,7 @@ function function_alert() {
     </script>";
 }
 ?>
-
+<div>
 <form action="#" method="POST" class="productForm" enctype="multipart/form-data">
 <div>
 <label class="formTitle22">Skapa produkt</label>
@@ -119,12 +120,40 @@ function function_alert() {
     </div>
     <div>
         <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
-        <input type='file' class="productGroupForm" name='files[]' multiple />
+        <input type='file' id="file" onchange="loadFile(event)" class="productGroupForm" name='files[]' multiple/>
+        <img id="output" width="200" />	
+        <ul id="imgUl"></ul>
     </div>
     <div>
         <input type="submit" value="Skapa" class="productConfirmBtnn"> 
     </div>
 </form>
+</div>
+
+<script type="text/javascript">
+
+var loadFile = function (event) {   
+
+    const imgUl = document.querySelector("#imgUl");
+    
+    for(i = 0; i < event.target.files.length; i++) {
+        
+        const li = document.createElement("li");
+        
+        let image = document.createElement("img")
+        image.classList.add("selected-img");
+        image.src = URL.createObjectURL(event.target.files[i]);
+        image.style.width = "100px";
+        image.style.height = "100px";
+        li.appendChild(image);
+        imgUl.appendChild(li);
+
+    }
+};
+
+</script>
+
+
 
 <?php /*
 <div class="box">
