@@ -12,7 +12,8 @@ if (isset($_GET["q"])) {
     if (mb_strlen($q) >= 2 && mb_strlen($q) <= 50) {
         $sql1 = "SELECT id, name, price
                 FROM products
-                WHERE name LIKE CONCAT('%', :q, '%')";
+                WHERE name LIKE CONCAT('%', :q, '%')
+                AND stock != 0 AND deleted = 0";
         $stmt1 = $db->prepare($sql1);
         $stmt1->bindParam(":q", $q);
         $stmt1->execute();
