@@ -442,6 +442,18 @@ select {
   display: none;
 }
 
+.filterHide {
+  display: none;
+}
+
+.searchHide {
+  display: none;
+}
+
+.order-td {
+  list-style-type: none;
+}
+
 .productForm {
   margin: 5%;
   background: #ffffff;

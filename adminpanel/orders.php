@@ -18,8 +18,10 @@ require_once "header.php";
     <div class="radio-div">
     <input type="radio" id="alla" name="alla" checked="checked">
     <label for="alla">Alla beställningar</label>
-    <input type="radio" id="aktiva" name="alla">
-    <label for="aktiva">Aktiva beställningar</label>
+    <input type="radio" id="nya" name="alla">
+    <label for="nya">Nya beställningar</label>
+    <input type="radio" id="behandlade" name="alla">
+    <label for="behandlade">Behandlade beställningar</label>
     <input type="radio" id="slutförda" name="alla">
     <label for="slutförda">Slutförda beställningar</label>
     </div>
@@ -39,9 +41,9 @@ require_once "header.php";
 
 /***********************************************************Active orders table**************************************************************** */
 
-$orderContainer = '<div class="orderContainer">';
+$orderContainer = '<div class="orderContainer firstContainer">';
 $orderCount = 0;
-echo "<h2 class='startpageHeading'>Aktiva Beställningar</h2>";
+echo "<h2 class='startpageHeading activeH2'>Aktiva Beställningar</h2>";
 
 
     $orderContainer  .=  "<ul class='order-tr'>
@@ -113,23 +115,23 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   
   if ($status == 0) {
     $statusform = "<form action='orders.php?id=$active_orders_id' method='POST'>
-    <select class='orderstatus-select' name='status'>
+    <select class='orderstatus-select' id='$orderCount" . "select' name='status'>
     <option name='option' selected='selected' value='0'>Ny</option>
     <option name='option' value='1'>Behandlas</option>
     <option name='option' value='completed'>Slutförd</option>
 
     </select>
-    <input type='submit' value='Ändra status' class='statusBtn'></form>";
+    <input type='submit' value='Uppdatera' class='statusBtn'></form>";
   }
   else {
     $statusform =  "<form action='orders.php?id=$active_orders_id' method='POST'>
-    <select class='orderstatus-select' name='status'>
+    <select class='orderstatus-select' id='$orderCount" . "select' name='status'>
     <option name='option' value='0'>Ny</option>
     <option name='option' selected='selected' value='1'>Behandlas</option>
     <option name='option' value='completed'>Slutförd</option>
 
     </select>
-    <input type='submit' value='Ändra status' class='statusBtn'></form>";
+    <input type='submit' value='Uppdatera' class='statusBtn'></form>";
   }
   
   $products = implode($product_list);
@@ -141,7 +143,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       <div class='column-div'><li class='order-td'>$date</li>
       <li class='order-td'>$products</li>
       <li class='order-td'>$sum:-</li></div>
-      <div class='column-div'><li class='order-td'>$statusform</li>
+      <div class='column-div'><li class='order-td' id='$orderCount'" . "status'>$statusform</li>
       </ul>"; 
 
       $orderCount ++;
