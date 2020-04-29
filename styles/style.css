@@ -441,6 +441,40 @@ textarea:required {
           flex-direction: column;
 }
 
+.titleNew {
+  text-align: center;
+  padding: 5%;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #424b54;
+}
+
+.titleNewLink {
+  position: absolute;
+  margin: auto;
+  color: #424b54;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  font-size: 15px;
+  display: contents;
+  padding: 5%;
+  font-weight: bold;
+}
+
+@media (min-width: 600px) {
+  .titleNewLink {
+    padding: 3%;
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .titleNewLink {
+    padding: 3%;
+    font-size: 30px;
+  }
+}
+
 .productContainer1 {
   max-width: 1500px;
 }
