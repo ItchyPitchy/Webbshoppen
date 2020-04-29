@@ -45,9 +45,9 @@ require_once "db.php";
   $stmt->execute();
   
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-    $category = $row['category'];
-    $ucCategory = ucfirst($category);
-    $category_list .= "<a class='header-category-link' href='http://localhost/Webbshoppen/category.php?category=$category'>$ucCategory</a>";
+    $category_id = $row["category_id"];
+    $ucCategory = ucfirst($row["category"]);
+    $category_list .= "<a class='header-category-link' href='http://localhost/Webbshoppen/category.php?category=$category_id'>$ucCategory</a>";
   }
   $category_list .= "</div>";
   echo $category_list;

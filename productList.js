@@ -23,6 +23,7 @@ function orderCheck(btn) {
     if (!getDuplicate(cartArr.products, btn)) {
         addProduct(cartArr, btn);
         btn.textContent = "Produkten är tillagd";
+        document.querySelector("#header-cart").style = "fill: red;";
     }
 }
 
