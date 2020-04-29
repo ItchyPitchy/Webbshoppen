@@ -50,9 +50,8 @@ if(!empty($fileNames)){
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':id', $productId);
             $stmt->execute();
-            
-            
-               // echo '<script type="text/javascript">';
+                      
+              // echo '<script type="text/javascript">';
               //  echo ' alert("test")';  //
               //  echo '</script>';
 
@@ -61,7 +60,6 @@ if(!empty($fileNames)){
            // echo $sql2;
             $insert = $db->prepare($sql2);
             $insert->execute();
-
 
             if($insert){ 
                 $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):''; 
