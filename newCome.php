@@ -36,7 +36,6 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
       break;
     }
 }
-        
 
 $productContainer .= '</div>';
 
