@@ -20,7 +20,8 @@
     <div class="container-over-all">
     <div class="side-container">
     <h1>Adminpanelen</h1>
-    <a class="show-btn" href="./startAdm.php">Hem/kategorilista</a>
+
+    <a class="show-btn" href="../adminpanel">Hem/kategorilista</a>
     <a class="show-btn" href="./orders.php">Beställningar</a>
     <!-- <a class="update-btn" href="">Redigera kategorier</a> -->
     <a class="create-btn" href="">Skapa produkter</a>

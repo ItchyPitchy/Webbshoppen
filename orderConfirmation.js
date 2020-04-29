@@ -29,6 +29,9 @@ customerEmail.textContent = `E-postadress: ` + email;
 const customerPhone = document.querySelector(".customer-phone");
 customerPhone.textContent = `Telefon: ` + phone;
 
+const customerStreet = document.querySelector(".customer-street");
+customerStreet.textContent = `Gatuadress: ` + street;
+
 const customerZipcode = document.querySelector(".customer-zipcode");
 customerZipcode.textContent = `Postnummer: ` + zipcode;
 

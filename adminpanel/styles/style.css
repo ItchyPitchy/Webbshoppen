@@ -352,9 +352,44 @@ select {
 .orderstatus-select {
   color: white;
   background-color: #424b54;
-  border: none;
+  border: 0.5px solid #424b65;
   width: 100%;
   height: 100%;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.orderstatus-select:hover {
+  background-color: #93a8ac;
+}
+
+.statusBtn {
+  color: white;
+  background-color: #424b54;
+  border: 0.5px solid white;
+  padding: 1.5%;
+  width: 30%;
+  margin-top: 1.5%;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.statusBtn:hover {
+  color: #93a8ac;
+  cursor: pointer;
+  border-color: #93a8ac;
+}
+
+.secondContainer {
+  margin-bottom: 7%;
+}
+
+.secondContainer .order-td {
+  background-color: #838586;
+}
+
+.secondHeadingOrders {
+  margin-top: 8%;
 }
 
 @media (min-width: 700px) {
@@ -816,7 +851,7 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 40px 0 20px;
+  padding: 80px 0 20px;
 }
 
 .catForm .textLabel {
@@ -899,6 +934,38 @@ select {
 .categoryName {
   color: #9b6a6c;
   font-size: 15px;
+}
+
+.newCategoryMessage {
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  width: 170px;
+  height: 70px;
+  border: 1px solid #93a8ac;
+  border-radius: 15px;
+  background: #93a8ac;
+  -webkit-box-shadow: 17px 24px 30px -4px rgba(66, 75, 84, 0.49);
+  box-shadow: 17px 24px 30px -4px rgba(66, 75, 84, 0.49);
+}
+
+.newCategoryMessage a {
+  color: #424b54;
+}
+
+.newCategoryMessage-text {
+  color: #9b6a6c;
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+#popMessage {
+  color: red;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 13px;
 }
 
 .admUpdateBtn {
@@ -984,6 +1051,83 @@ select {
   border-bottom: 1px solid #bac9cc;
 }
 
+.modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(34, 34, 34, 0.205);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s, opacity 0.5s;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.modalDeleteBtn {
+  padding: 8px;
+  background: #bb2124;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  margin: unset;
+}
+
+.cancelModal {
+  border: none;
+  background: #5bc0de;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+  margin-right: 20%;
+}
+
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+  background-color: white;
+  width: 85%;
+  height: 25%;
+}
+
+@media (min-width: 650px) {
+  .modal {
+    width: 520px;
+    min-height: 280px;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 @media (min-width: 700px) {
   .catForm {
     -webkit-box-orient: horizontal;
@@ -1025,7 +1169,8 @@ select {
     padding: 10px;
   }
   .admDeleteTd .admDeleteBtn {
-    padding: 5px;
+    border: none;
+    padding: 6px;
     font-size: 13px;
   }
   .admUpdateTd {
