@@ -6,27 +6,31 @@ $startpageHeading = '<h1 class="startpageHeading">Vårens bästsäljare</h1>';
 $productContainer = '<div class="productContainer">';
 
 $sql = "SELECT * FROM products";
-$stmt2 = $db->prepare($sql);
-$stmt2->execute();
+$stmt = $db->prepare($sql);
+$stmt->execute();
 
-while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
+while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-  $sql = "SELECT image FROM product_images WHERE product_id = :product_id";
-  $stmt3 = $db->prepare($sql);
-  $stmt3->bindParam(":product_id", $row2["id"]);
-  $stmt3->execute();
+  $sql2 = "SELECT image FROM product_images WHERE product_id = :product_id";
+  $stmt2 = $db->prepare($sql2);
+  $stmt2->bindParam(":product_id", $row["id"]);
+  $stmt2->execute();
 
-  $name   = $row2['name'];        
-  $price  = $row2['price'];
-  $id     = $row2['id'];
-  $img    = "images/" . $stmt3->fetch(PDO::FETCH_ASSOC)['image'];
+  $id     = $row['id'];
+  $name   = $row['name'];        
+  $price  = $row['price'];
+  $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)['image'] : "";
+  $imgUrl = "./images/$image";
 
 
-  $productContainer .= "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
-      <li class='product-li'><img src=$img></li>
-      <li class='product-li product-li-name'><h3>$name</h3></li>
-      <li class='product-li product-li-price'>$price kr</li>
-      </a></ul>";
+  $productContainer .= "<ul class='product-ul'>
+                          <a href='product.php?id=$id' class='product-link'>
+                            <li class='product-li'><img src=$imgUrl></li>
+                            <li class='product-li product-li-name'><h3>$name</h3></li>
+                            <li class='product-li product-li-price'>$price kr</li>
+                          </a>
+                          <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='$price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                        </ul>";
     
     $x++;
 
@@ -41,3 +45,5 @@ $productContainer .= '</div>';
 echo $startpageHeading;
 echo $productContainer;
 ?>
+
+<script src="productList.js"></script>

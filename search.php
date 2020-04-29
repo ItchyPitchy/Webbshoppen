@@ -41,6 +41,7 @@ if (isset($_GET["q"])) {
                     <li class='product-li product-li-name'><h3 class='title'>$value[name]</h3></li>
                     <li class='product-li product-li-price'>$value[price]kr</li>
                 </a>
+                <button class='addToCartBtn' data-id='$row[id]' data-image='$image[image]' data-name='$row[name]' data-price='$row[price]' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
             </ul>";
         }
     } else {
@@ -56,5 +57,5 @@ require_once "header.php";
 <main class="productContainer">
     <?php echo $output; ?>
 </main>
-
+<script src="productList.js"></script>
 <?php require_once "footer.php"; ?>
