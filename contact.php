@@ -7,7 +7,7 @@ function validateForm(){
 	const name = document.getElementById('name');
 	const form = document.getElementById('form');
 	const errorElement = document.getElementById('error');
-	messages = []
+
 	
 
 	if(name.value.trim() == null || name.value.trim() == ''){

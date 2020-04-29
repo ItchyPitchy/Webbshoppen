@@ -52,6 +52,7 @@ function orderCheck(qty) {
 
             product ? mergeProduct(cartArr, qty) : addProduct(cartArr, qty);
             document.querySelector("#qtyInput").value = "1";
+            document.querySelector("#header-cart").style = "fill: red;";
 
     } else {
         document.querySelector("#stockAlert").classList.remove("hide");

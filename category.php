@@ -11,7 +11,7 @@ $get_category = $_GET['category'];
 
 $productContainer = '<div class="productContainer">';
 
-echo "<h2 class='startpageHeading'>". $_GET['kategori'] . "</h2>";
+echo "<h2 class='startpageHeading'>". ucfirst($_GET['category']) . "</h2>";
 
 
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -19,7 +19,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     if ($get_category == $row['category']) {
     $category_id = $row['category_id'];
 
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM products WHERE stock != 0 AND deleted = 0";
     $stmt2 = $db->prepare($sql);
     $stmt2->execute();
 

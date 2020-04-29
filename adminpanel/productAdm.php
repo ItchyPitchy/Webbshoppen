@@ -35,6 +35,9 @@ $head = "<div class='productContainer'>
                 </thead>";
 
  echo $head;
+
+ $output = '';
+ 
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
    
         $sql ="SELECT * FROM product_images";
@@ -53,24 +56,29 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                             <td class='admProductName'> $name </td>
     
                             <td class='admUpdateTd'>
-                                <a class='admUpdateBtn' href='#' >Redigera </a>
+                                <a class='admUpdateBtn' href='updateProduct.php?id=$id' >Redigera </a>
                             </td>
     
                             <td class='admDeleteTd'>
-                                <a class='admDeleteBtn' href='#' >  Radera </a>
-                            </td>
-                
-            </tr>";
+                                <button name='modalDeleteBtn' id='button$id' class='admDeleteBtn'> Radera </button>
+                            </td>                          
+
+                            <div class='modal-bg' id='button$id'>
+                                <div class='modal'>
+                                    <h2 class='modalWarning'>Vill du ta bort produkt?</h2>
+                                    <div>
+                                        <button name='closeModal' class='cancelModal' id= '$id'>Avbryt</button>
+                                        <a class='modalDeleteBtn' href='deleteProduct.php?id=$id'> Ta bort </a>
+                                        <span name='closeModal' class='modal-close'>X</span>
+                                    </div>
+                                </div>
+                            </div>                    
+                         </tr>";
             $x++;
             break;
             }
-        
         }
-        // echo '
-        // <div></div>
-        // ';
-        
-        
+
          echo $output;
 }
 
@@ -79,6 +87,25 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 </div>
 </div>
 
+<script>
+    const modalDeleteBtn= document.getElementsByName("modalDeleteBtn");
+    const closeModal= document.getElementsByName("closeModal");
+
+    for(let i=0;i<modalDeleteBtn.length;i++){
+        modalDeleteBtn[i].onclick = function(e){
+        const modalBg = document.querySelector(`#${e.currentTarget.id}`);
+        modalBg.classList.add('bg-active');
+        console.log(e.target);
+     }
+    }
+
+    for(let i=0;i<closeModal.length;i++){
+    closeModal[i].onclick = function(e){
+        const modalBg = e.currentTarget.parentElement.parentElement.parentElement;
+        modalBg.classList.remove('bg-active');
+        }
+    }
+</script>
 
 <?php
 require_once 'footer.php';
