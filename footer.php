@@ -1,6 +1,6 @@
     <footer>
       <div class="first_div_footer">
-        <img src="./styles/images/logga.png" alt="" />
+      <a href="http://localhost/Webbshoppen/"><img src="./styles/images/logga.png" alt="" /></a>
         <div class="footer_contact">
           <p>Adress: Moravägen 45</p>
           <p>Telefon: 075 466 35 78</p>

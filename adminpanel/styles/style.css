@@ -61,9 +61,13 @@ a {
 }
 
 h1 {
-  margin: 25px 0px;
+  margin: 0px 0px;
   font-size: 22px;
   color: whitesmoke;
+}
+
+h1:hover {
+  color: grey;
 }
 
 .container-over-all {
@@ -145,7 +149,7 @@ h1 {
 
 @media (min-width: 700px) {
   h1 {
-    margin: 50px 0px;
+    margin: 20px 0px 5px 0px;
   }
   .container-over-all {
     display: -ms-grid;

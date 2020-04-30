@@ -29,6 +29,7 @@ body {
 .navigation .logo_header_start {
   margin-top: 2%;
   width: 30vw;
+  padding-left: 0px;
 }
 
 .search-form {
@@ -110,6 +111,7 @@ a {
     margin-left: 6%;
     margin-top: 0%;
     width: 10vw;
+    padding-left: 60px;
   }
   .search-form {
     width: 80%;
