@@ -125,7 +125,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
     $output .= "<td>
                   <form action='./index.php' method='POST' onsubmit='return validateForm()'>
-                    <input id='category-input' name='category' value='$category'>
+                    <input id='category-input' name='category' value='" . htmlspecialchars_decode($category) . "'>
                     <input class='hide' type='submit' name='submit' value='submit'>
                     <input type='hidden' name='update_id' value='$_GET[update]'>
                     <div id='input-length-counter'></div>
@@ -135,7 +135,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   } else {
 
     $output .= "<td>
-                  <a class='categoryName' href='./productAdm.php?category_id=$category_id'>$category</a>
+                  <a class='categoryName' href='./productAdm.php?category_id=$category_id'>" . htmlspecialchars_decode($category) . "</a>
                 </td>";
   }
 
