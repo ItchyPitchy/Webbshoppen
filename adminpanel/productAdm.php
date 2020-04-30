@@ -36,7 +36,7 @@ if (isset($_GET['category_id'])):
                     </td>
 
                     <td class='admDeleteTd'>
-                        <a class='admDeleteBtn' href='#'>Radera</a>
+                        <a class='admDeleteBtn' href='./deleteProduct.php?id=$id'>Radera</a>
                     </td>
                 </tr>";
     endwhile;
