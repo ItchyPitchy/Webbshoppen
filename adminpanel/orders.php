@@ -9,27 +9,31 @@ require_once "header.php";
       <h2 class="admin_h2">Beställningar</h2>
       <p class="filtrera-p">Filtrera beställningar</p>
           <form class="search-form" action="" method="post">
-        <input class="search-input" type="text" />
-        <button class="search-submit-btn" type="submit">Sök</button>
+            <label for="search">Sök ort:</label>
+        <input class="search-input" type="text" name="search" />
+
     </form>
 
   
     <div class="radio-div">
     <input type="radio" id="alla" name="alla" checked="checked">
     <label for="alla">Alla beställningar</label>
-    <input type="radio" id="aktiva" name="alla">
-    <label for="aktiva">Aktiva beställningar</label>
+    <input type="radio" id="nya" name="alla">
+    <label for="nya">Nya beställningar</label>
+    <input type="radio" id="behandlade" name="alla">
+    <label for="behandlade">Behandlade beställningar</label>
     <input type="radio" id="slutförda" name="alla">
     <label for="slutförda">Slutförda beställningar</label>
     </div>
 
   <div class="selectbox-div">
   <select id="sort">
+  <option value="" selected disabled hidden>Sortera tabell</option>
   <option value="senaste">Senaste beställningarna</option>
-  <option value="tidgaste">Äldsta beställningarna</option>
+  <option value="äldsta">Äldsta beställningarna</option>
   <option value="dyraste">Dyraste beställningarna</option>
   <option value="billigaste">Billigaste beställningarna</option>
-  <option value="Obehandlade">Obehandlade beställningar</option>
+  <option value="nya">Nya beställningar</option>
   <option value="behandlas">Behandlade beställningarna</option>
 </select>
   </div>
@@ -38,12 +42,12 @@ require_once "header.php";
 
 /***********************************************************Active orders table**************************************************************** */
 
-$orderContainer = '<div class="orderContainer">';
+$orderContainer = '<div class="orderContainer firstContainer">';
+$orderCount = 0;
+echo "<h2 class='startpageHeading activeH2'>Aktiva Beställningar</h2>";
 
-echo "<h2 class='startpageHeading'>Aktiva Beställningar</h2>";
 
-
-    $orderContainer  .=  "<ul class='order-tr'>
+    echo  "<ul class='order-tr table_headings activeTbHeading'>
       <div class='column-div'><h3>Kund<h3></div>
       <div class='column-div'><h3>Beställning<h3></div>
       <div class='column-div'><h3>Status<h3></div>
@@ -112,35 +116,39 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   
   if ($status == 0) {
     $statusform = "<form action='orders.php?id=$active_orders_id' method='POST'>
-    <select class='orderstatus-select' name='status'>
+    <select class='orderstatus-select' id='$orderCount" . "select' name='status'>
     <option name='option' selected='selected' value='0'>Ny</option>
     <option name='option' value='1'>Behandlas</option>
     <option name='option' value='completed'>Slutförd</option>
 
     </select>
-    <input type='submit' value='Ändra status' class='statusBtn'></form>";
+    <input type='submit' value='Uppdatera' class='statusBtn'></form>";
   }
   else {
     $statusform =  "<form action='orders.php?id=$active_orders_id' method='POST'>
-    <select class='orderstatus-select' name='status'>
+    <select class='orderstatus-select' id='$orderCount" . "select' name='status'>
     <option name='option' value='0'>Ny</option>
     <option name='option' selected='selected' value='1'>Behandlas</option>
     <option name='option' value='completed'>Slutförd</option>
 
     </select>
-    <input type='submit' value='Ändra status' class='statusBtn'></form>";
+    <input type='submit' value='Uppdatera' class='statusBtn'></form>";
   }
   
   $products = implode($product_list);
-    $orderContainer  .=  "<ul class='order-tr'>
+    $orderContainer  .=  "<ul class='order-tr order-ul first-ul' id='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street, $city </li></div>
-      <div class='column-div'><li class='order-td'>$date</li>
+      <li class='order-td'>$street</li>
+      <li class='order-td' id='$orderCount" . "city'>$city</li></div>
+      <div class='column-div'>
+      <li class='order-td first$orderCount' id='$orderCount" . "date'>$date</li>
       <li class='order-td'>$products</li>
-      <li class='order-td'>$sum:-</li></div>
-      <div class='column-div'><li class='order-td'>$statusform</li>
+      <li class='order-td price' id='$orderCount" . "price'>$sum:-</li></div>
+      <div class='column-div'><li class='order-td' id='$orderCount'" . "status'>$statusform</li>
       </ul>"; 
+
+      $orderCount ++;
 }
 
 
@@ -172,7 +180,7 @@ $completedOrderContainer = '<div class="orderContainer secondContainer">';
 echo "<h2 class='startpageHeading secondHeadingOrders'>Slutförda Beställningar</h2>";
 
 
-    $completedOrderContainer  .=  "<ul class='order-tr'>
+    echo "<ul class='order-tr table_headings completedTbHeading'>
       <div class='column-div'><h3>Kund<h3></div>
       <div class='column-div'><h3>Beställning<h3></div>
       </ul>"; 
@@ -237,14 +245,18 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
   
   $products = implode($product_list);
-    $completedOrderContainer  .=  "<ul class='order-tr'>
+    $completedOrderContainer  .=  "<ul class='order-tr order-ul' id ='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street, $city </li></div>
-      <div class='column-div'><li class='order-td'>$date</li>
+      <li class='order-td'>$street</li>
+      <li class='order-td' id='$orderCount" . "city'>$city</li></div>
+      <div class='column-div'>
+      <li class='order-td' id='$orderCount" . "date'>$date</li>
       <li class='order-td'>$products</li>
-      <li class='order-td'>$sum:-</li></div>
+      <li class='order-td priceComplete' >$sum:-</li></div>
       </ul>"; 
+
+      $orderCount ++;
 }
 
 
@@ -358,6 +370,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 require_once "footer.php";
 ?>
+
+<script src="orders.js"></script>
 
 
 
