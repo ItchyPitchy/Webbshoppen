@@ -136,7 +136,9 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
       <li class='order-td'>$street, $city </li></div>
-      <div class='column-div'><li class='order-td'>$date</li>
+      <div class='column-div'>
+      <li class='order-td'>Ordernummer: $active_ordersq_id</li>
+      <li class='order-td'>$date</li>
       <li class='order-td'>$products</li>
       <li class='order-td'>$sum:-</li></div>
       <div class='column-div'><li class='order-td'>$statusform</li>
@@ -241,7 +243,9 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
       <li class='order-td'>$street, $city </li></div>
-      <div class='column-div'><li class='order-td'>$date</li>
+      <div class='column-div'>
+      <li class='order-td'>Ordernummer: $completed_orders_id</li>
+      <li class='order-td'>$date</li>
       <li class='order-td'>$products</li>
       <li class='order-td'>$sum:-</li></div>
       </ul>"; 
