@@ -401,7 +401,8 @@ textarea:required {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+ "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -472,6 +473,39 @@ textarea:required {
 @media (min-width: 700px) {
   .lastChanceHeading {
     font-size: 40px;
+  }
+}
+.titleNew {
+  text-align: center;
+  padding: 5%;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #424b54;
+}
+
+.titleNewLink {
+  position: absolute;
+  margin: auto;
+  color: #424b54;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  font-size: 15px;
+  display: contents;
+  padding: 5%;
+  font-weight: bold;
+}
+
+@media (min-width: 600px) {
+  .titleNewLink {
+    padding: 3%;
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .titleNewLink {
+    padding: 3%;
+    font-size: 30px;
   }
 }
 
@@ -588,7 +622,8 @@ textarea:required {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+ "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -719,7 +754,8 @@ textarea:required {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+ "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
   display: block;
 }
@@ -768,7 +804,8 @@ textarea:required {
   width: 80vw;
   margin: auto;
   border: solid 2px #93a8ac;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+ "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 700px) {
@@ -1139,7 +1176,8 @@ footer .footer_categories {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+ "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
 }
 
@@ -1160,7 +1198,8 @@ footer .footer_categories {
       grid-template-rows: auto;
   max-width: 1200px;
   margin: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+ "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 980px) {
@@ -1423,5 +1462,38 @@ footer .footer_categories {
 .empty {
   text-align: center;
   margin: 60px;
+}
+.titleNew {
+  text-align: center;
+  padding: 5%;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #424b54;
+}
+
+.titleNewLink {
+  position: absolute;
+  margin: auto;
+  color: #424b54;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  font-size: 15px;
+  display: contents;
+  padding: 5%;
+  font-weight: bold;
+}
+
+@media (min-width: 600px) {
+  .titleNewLink {
+    padding: 3%;
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .titleNewLink {
+    padding: 3%;
+    font-size: 30px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

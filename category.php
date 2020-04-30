@@ -19,7 +19,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     if ($get_category == $row['category']) {
     $category_id = $row['category_id'];
 
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM products WHERE stock != 0 AND deleted = 0";
     $stmt2 = $db->prepare($sql);
     $stmt2->execute();
 
