@@ -10,8 +10,7 @@ if (isset($_GET["q"])) {
     $q = trim(htmlspecialchars($_GET["q"]));
 
     if (mb_strlen($q) >= 2 && mb_strlen($q) <= 50) {
-        $sql1 = "SELECT id, name, price
-                FROM products
+        $sql1 = "SELECT * FROM products
                 WHERE name LIKE CONCAT('%', :q, '%')
                 AND stock != 0 AND deleted = 0";
         $stmt1 = $db->prepare($sql1);
@@ -25,26 +24,17 @@ if (isset($_GET["q"])) {
             $stmt2->bindParam(":id", $row["id"]);
             $stmt2->execute();
             $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
-
-            $arr[] = array(
-                "id" => $row["id"],
-                "name" => $row["name"],
-                "price" => $row["price"],
-                "image" => $image
-            );
+    
+            $output .= "<ul class='product-ul'>
+                            <a href='product.php?id=$row[id]' class='product-link'>
+                                <li class='product-li'><img class='search-img' src='./images/$image'></li>
+                                <li class='product-li product-li-name'><h3 class='title'>$row[name]</h3></li>
+                                <li class='product-li product-li-price'>$row[price]kr</li>
+                            </a>
+                            <button class='addToCartBtn' data-id='$row[id]' data-image='./images/$image' data-name='$row[name]' data-price='$row[price]' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                        </ul>";
 
         endwhile;
-
-        foreach ($arr as $value) {
-            $output .= 
-            "<ul class='product-ul'>
-                <a href='product.php?id=$value[id]' class='product-link'>
-                    <li class='product-li'><img class='search-img' src=./images/" . $value["image"] . "></li>
-                    <li class='product-li product-li-name'><h3 class='title'>$value[name]</h3></li>
-                    <li class='product-li product-li-price'>$value[price]kr</li>
-                </a>
-            </ul>";
-        }
     } else {
         $output = "<h2>Fel: Sökordet måste innehålla mellan 2-50 tecken</h2>";
     }
@@ -58,5 +48,5 @@ require_once "header.php";
 <main class="productContainer">
     <?php echo $output; ?>
 </main>
-
+<script src="productList.js"></script>
 <?php require_once "footer.php"; ?>

@@ -1,0 +1,38 @@
+const addBtns = document.querySelectorAll(".addToCartBtn");
+
+if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
+    const cartProducts = JSON.parse(localStorage.getItem("cartArr")).products;
+
+    cartProducts.forEach(function(element) {
+        const btn = document.querySelector(`button[data-id="${element.id}"]`);
+
+        if (btn) btn.textContent = "Produkten är tillagd";
+
+    });
+}
+
+addBtns.forEach(function(element) {
+    element.addEventListener("click", function(e) {
+        orderCheck(e.currentTarget);
+    });
+});
+
+function orderCheck(btn) {
+    const cartArr = localStorage.getItem("cartArr") === null ? {products: [], sum: 0} : JSON.parse(localStorage.getItem("cartArr"));
+    
+    if (!getDuplicate(cartArr.products, btn)) {
+        addProduct(cartArr, btn);
+        btn.textContent = "Produkten är tillagd";
+        document.querySelector("#header-cart").style = "fill: red;";
+    }
+}
+
+function addProduct(cartArr, btn) {
+    cartArr.products.unshift({id: btn.dataset.id, name: btn.dataset.name, qty: 1, unitPrice: parseInt(btn.dataset.price), image: btn.dataset.image, stock: parseInt(btn.dataset.stock)});
+    cartArr.sum = cartArr.sum + parseInt(btn.dataset.price);
+    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+}
+
+function getDuplicate(products, btn) {
+    return products.find(element => element.id === btn.dataset.id);
+}
