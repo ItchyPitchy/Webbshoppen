@@ -116,7 +116,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $img    = "images/$image";
   $sale_price = ceil($price*0.9);
 
-  $productContainer3 .= "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
+  $productContainer3 .= "<ul class='product-ul'> <a href='saleProduct.php?id=$id' class='product-link'>
       <li class='product-li'><img src=$img></li>
       <li class='product-li product-li-name'><h3>$name</h3></li>
       <li class='product-li product-li-sale'>$sale_price :- </li>
