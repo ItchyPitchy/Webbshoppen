@@ -16,5 +16,6 @@
     </div>
       <span class="powered_by">&copy2020 Powered by G04</span>
     </footer>
+    <script src="main.js"></script>
   </body>
 </html>
