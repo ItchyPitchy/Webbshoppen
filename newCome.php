@@ -6,7 +6,7 @@ $x = 0;
 $startpageHeading = '<h1 class="startpageHeading">Nyinkommet</h1>';
 $productContainer = '<div class="productContainer">';
 
-$sql = "SELECT * FROM products ORDER BY create_date desc LIMIT 6";
+$sql = "SELECT * FROM products WHERE stock != 0 AND deleted = 0 ORDER BY create_date desc LIMIT 6";
 $stmt2 = $db->prepare($sql);
 $stmt2->execute();
 
@@ -36,7 +36,6 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
       break;
     }
 }
-        
 
 $productContainer .= '</div>';
 
