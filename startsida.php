@@ -63,7 +63,8 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
   $price  = $row2['price'];
   $id     = $row2['id'];
   $time     = $row2['create_date'];
-  $img    = "images/" . $stmt3->fetch(PDO::FETCH_ASSOC)['image'];
+  $image = $stmt3->rowCount() !== 0 ? $stmt3->fetch(PDO::FETCH_ASSOC)['image'] : "";
+  $img    = "images/$image";
 
 
   $productContainer2 .= "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
