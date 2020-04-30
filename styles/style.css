@@ -719,6 +719,21 @@ textarea:required {
   text-align: center;
 }
 
+.productInfo__salePrice {
+  color: red;
+  font-size: 30px;
+  padding-top: 25px;
+}
+
+.productInfo__oldprice {
+  font-size: 15px;
+  padding-top: 25px;
+}
+
+.productInfo__oldprice span {
+  text-decoration: line-through;
+}
+
 .orderConfirmation-section {
   padding: 40px 0px;
 }
