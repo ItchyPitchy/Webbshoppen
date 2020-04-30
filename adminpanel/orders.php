@@ -28,11 +28,12 @@ require_once "header.php";
 
   <div class="selectbox-div">
   <select id="sort">
+  <option value="" selected disabled hidden>Sortera tabell</option>
   <option value="senaste">Senaste beställningarna</option>
-  <option value="tidgaste">Äldsta beställningarna</option>
+  <option value="äldsta">Äldsta beställningarna</option>
   <option value="dyraste">Dyraste beställningarna</option>
   <option value="billigaste">Billigaste beställningarna</option>
-  <option value="Obehandlade">Obehandlade beställningar</option>
+  <option value="nya">Nya beställningar</option>
   <option value="behandlas">Behandlade beställningarna</option>
 </select>
   </div>
@@ -46,7 +47,7 @@ $orderCount = 0;
 echo "<h2 class='startpageHeading activeH2'>Aktiva Beställningar</h2>";
 
 
-    $orderContainer  .=  "<ul class='order-tr'>
+    echo  "<ul class='order-tr table_headings activeTbHeading'>
       <div class='column-div'><h3>Kund<h3></div>
       <div class='column-div'><h3>Beställning<h3></div>
       <div class='column-div'><h3>Status<h3></div>
@@ -135,14 +136,15 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   }
   
   $products = implode($product_list);
-    $orderContainer  .=  "<ul class='order-tr order-ul' id='$orderCount" . "ul'>
+    $orderContainer  .=  "<ul class='order-tr order-ul first-ul' id='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
       <li class='order-td'>$street</li>
       <li class='order-td' id='$orderCount" . "city'>$city</li></div>
-      <div class='column-div'><li class='order-td'>$date</li>
+      <div class='column-div'>
+      <li class='order-td first$orderCount' id='$orderCount" . "date'>$date</li>
       <li class='order-td'>$products</li>
-      <li class='order-td'>$sum:-</li></div>
+      <li class='order-td price' id='$orderCount" . "price'>$sum:-</li></div>
       <div class='column-div'><li class='order-td' id='$orderCount'" . "status'>$statusform</li>
       </ul>"; 
 
@@ -178,7 +180,7 @@ $completedOrderContainer = '<div class="orderContainer secondContainer">';
 echo "<h2 class='startpageHeading secondHeadingOrders'>Slutförda Beställningar</h2>";
 
 
-    $completedOrderContainer  .=  "<ul class='order-tr'>
+    echo "<ul class='order-tr table_headings completedTbHeading'>
       <div class='column-div'><h3>Kund<h3></div>
       <div class='column-div'><h3>Beställning<h3></div>
       </ul>"; 
@@ -248,9 +250,10 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       <li class='order-td'>$phone</td>
       <li class='order-td'>$street</li>
       <li class='order-td' id='$orderCount" . "city'>$city</li></div>
-      <div class='column-div'><li class='order-td'>$date</li>
+      <div class='column-div'>
+      <li class='order-td' id='$orderCount" . "date'>$date</li>
       <li class='order-td'>$products</li>
-      <li class='order-td'>$sum:-</li></div>
+      <li class='order-td priceComplete' >$sum:-</li></div>
       </ul>"; 
 
       $orderCount ++;

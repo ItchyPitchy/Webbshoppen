@@ -294,7 +294,7 @@ select {
 }
 
 .orderContainer {
-  margin: 2%;
+  margin-bottom: 2%;
   font-size: 10px;
   width: 100%;
 }
@@ -343,10 +343,6 @@ select {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-}
-
-.order-tr:nth-child(1) {
-  border-top: #424b54 1px solid;
 }
 
 .orderstatus-select {
@@ -452,6 +448,10 @@ select {
 
 .order-td {
   list-style-type: none;
+}
+
+.table_headings {
+  width: 80%;
 }
 
 .productForm {
