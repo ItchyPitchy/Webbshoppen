@@ -899,6 +899,7 @@ select {
 
 .catTable td form {
   margin: 0 20px;
+  position: relative;
 }
 
 .catTable td form input {
@@ -1199,6 +1200,16 @@ select {
   width: max-content;
   -webkit-transform: translate(0, 50%);
           transform: translate(0, 50%);
+}
+
+#input-length-counter {
+  position: absolute;
+  bottom: 100%;
+  left: 99px;
+  font-size: 9px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .hide {
