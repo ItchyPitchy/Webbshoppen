@@ -4,7 +4,7 @@ require_once 'db.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : die();
 
-$sql = "SELECT * FROM products WHERE id= :id";
+$sql = "SELECT * FROM products WHERE id= :id AND stock != 0 AND deleted = 0";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':id', $id);
 $stmt->execute();
@@ -46,7 +46,7 @@ if ($stmt->rowcount() !== 0) {
                         <p class='productInfo__stock'><span id='stock'>$stock</span> st finns i lager</p>
                         <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
                         <br>
-                        <button id='addBtn' type='submit'class='addToCartBtn'>Lägg till i varukorg</button>
+                        <button id='addBtn' type='submit' class='addToCartBtn'>Lägg till i varukorg</button>
                         <span id='stockAlert' class='hide'>Din order överskrider lagerstatus</span>
                         <span id='maxLimitAlert' class='hide'>Maxgränsen är nådd</span>
                     </article>
