@@ -130,23 +130,23 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                     <input type='hidden' name='update_id' value='$_GET[update]'>
                     <div id='input-length-counter'></div>
                   </form>
-                </td>";
+                </td>
+                <td></td>";
 
   } else {
 
     $output .= "<td>
                   <a class='categoryName' href='./productAdm.php?category_id=$category_id'>" . htmlspecialchars_decode($category) . "</a>
+                </td>
+                <td>
+                  <a class='updateBtn' href='./index.php?update=$category_id'>Redigera</a>
                 </td>";
   }
 
             
 
               $output .= "<td>
-                <a class='updateBtn' href='./index.php?update=$category_id'>Redigera</a>
-              </td>
-
-              <td>
-                <a href='./index.php?delete=$category_id' class='deleteBtn' >  Radera </a>";
+                            <a href='./index.php?delete=$category_id' class='deleteBtn' >  Radera </a>";
 
   if (strlen($dlt_error) && $category_id === $_GET["delete"]) {
 
