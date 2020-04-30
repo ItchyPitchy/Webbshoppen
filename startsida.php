@@ -124,7 +124,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         <p>Normalpris:</p>
         <span>$price kr </span></li>
       </a>
-      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$sale_price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
       </ul>";
  
 }
