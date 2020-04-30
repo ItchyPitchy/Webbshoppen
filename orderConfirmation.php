@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
   } else{
 
-    $shipping = 1;
+    $shipping = 50;
   }
 
   $sum = $json->sum;
@@ -90,14 +90,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   // Lägger in order id, product id och antal i active order products tabellen där id som ovan hämtats från active orders används, 
   // produkt id och antal som hämtas från json objektet/varukorgen
   $sql5 = "INSERT INTO active_orders_products (active_orders_id, products_id, quantity) 
-           VALUES (:order_id, :product_id, :quantity)";
+           VALUES (:order_id, :product_id, :quantity);
+           UPDATE products SET stock = :stock WHERE id = :product_id;";
 
   $stmt5 = $db->prepare($sql5);
   $stmt5->bindParam(":order_id", $order_id);
   $stmt5->bindParam(":product_id", $product_id);
   $stmt5->bindParam(":quantity", $quantity);
+  $stmt5->bindParam(":stock", $stock);
   $product_id = $json->products[$i]->id;
   $quantity = $json->products[$i]->qty;
+  $stock = $json->products[$i]->stock - $quantity;
   $stmt5->execute();
 
   }

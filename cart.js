@@ -150,6 +150,7 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     document.querySelector("#dropCartBtn").addEventListener("click", function(e) {
         dropCart();
     });
+
 } else {
     total.textContent = "Totalsumma: 0 kr";
     cart.innerHTML = "<h3 class='empty'>Varukorgen är tom</h3><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
@@ -163,6 +164,7 @@ function dropCart() {
     document.querySelector("#cart").innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
     document.querySelector("#cashier").removeAttribute("href");
     localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
+    document.querySelector("#header-cart").style = "fill: unset;";
 }
 
 function changePrice(input) {
@@ -251,5 +253,6 @@ function deleteEvent(btn) {
         total.textContent = "Totalsumma: 0 kr";
         cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
         document.querySelector("#cashier").removeAttribute("href");
+        document.querySelector("#header-cart").style = "fill: unset;";
     }
 }
