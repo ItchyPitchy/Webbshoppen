@@ -75,7 +75,9 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
       <li class='product-li'><img src=$img></li>
       <li class='product-li product-li-name'><h3>$name</h3></li>
       <li class='product-li product-li-price'>$price kr</li>
-      </a></ul>";
+      </a>
+      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$price' data-stock='$row2[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+      </ul>";
     
     $x++;
 
@@ -110,7 +112,8 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $price  = $row['price'];
   $id     = $row['id'];
   $create_date = $row['create_date'];
-  $img    = "images/" . $stmt2->fetch(PDO::FETCH_ASSOC)['image'];
+  $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
+  $img    = "images/$image";
   $sale_price = ceil($price*0.9);
 
   $productContainer3 .= "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
@@ -120,8 +123,9 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       <li class='product-li product-li-price oldPrice'>
         <p>Normalpris:</p>
         <span>$price kr </span></li>
-      <button class='product-li product-li-buy addToCartBtn'>Köp</button>
-      </a></ul>";
+      </a>
+      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+      </ul>";
  
 }
 $productContainer3 .= '</div>';

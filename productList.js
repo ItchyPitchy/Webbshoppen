@@ -4,10 +4,14 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     const cartProducts = JSON.parse(localStorage.getItem("cartArr")).products;
 
     cartProducts.forEach(function(element) {
-        const btn = document.querySelector(`button[data-id="${element.id}"]`);
+        const btns = document.querySelectorAll(`button[data-id="${element.id}"]`);
 
-        if (btn) btn.textContent = "Produkten är tillagd";
+        if (btns) {
 
+            btns.forEach(function(element) {
+                element.textContent = "Produkten är tillagd";
+            });
+        }
     });
 }
 
@@ -22,7 +26,13 @@ function orderCheck(btn) {
     
     if (!getDuplicate(cartArr.products, btn)) {
         addProduct(cartArr, btn);
-        btn.textContent = "Produkten är tillagd";
+        
+        const btns = document.querySelectorAll(`button[data-id="${btn.dataset.id}"]`);
+
+        btns.forEach(function(element) {
+            element.textContent = "Produkten är tillagd";
+        });
+
         document.querySelector("#header-cart").style = "fill: red;";
     }
 }
