@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
   } else{
 
-    $shipping = 1;
+    $shipping = 50;
   }
 
   $sum = $json->sum;
@@ -90,14 +90,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   // Lägger in order id, product id och antal i active order products tabellen där id som ovan hämtats från active orders används, 
   // produkt id och antal som hämtas från json objektet/varukorgen
   $sql5 = "INSERT INTO active_orders_products (active_orders_id, products_id, quantity) 
-           VALUES (:order_id, :product_id, :quantity)";
+           VALUES (:order_id, :product_id, :quantity);
+           UPDATE products SET stock = :stock WHERE id = :product_id;";
 
   $stmt5 = $db->prepare($sql5);
   $stmt5->bindParam(":order_id", $order_id);
   $stmt5->bindParam(":product_id", $product_id);
   $stmt5->bindParam(":quantity", $quantity);
+  $stmt5->bindParam(":stock", $stock);
   $product_id = $json->products[$i]->id;
   $quantity = $json->products[$i]->qty;
+  $stock = $json->products[$i]->stock - $quantity;
   $stmt5->execute();
 
   }
@@ -115,18 +118,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         <p id="date"></p>
     </div>
     <div class="customerInfo-box">
-    <p class="customer customer-id"></p>
+    <p class="customer customer-order-id"></p>
     <p class="customer customer-name"></p>
     <p class="customer customer-email"></p>
     <p class="customer customer-phone"></p>
     <p class="customer customer-street"></p>
-    <p class="customer customer-zipcode"></p>
-    <p class="customer customer-city"></p>
     </div>
     <div class="overview-container">
         <ul id="order-ul"></ul>
         <div class="overview-total">
-            <span id="total"></span>
+            <p id="total-sum"></p>
+            <p id="shipping-span"></p>
         </div>
     </div>
   </div>
@@ -138,8 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 <script>
-
-let id = "<?php echo $order_id ?>";
+let orderId = "<?php echo $order_id ?>";
 let name = "<?php echo $name ?>";
 let email = "<?php echo $email ?>";
 let phone = "<?php echo $phone ?>";
