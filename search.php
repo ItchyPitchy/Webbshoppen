@@ -3,7 +3,7 @@
 require_once "db.php";
 
 $output = "";
-$arr = [];
+$counter = 0;
 
 if (isset($_GET["q"])) {
 
@@ -19,6 +19,7 @@ if (isset($_GET["q"])) {
 
         while ($row = $stmt1->fetch(PDO::FETCH_ASSOC)):
 
+            $counter++;
             $sql2 = "SELECT image FROM product_images WHERE product_id = :id";
             $stmt2 = $db->prepare($sql2);
             $stmt2->bindParam(":id", $row["id"]);
@@ -44,7 +45,7 @@ require_once "header.php";
 
 ?>
 
-<h1 class="startpageHeading">Du fick <?php echo count($arr); ?> träffar för "<?php echo $q; ?>":</h1>
+<h1 class="startpageHeading">Du fick <?php echo $counter; ?> träffar för "<?php echo $q; ?>":</h1>
 <main class="productContainer">
     <?php echo $output; ?>
 </main>
