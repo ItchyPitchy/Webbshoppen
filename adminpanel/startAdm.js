@@ -14,6 +14,15 @@ if (lengthCounter && inputField) {
 
 }
 
+const dltError = document.querySelector(".dlt-error");
+
+if (dltError) {
+        
+    setTimeout(function() {
+        dltError.parentElement.removeChild(dltError);
+    }, 4000);
+}
+
 function validateForm() {
     const inputField = document.querySelector("#category-input");
     const input = inputField.value;

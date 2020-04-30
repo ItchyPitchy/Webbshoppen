@@ -8,8 +8,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="./styles/images/logga.png" alt="" class="logo_header_start"/>
-
+      <a href="http://localhost/Webbshoppen/"><img src="./styles/images/logga.png" alt="" class="logo_header_start"/></a>
       <div class="navigation-links">
         <form class="search-form" action="search.php" method="GET">
           <input class="search-input" type="text" name="q"/>
@@ -26,15 +25,6 @@
 
     <header></header>
 
-    <!--<div class="header-category-links">
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=light&kategori=Lampor">Lampor</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=table&kategori=Bord">Bord</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=armchair&kategori=Fåtöljer">Fåtöljer</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=pillow&kategori=Kuddar">Kuddar</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=sofa&kategori=Soffor">Soffor</a>
-    </div>-->
-
-
 <?php
 
 require_once "db.php";
@@ -45,9 +35,8 @@ require_once "db.php";
   $stmt->execute();
   
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-    $category = $row['category'];
     $category_id = $row["category_id"];
-    $ucCategory = ucfirst($category);
+    $ucCategory = ucfirst($row["category"]);
     $category_list .= "<a class='header-category-link' href='http://localhost/Webbshoppen/category.php?category=$category_id'>$ucCategory</a>";
   }
   $category_list .= "</div>";

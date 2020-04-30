@@ -29,7 +29,9 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
       <li class='product-li'><img src=$img></li>
       <li class='product-li product-li-name'><h3>$name</h3></li>
       <li class='product-li product-li-price'>$price kr</li>
-      </a></ul>";
+      </a>
+      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$price' data-stock='$row2[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+      </ul>";
     
     $x++;
 
@@ -44,3 +46,5 @@ echo $startpageHeading;
 echo $productContainer;
 require_once "footer.php";
 ?>
+
+<script src="productList.js"></script>
