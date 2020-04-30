@@ -72,5 +72,7 @@ if (
     cart.appendChild(li);
 
     localStorage.clear();
+    
+    document.querySelector("#header-cart").style = "fill: unset;";
   }
 }

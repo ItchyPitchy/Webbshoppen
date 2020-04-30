@@ -10,6 +10,16 @@ $allowTypes = array('jpg','png','jpeg','gif');
 $statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = '';
 $fileNames = array_filter($_FILES['files']['name']); 
 $productId = htmlspecialchars($_POST['id']);
+
+$sql4 = "SELECT category_id FROM products WHERE id = :id";
+$stmt4 = $db->prepare($sql4);
+$stmt4->bindParam(':id', $productId);
+$stmt4->execute();
+
+$row4 = $stmt4->fetch(PDO::FETCH_ASSOC);  
+$category = htmlspecialchars($row4['category_id']);
+
+
 //echo $productId;
 if(!empty($fileNames)){ 
     foreach($_FILES['files']['name'] as $key=>$val){ 
@@ -82,7 +92,7 @@ if(!empty($fileNames)){
     <div id="popup1" class="overlay">
         <div class="popup">
             <h2>Bilderna är uppdaterade.</h2>
-            <a class="close" href="index.php">OK</a>
+            <a class="close" href="productAdm.php?category_id=<?php echo $category; ?>">OK</a>
             <div class="content">
            
             </div>

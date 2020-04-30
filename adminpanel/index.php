@@ -124,17 +124,18 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   if (isset($_GET["update"]) && $category_id === $_GET["update"]) {
 
     $output .= "<td>
-                  <form action='./index.php' method='POST'>
-                    <input name='category' value='$category'>
+                  <form action='./index.php' method='POST' onsubmit='return validateForm()'>
+                    <input id='category-input' name='category' value='" . htmlspecialchars_decode($category) . "'>
                     <input class='hide' type='submit' name='submit' value='submit'>
                     <input type='hidden' name='update_id' value='$_GET[update]'>
+                    <div id='input-length-counter'></div>
                   </form>
                 </td>";
 
   } else {
 
     $output .= "<td>
-                  <a class='categoryName' href='./productAdm.php?category_id=$category_id'>$category</a>
+                  <a class='categoryName' href='./productAdm.php?category_id=$category_id'>" . htmlspecialchars_decode($category) . "</a>
                 </td>";
   }
 
@@ -162,5 +163,6 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 </table>
 </div>
 </div>
+<script src="startAdm.js"></script>
 
 <?php require_once "./footer.php"; ?>

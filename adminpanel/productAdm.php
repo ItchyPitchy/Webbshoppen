@@ -58,4 +58,24 @@ endif;
     </div>
 </div>
 
+<script>
+    const modalDeleteBtn= document.getElementsByName("modalDeleteBtn");
+    const closeModal= document.getElementsByName("closeModal");
+
+    for(let i=0;i<modalDeleteBtn.length;i++){
+        modalDeleteBtn[i].onclick = function(e){
+        const modalBg = document.querySelector(`#${e.currentTarget.id}`);
+        modalBg.classList.add('bg-active');
+        console.log(e.target);
+     }
+    }
+
+    for(let i=0;i<closeModal.length;i++){
+    closeModal[i].onclick = function(e){
+        const modalBg = e.currentTarget.parentElement.parentElement.parentElement;
+        modalBg.classList.remove('bg-active');
+        }
+    }
+</script>
+
 <?php require_once 'footer.php'; ?>
