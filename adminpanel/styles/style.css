@@ -629,6 +629,29 @@ select {
   }
 }
 
+#imgUl,
+#updated-imgUl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+li {
+  list-style-type: none;
+}
+
+.selected-img {
+  padding: 15px 5px;
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .divProductForm {
   margin: 5%;
   background: #ffffff;
@@ -837,6 +860,12 @@ select {
   .popup {
     width: 70%;
   }
+}
+
+#new-file-p {
+  font-size: 12px;
+  color: grey;
+  padding-left: 3px;
 }
 
 .adm-container {
