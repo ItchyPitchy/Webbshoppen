@@ -71,6 +71,7 @@ input:focus {
   width: 80%;
   align-content: flex-end;
   justify-content: center;
+  margin-bottom: 2%;
 }
 
 #sort {
@@ -86,6 +87,86 @@ input:focus {
 
 select {
   background-color: #424b54;
+}
+
+.orderContainer {
+  margin-bottom: 2%;
+  font-size: 10px;
+  width: 100%;
+}
+
+.order-table {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.order-td {
+  padding: 3%;
+  margin: 0.5%;
+  background-color: #424b54;
+  border-radius: 2px;
+  color: white;
+  align-self: center;
+}
+
+.column-div {
+  width: 30%;
+}
+
+.order-tr {
+  border-bottom: #424b54 1px solid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  display: flex;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.orderstatus-select {
+  color: white;
+  background-color: #424b54;
+  border: 0.5px solid #424b65;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.orderstatus-select:hover {
+  background-color: #93a8ac;
+}
+
+.statusBtn {
+  color: white;
+  background-color: #424b54;
+  border: 0.5px solid white;
+  padding: 1.5%;
+  width: 30%;
+  margin-top: 1.5%;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.statusBtn:hover {
+  color: #93a8ac;
+  cursor: pointer;
+  border-color: #93a8ac;
+}
+
+.secondContainer {
+  margin-bottom: 7%;
+  .order-td {
+    background-color: #838586;
+  }
+}
+
+.secondHeadingOrders {
+  margin-top: 8%;
 }
 
 @media (min-width: 700px) {
@@ -116,4 +197,28 @@ select {
     align-content: flex-end;
     justify-content: flex-end;
   }
+
+  .orderContainer {
+    width: 80%;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.filterHide {
+  display: none;
+}
+
+.searchHide {
+  display: none;
+}
+
+.order-td {
+  list-style-type: none;
+}
+
+.table_headings {
+  width: 80%;
 }

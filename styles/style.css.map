@@ -7,7 +7,10 @@
         "_header.scss",
         "_contact_form.scss",
         "_startpage.scss",
+        "_lastChance.scss",
         "_product.scss",
+        "_orderConfirmation.scss",
+        "_order_form.scss",
         "_footer.scss",
         "_cart.scss"
     ],

@@ -2,7 +2,7 @@
 
 <main class="cart-section">
     <div class="heading-box">
-        <h2 class="cart-heading">Leverans</h2>
+        <h2 class="cart-heading">Kontrollera din order</h2>
     </div>
     <div class="cart-container">
         <ul id="cart"></ul>
@@ -12,21 +12,35 @@
             <span class="shipping-info">fri frakt för beställning över 500 kr eller för leverans inom Stockholm</span>
         </div>
     </div>
-    <form id ="form" action="orderConfirmation.php" method="POST" onsubmit="return validateForm()">
-        <label for="name">Namn*</label>
-        <input id="name" name="name" placeholder="Ange för- och efternamn" required><br>
-        <label for="email">E-post*</label>
-        <input type="email" id="email" name="email" placeholder="Ange e-postadress" required><br>
-        <label for="phone">Telefon*</label>
-        <input id="phone" name="phone" placeholder="Ange telefon-nummer" required><br>
-        <label for="street">Gatuadress*</label>
-        <input id="street" name="street" placeholder="Ange gatuadress" required><br>
-        <label for="zip-code">Postnummer*</label>
-        <input id="zip-code" name="zip-code" placeholder="Ange postnummer" required><br>
-        <label for="city">Ort*</label>
-        <input id="city" name="city" placeholder="Ange ort" required><br>
-        <input id="submitBtn" type="submit" name="submit" value="Slutför köp">
-        <input id="json" type="hidden" name="cart">
+    <form class="orderForm" id ="form" action="orderConfirmation.php" method="POST" onsubmit="return validateForm()">
+        <h3 class="formTitle">Kontrollera din beställning och fyll i formuläret innan du avsutar ditt köp.</h3>
+        <div>
+            <label for="name">Namn*</label><br>
+            <input id="name" name="name" required>    
+        </div>
+        <div>
+            <label for="email">E-post*</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phone">Telefon*</label><br>
+            <input id="phone" name="phone"  required>
+        </div>
+        <div>
+            <label for="street">Gatuadress*</label><br>
+            <input id="street" name="street" required>
+        </div>
+        <div>
+            <label for="zipcode">Postnummer*</label><br>
+            <input id="zipcode" name="zipcode"  required>
+        </div>
+        <div>
+            <label for="city">Ort*</label><br>
+            <input id="city" name="city"  required>
+        </div>
+            <input id="submitBtn" class="orderConfirmBtn" type="submit" name="submit" value="Slutför köp">
+            <input id="json" type="hidden" name="cart">
+        
     </form>
 </main>
 <script src="order.js"></script>

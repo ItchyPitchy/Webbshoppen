@@ -17,6 +17,7 @@ if ($stmt->rowcount() !== 0) {
     $price = htmlspecialchars($row['price']);
     $stock = htmlspecialchars($row['stock']);
     $productId = htmlspecialchars($row['id']);
+    $sale_price = ceil($price*0.9);
 
     $sql1 = " SELECT image FROM product_images WHERE product_images.product_id = ? ";
     $selectImages = $db->prepare($sql1);
@@ -42,11 +43,12 @@ if ($stmt->rowcount() !== 0) {
                     <article class='productInfo'>
                         <h1 class='productName'>$name</h1>
                         <p class='productInfo__description'>$description</p>
-                        <p class='productInfo__price'><span id='price'>$price</span> Kr</p>
+                        <p class='productInfo__salePrice'>$sale_price :-</p>
+                        <p class='productInfo__oldprice'>Normalpris:<span id='price'> $price</span> Kr</p>
                         <p class='productInfo__stock'><span id='stock'>$stock</span> st finns i lager</p>
                         <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
                         <br>
-                        <button id='addBtn' type='submit' class='addToCartBtn'>Lägg till i varukorg</button>
+                        <button id='addBtn' type='submit'class='addToCartBtn'>Lägg till i varukorg</button>
                         <span id='stockAlert' class='hide'>Din order överskrider lagerstatus</span>
                         <span id='maxLimitAlert' class='hide'>Maxgränsen är nådd</span>
                     </article>

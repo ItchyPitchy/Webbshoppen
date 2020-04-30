@@ -12,19 +12,20 @@
       <img src="../styles/images/logga.png" alt=""/>
       <div class="navigation-links">
         <div class="header_categories">
-          <a class="navigation-link" href="">» Till butiken</a>
+          <a class="navigation-link" href="http://localhost/Webbshoppen">» Till butiken</a>
         </div>
       </div>
     </nav>
 
     <div class="container-over-all">
     <div class="side-container">
-    <h1>Adminpanelen</h1>
-    <a class="show-btn" href="">Produkter</a>
-    <a class="show-btn" href="">Beställningar</a>
-    <a class="update-btn" href="">Redigera kategorier</a>
+    <a href="http://localhost/Webbshoppen/adminpanel/"><h1 class="adminpanel-link">Adminpanelen</h1></a>
+
+    <a class="show-btn" href="../adminpanel">Kategorier</a>
+    <a class="show-btn" href="./orders.php">Beställningar</a>
+    <!-- <a class="update-btn" href="">Redigera kategorier</a> -->
     <a class="create-btn" href="">Skapa produkter</a>
-    <a class="delete-btn" href="">Radera kategori</a>
+    <!-- <a class="delete-btn" href="">Radera kategori</a> -->
     </div>
 
 

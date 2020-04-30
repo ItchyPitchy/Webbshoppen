@@ -1,0 +1,338 @@
+.adm-container {
+    background: white;
+}
+
+//Form
+
+.catForm {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 0 20px;
+
+    .textLabel {
+        font-size: 20px;
+        color: #93a8ac;
+        padding-right: 20px;
+    }
+
+    input {
+        margin-top: 20px;
+        font-size: 15px;
+        border: 1px solid #93a8ac;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    button {
+        margin-top: 20px;
+        background: #14aa25;
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 5px;
+        color: white;
+    }
+}
+//Table
+.categoryContainer {
+    width: 100%;
+    padding-bottom: 50px;
+
+    .catTable {
+        width: 85%;
+        margin: auto;
+    }
+}
+
+.catTable tr {
+    text-align: start;
+}
+.catTable td {
+    // border-bottom: 1px solid #bac9cc;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    position: relative;
+
+    form {
+        margin: 0 20px;
+        position: relative;
+        input {
+            width: 100px;
+            color: #9b6a6c;
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    }
+}
+
+.categoryHead {
+    color: #93a8ac;
+    font-size: 20px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+}
+
+.updateBtn {
+    background: #5bc0de;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 10px;
+}
+.deleteBtn {
+    background: #bb2124;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 10px;
+}
+.categoryName {
+    color: #9b6a6c;
+    font-size: 15px;
+}
+///////POPUP-message new category
+.newCategoryMessage {
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    width: 170px;
+    height: 70px;
+    border: 1px solid #93a8ac;
+    border-radius: 15px;
+    background: #93a8ac;
+    -webkit-box-shadow: 17px 24px 30px -4px rgba(66, 75, 84, 0.49);
+    -moz-box-shadow: 17px 24px 30px -4px rgba(66, 75, 84, 0.49);
+    box-shadow: 17px 24px 30px -4px rgba(66, 75, 84, 0.49);
+    a {
+        color: #424b54;
+    }
+}
+.newCategoryMessage-text {
+    color: #9b6a6c;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+#popMessage {
+    color: red;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 13px;
+}
+
+//product Admin
+.admUpdateBtn {
+    background: #5bc0de;
+    // margin: 40px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+}
+.admDeleteBtn {
+    background: #bb2124;
+    margin: 50px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+}
+.admProductName {
+    color: #9b6a6c;
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+
+.productContainer {
+    width: 100%;
+    padding-bottom: 50px;
+    padding-top: 20px;
+
+    .productTable {
+        width: 85%;
+        margin: auto;
+    }
+}
+.admDeleteTd {
+    padding: 10px;
+    .admDeleteBtn {
+        padding: 7px;
+    }
+}
+.admUpdateTd {
+    padding: 10px;
+    margin: 20px;
+    .admUpdateBtn {
+        padding: 7px;
+    }
+}
+
+.imgAdm img {
+    width: 130px;
+}
+
+.productHead {
+    font-size: 20px;
+    color: #93a8ac;
+    padding-top: 50px;
+    padding-left: 10px;
+    text-align: start;
+}
+
+.linkToNewProduct {
+    color: red;
+    font-size: 25px;
+}
+.productContainer {
+    // background: #5bc0de;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #bac9cc;
+}
+
+.modal-bg{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(34, 34, 34, 0.205);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+.modalDeleteBtn {
+    padding: 8px;
+    background: #bb2124;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    margin: unset;
+}
+
+.cancelModal{
+    border: none;
+    background: #5bc0de;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    padding: 8px;
+    margin-right: 20%;
+}
+
+.bg-active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    background-color: white;
+    width: 85%;
+    height: 25%;
+    @media (min-width: 650px) {
+        width: 520px;
+        min-height: 280px;
+    }
+}
+
+.modal-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+//////////////////////////////////////////////////
+@media (min-width: 700px) {
+    .catForm {
+        flex-direction: row;
+
+        input {
+            margin-top: 0;
+        }
+
+        button {
+            margin-top: 0;
+            margin-left: 20px;
+        }
+    }
+    .categoryContainer {
+        width: 100%;
+
+        .catTable {
+            width: 70%;
+        }
+    }
+
+    .imgAdm img {
+        width: 85px;
+    }
+
+    // product vid stor skärm
+
+    .productContainer {
+        // background: rgb(176, 228, 176);
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1000px;
+    }
+
+    .admDeleteTd {
+        padding: 10px;
+        .admDeleteBtn {
+            border: none;
+            padding: 6px;
+            font-size: 13px;
+        }
+    }
+
+    .admUpdateTd {
+        padding: 10px;
+        .admUpdateBtn {
+            padding: 5px;
+            font-size: 13px;
+        }
+    }
+    .productTable td {
+        flex: 1;
+    }
+
+    .admProductName {
+        font-size: 18px;
+    }
+}
+
+.dlt-error {
+    position: absolute;
+    left: 70px;
+    font-size: 9px;
+    width: max-content;
+    transform: translate(0, 50%);
+}
+
+#input-length-counter {
+    position: absolute;
+    bottom: 100%;
+    left: 99px;
+    font-size: 9px;
+    width: max-content;
+    // transform: translate(-50%, 0);
+}
+
+.hide {
+    display: none;
+}
