@@ -18,7 +18,7 @@ if (isset($_GET["category"])) {
 
         $output .= "<h2 class='startpageHeading'>" . ucfirst($stmt1->fetch(PDO::FETCH_ASSOC)["category"]) . "</h2><div class='productContainer'>";
         
-        $sql2 = "SELECT * FROM products WHERE category_id = :category_id";
+        $sql2 = "SELECT * FROM products WHERE category_id = :category_id AND deleted = 0 AND stock != 0";
         $stmt2 = $db->prepare($sql2);
         $stmt2->bindParam(":category_id", $category_id);
         $stmt2->execute();

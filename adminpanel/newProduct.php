@@ -1,6 +1,7 @@
 <?php
 require_once "db.php";
 require_once 'header.php';
+
 $ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:index.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
   
