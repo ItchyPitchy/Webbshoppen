@@ -3,7 +3,7 @@
 require_once "db.php";
 
 $output = "";
-$arr = [];
+$counter = 0;
 
 if (isset($_GET["q"])) {
 
@@ -48,7 +48,7 @@ if (isset($_GET["q"])) {
                 </a>
                 <button class='addToCartBtn' data-id='$row1[id]' data-image='./images/$image' data-name='$row1[name]' data-price=" . ceil($row1['price']*0.9) . " data-stock='$row1[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
                 </ul>";
-            }else{
+            } else {
 
                 $output .= "<ul class='product-ul'>
                                 <a href='product.php?id=$row1[id]' class='product-link'>
@@ -59,6 +59,9 @@ if (isset($_GET["q"])) {
                                 <button class='addToCartBtn' data-id='$row1[id]' data-image='./images/$image' data-name='$row1[name]' data-price=" . ceil($row1['price']*0.9) . " data-stock='$row1[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
                             </ul>";
             }
+
+            $counter++;
+
         endwhile;
     } else {
         $output = "<h2>Fel: Sökordet måste innehålla mellan 2-50 tecken</h2>";
@@ -69,7 +72,7 @@ require_once "header.php";
 
 ?>
 
-<h1 class="startpageHeading">Du fick <?php echo count($arr); ?> träffar för "<?php echo $q; ?>":</h1>
+<h1 class="startpageHeading">Du fick <?php echo $counter; ?> träffar för "<?php echo $q; ?>":</h1>
 <main class="productContainer">
     <?php echo $output; ?>
 </main>
