@@ -8,8 +8,7 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="./styles/images/logga.png" alt="" class="logo_header_start"/>
-
+      <a href="http://localhost/Webbshoppen/"><img src="./styles/images/logga.png" alt="" class="logo_header_start"/></a>
       <div class="navigation-links">
         <form class="search-form" action="search.php" method="GET">
           <input class="search-input" type="text" name="q"/>
@@ -25,15 +24,6 @@
     </nav>
 
     <header></header>
-
-    <!--<div class="header-category-links">
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=light&kategori=Lampor">Lampor</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=table&kategori=Bord">Bord</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=armchair&kategori=Fåtöljer">Fåtöljer</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=pillow&kategori=Kuddar">Kuddar</a>
-      <a class="header-category-link" href="http://localhost/Webbshoppen/category.php?category=sofa&kategori=Soffor">Soffor</a>
-    </div>-->
-
 
 <?php
 

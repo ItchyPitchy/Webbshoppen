@@ -36,6 +36,7 @@ qtyInput.addEventListener("blur", function(e) {
 });
 
 qtyInput.addEventListener("focus", function(e) {
+    document.querySelector("#stockAlert").classList.add("hide");
     e.currentTarget.value = "";
 })
 
@@ -56,10 +57,14 @@ function orderCheck(qty) {
 
     } else {
         document.querySelector("#stockAlert").classList.remove("hide");
+
+        // qtyInput.addEventListener('click', function(){
+        //     // document.querySelector("#stockAlert").classList.add("hide");
+        // });
         
-        setTimeout(function() {
-            document.querySelector("#stockAlert").classList.add("hide");
-        }, 2000);
+        // setTimeout(function() {
+        //     document.querySelector("#stockAlert").classList.add("hide");
+        // }, 2000);
 
     }
 }

@@ -2,7 +2,6 @@ const cart = document.querySelector("#order-ul");
 
 let today = new Date();
 let dd = today.getDate();
-
 let mm = today.getMonth() + 1;
 let yyyy = today.getFullYear();
 
@@ -13,15 +12,15 @@ if (dd < 10) {
 if (mm < 10) {
   mm = "0" + mm;
 }
-today = mm + "-" + dd + "-" + yyyy;
+today = yyyy + "-" + mm + "-" + dd;
 
 document.getElementById("date").innerHTML = "Datum: " + today;
 
-const customerId = document.querySelector(".customer-id");
-customerId.textContent = `Kundnummer: ` + id;
+const customerOrderId = document.querySelector(".customer-order-id");
+customerOrderId.textContent = `Ordernummer: ` + orderId;
 
 const customerName = document.querySelector(".customer-name");
-customerName.textContent = `Kundnamn: ` + name;
+customerName.textContent = `Namn: ` + name;
 
 const customerEmail = document.querySelector(".customer-email");
 customerEmail.textContent = `E-postadress: ` + email;
@@ -30,13 +29,8 @@ const customerPhone = document.querySelector(".customer-phone");
 customerPhone.textContent = `Telefon: ` + phone;
 
 const customerStreet = document.querySelector(".customer-street");
-customerStreet.textContent = `Gatuadress: ` + street;
-
-const customerZipcode = document.querySelector(".customer-zipcode");
-customerZipcode.textContent = `Postnummer: ` + zipcode;
-
-const customerCity = document.querySelector(".customer-city");
-customerCity.textContent = `Ort: ` + city;
+customerStreet.textContent =
+  `Levereras till: ` + street + ` ` + zipcode + `, ` + city;
 
 if (
   localStorage.getItem("cartArr") !== null &&
@@ -44,8 +38,19 @@ if (
 ) {
   const cartArr = JSON.parse(localStorage.getItem("cartArr"));
   const products = cartArr.products;
-  const total = document.querySelector("#total");
-  total.textContent = `Totalsumma: ${cartArr.sum} kr`;
+  const total = document.querySelector("#total-sum");
+  const shippingSpan = document.querySelector("#shipping-span");
+
+  if (city.toLowerCase() != "stockholm" && cartArr.sum <= 500) {
+    total.textContent = `Totalsumma: ${cartArr.sum + 50} Kr`;
+    shippingSpan.textContent = `Inklusive frakt`;
+  } else if (city.toLowerCase() != "stockholm" && cartArr.sum > 500) {
+    total.textContent = `Totalsumma: ${cartArr.sum} Kr`;
+    shippingSpan.textContent = `Fri frakt`;
+  } else {
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
+    shippingSpan.textContent = `Fri frakt`;
+  }
 
   for (let i = 0; i < cartArr.products.length; i++) {
     const li = document.createElement("li");

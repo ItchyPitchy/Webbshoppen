@@ -163,6 +163,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 </table>
 </div>
 </div>
+</div>
 <script src="startAdm.js"></script>
 
 <?php require_once "./footer.php"; ?>

@@ -29,6 +29,7 @@ body {
 .navigation .logo_header_start {
   margin-top: 2%;
   width: 30vw;
+  padding-left: 0px;
 }
 
 .search-form {
@@ -110,6 +111,7 @@ a {
     margin-left: 6%;
     margin-top: 0%;
     width: 10vw;
+    padding-left: 60px;
   }
   .search-form {
     width: 80%;
@@ -277,6 +279,30 @@ textarea:required {
 }
 
 #error {
+  color: red;
+}
+
+.popMessage {
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 150px 150px;
+}
+
+.popMessage .popMessage-text {
+  font-size: 15px;
+  color: #424b54;
+  padding-bottom: 20px;
+}
+
+.popMessage a {
+  color: #9b6a6c;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.popMessage a:hover {
+  text-decoration: underline;
   color: red;
 }
 
@@ -717,6 +743,21 @@ textarea:required {
   text-align: center;
 }
 
+.productInfo__salePrice {
+  color: red;
+  font-size: 30px;
+  padding-top: 25px;
+}
+
+.productInfo__oldprice {
+  font-size: 15px;
+  padding-top: 25px;
+}
+
+.productInfo__oldprice span {
+  text-decoration: line-through;
+}
+
 .orderConfirmation-section {
   padding: 40px 0px;
 }
@@ -776,6 +817,7 @@ textarea:required {
   justify-self: center;
   width: 80vw;
   margin: 10px auto;
+  padding-bottom: 10px;
 }
 
 @media (min-width: 700px) {
@@ -813,24 +855,30 @@ textarea:required {
 }
 
 .overview-container > .overview-total {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   padding: 20px;
-  border: solid 5px #93a8ac;
-  border-radius: 1rem;
-  -ms-flex-item-align: center;
-      align-self: center;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 20px;
   margin: 20px;
+  font-weight: lighter;
+  font-size: 20px;
 }
 
 @media (min-width: 600px) {
   .overview-container > .overview-total {
     margin: 20px 20px;
   }
+}
+
+.overview-container > .overview-total #total-sum {
+  display: block;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.overview-container > .overview-total #shipping-span {
+  display: block;
+  color: grey;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 0px;
 }
 
 .overview-container li {
@@ -907,12 +955,6 @@ textarea:required {
     text-align: right;
     margin: 0;
   }
-}
-
-.overview-container #total {
-  display: block;
-  font-weight: bolder;
-  text-align: center;
 }
 
 .back {
@@ -1021,6 +1063,11 @@ textarea:required {
         justify-self: center;
     grid-column: span 2;
   }
+}
+
+.alert {
+  display: block;
+  color: red;
 }
 
 footer {
