@@ -134,7 +134,7 @@ function function_alert() {
 <div id="popup1" class="overlay">
     <div class="popup">
         <h2>Produkten är tillagd.</h2>
-        <a class="close" href="index.php">OK</a>
+        <a class="close" href="productAdm.php?category_id=<?php echo $ids; ?>">OK</a>
         <div class="content">
        
         </div>
