@@ -42,5 +42,3 @@ require_once "db.php";
   $category_list .= "</div>";
   echo $category_list;
   ?>
-
-

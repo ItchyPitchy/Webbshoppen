@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +23,3 @@
     <a class="show-btn" href="../adminpanel">Kategorier</a>
     <a class="show-btn" href="./orders.php">Beställningar</a>
     </div>
-
-
-

@@ -1,6 +1,8 @@
 <?php
+
 require_once "header.php";
 require_once 'db.php';
+
 $x = 0;
 
 $startpageHeading = '<h1 class="startpageHeading">Nyinkommet</h1>';

@@ -1,9 +1,8 @@
 <?php
+
 require_once './header.php';
 
-
 $name = utf8_decode($_POST['name']);
-
 $message =utf8_decode($_POST['message']);
 
 $popMessage = 'Ditt meddelande har nu skickats till oss på Hemsson.';

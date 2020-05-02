@@ -1,7 +1,10 @@
 <?php
+
 require_once '../db.php';
 require_once 'header.php';
+
 $message = '';
+
 if (isset($_POST['save'])){
 
     $insert_category = $_POST['category'];
@@ -14,17 +17,18 @@ if (isset($_POST['save'])){
 
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if($row['num'] > 0){
+    if ($row['num'] > 0){
        
         $output = "<div class='newCategoryMessage'>
                         <p class='newCategoryMessage-text'>Denna kategori finns redan.</p>
                         <a href='index.php'>OK</a>
                         </div>";
 
-                echo $output;
-    }else{
+        echo $output;
+
+    } else {
        
-        $sql ="INSERT INTO category (category)
+        $sql = "INSERT INTO category (category)
                 SELECT '".$_POST["category"]."' FROM category
                 WHERE NOT EXISTS(
                 SELECT category FROM category WHERE category = '".$_POST["category"]."'
@@ -39,12 +43,13 @@ if (isset($_POST['save'])){
                         <a href='index.php#category'>OK</a>
                         </div>";
                    
-                echo $output;
-    }
-      
+        echo $output;
+
+    } 
 }
+
 ?>       
         
-<?php
-require_once 'footer.php';
-?>
+</div>
+
+<?php require_once 'footer.php'; ?>

@@ -84,7 +84,6 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
     "<h2 class='empty'>Varukorgen är tom</h2><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
   const form = document.querySelector("#form");
   form.parentElement.removeChild(form);
-  // form.style = "display: none;";
 }
 
 function validateForm() {

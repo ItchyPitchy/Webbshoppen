@@ -57,15 +57,6 @@ function orderCheck(qty) {
 
     } else {
         document.querySelector("#stockAlert").classList.remove("hide");
-
-        // qtyInput.addEventListener('click', function(){
-        //     // document.querySelector("#stockAlert").classList.add("hide");
-        // });
-        
-        // setTimeout(function() {
-        //     document.querySelector("#stockAlert").classList.add("hide");
-        // }, 2000);
-
     }
 }
 
