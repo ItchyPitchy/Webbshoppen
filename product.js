@@ -2,7 +2,8 @@ const productID = new URLSearchParams(window.location.search).get("id");
 const productName = document.querySelector(".productName").textContent;
 const unitPrice = parseInt(document.querySelector("#price").textContent);
 const inStock = parseInt(document.querySelector("#stock").textContent);
-const imgUrl = document.querySelector(".search-img").getAttribute("src");
+const img = document.querySelector(".search-img");
+const imgUrl = img ? img.getAttribute("src") : "";
 
 const qtyInput = document.querySelector("#qtyInput");
 
