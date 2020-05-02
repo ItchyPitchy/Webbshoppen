@@ -171,6 +171,3 @@ var loadFile = function (event) {
 </div>
 
 <?php require_once "./footer.php"; 
-
-
-
