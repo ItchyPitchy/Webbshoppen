@@ -134,22 +134,31 @@ $thumbnails = json_encode($images);
 
 var loadFile = function (event) {   
 
-    const imgUl = document.querySelector("#updated-imgUl");
-    const newP = document.querySelector("#new-file-p").style= "display:unset;";
-
-    
-    for(i = 0; i < event.target.files.length; i++) {
+    if (event.target.files.length > 5) {
         
-        const li = document.createElement("li");
+    alert("ENDAST 5 BILDER FÅR LADDAS UPP")
+    document.getElementById('file').value = "";
 
-        let image = document.createElement("img")
-        image.classList.add("selected-img");
-        image.src = URL.createObjectURL(event.target.files[i]);
-        li.appendChild(image);
-        imgUl.appendChild(li);
+    } else {
 
+        const imgUl = document.querySelector("#updated-imgUl");
+        const newP = document.querySelector("#new-file-p").style= "display:unset;";
+
+        
+        for(i = 0; i < event.target.files.length; i++) {
+            
+            const li = document.createElement("li");
+
+            let image = document.createElement("img")
+            image.classList.add("selected-img");
+            image.src = URL.createObjectURL(event.target.files[i]);
+            li.appendChild(image);
+            imgUl.appendChild(li);
+
+        }
     }
 };
+
 
 </script>
 

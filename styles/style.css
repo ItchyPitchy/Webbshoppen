@@ -428,7 +428,7 @@ textarea:required {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -649,7 +649,7 @@ textarea:required {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -795,7 +795,7 @@ textarea:required {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
   display: block;
 }
@@ -845,7 +845,7 @@ textarea:required {
   width: 80vw;
   margin: auto;
   border: solid 2px #93a8ac;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 700px) {
@@ -1221,7 +1221,7 @@ footer .footer_categories {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
 }
 
@@ -1242,7 +1242,7 @@ footer .footer_categories {
       grid-template-rows: auto;
   max-width: 1200px;
   margin: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 980px) {
