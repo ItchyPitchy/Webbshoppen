@@ -24,11 +24,19 @@ if ($stmt->rowcount() !== 0) {
     $selectImages->execute([$productId]);
 
     $images = [];
-
     while ($imgRow = $selectImages->fetch(PDO::FETCH_ASSOC)) { 
-            array_push($images, $imgRow['image']);
+        array_push($images, $imgRow['image']);
     }
-        
+       
+    $sql3 = "SELECT * FROM products WHERE stock != 0 AND deleted = 0 ORDER BY create_date desc LIMIT 6";
+    $stmt3 = $db->prepare($sql3);
+    $stmt3->execute();
+
+    $newProductArr = [];
+    while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)):
+        $newProductArr[] = $row3['id'];
+    endwhile;
+
     $productContainer = "<main>
                         <section class='productContainer1'>
                             <div class='imgContainer'>";
@@ -38,21 +46,44 @@ if ($stmt->rowcount() !== 0) {
                             <img class='search-img' src=./images/" . $value . ">
                          </div>";
     }
-    $productContainer .= "<a class='prev'>&#10094;</a>
-                      <a class='next'>&#10095;</a></div>
-                    <article class='productInfo'>
-                        <h1 class='productName'>$name</h1>
-                        <p class='productInfo__description'>$description</p>
-                        <p class='productInfo__price'><span id='price'>$price</span> Kr</p>
-                        <p class='productInfo__stock'><span id='stock'>$stock</span> st finns i lager</p>
-                        <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
-                        <br>
-                        <button id='addBtn' type='submit' class='addToCartBtn'>Lägg till i varukorg</button>
-                        <span id='stockAlert' class='hide'>Din order överskrider lagerstatus</span>
-                        <span id='maxLimitAlert' class='hide'>Maxgränsen är nådd</span>
-                    </article>
-                </section>
-            </main>";
+
+    if (in_array($row["id"], $newProductArr)) {
+
+        $productContainer .= "<a class='prev'>&#10094;</a>
+                            <a class='next'>&#10095;</a></div>
+                        <article class='productInfo'>
+                            <h1 class='productName'>$name (ny)</h1>
+                            <p class='productInfo__description'>$description</p>
+                            <p class='productInfo__price'><span id='price'>$price</span> Kr</p>
+                            <p class='productInfo__stock'><span id='stock'>$stock</span> st finns i lager</p>
+                            <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
+                            <br>
+                            <button id='addBtn' type='submit' class='addToCartBtn'>Lägg till i varukorg</button>
+                            <span id='stockAlert' class='hide'>Din order överskrider lagerstatus</span>
+                            <span id='maxLimitAlert' class='hide'>Maxgränsen är nådd</span>
+                        </article>
+                    </section>
+                    </main>";
+
+    } else {
+
+        $productContainer .= "<a class='prev'>&#10094;</a>
+                            <a class='next'>&#10095;</a></div>
+                        <article class='productInfo'>
+                            <h1 class='productName'>$name</h1>
+                            <p class='productInfo__description'>$description</p>
+                            <p class='productInfo__price'><span id='price'>$price</span> Kr</p>
+                            <p class='productInfo__stock'><span id='stock'>$stock</span> st finns i lager</p>
+                            <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
+                            <br>
+                            <button id='addBtn' type='submit' class='addToCartBtn'>Lägg till i varukorg</button>
+                            <span id='stockAlert' class='hide'>Din order överskrider lagerstatus</span>
+                            <span id='maxLimitAlert' class='hide'>Maxgränsen är nådd</span>
+                        </article>
+                    </section>
+                    </main>";
+
+    }
 
     echo $productContainer;
 } else {
