@@ -36,7 +36,7 @@ require_once "db.php";
   
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-    $sql1 = "SELECT * FROM products WHERE category_id = :category_id";
+    $sql1 = "SELECT * FROM products WHERE deleted = 0 AND stock != 0 AND category_id = :category_id";
     $stmt1 = $db->prepare($sql1);
     $stmt1->bindParam(":category_id", $category_id);
     $category_id = $row["category_id"];
