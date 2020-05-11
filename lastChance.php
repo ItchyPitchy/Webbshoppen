@@ -22,7 +22,14 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $price  = $row['price'];
   $id     = $row['id'];
   $create_date = $row['create_date'];
-  $img    = "images/" . $stmt2->fetch(PDO::FETCH_ASSOC)['image'];
+  $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
+  $img    = "images/$image";
+
+  // $img    = "images/" . $stmt2->fetch(PDO::FETCH_ASSOC)['image'];
+  if(empty($image)){
+    $img = "images/no-image.png";
+  }
+
   $sale_price = ceil($price*0.9);
 
   $productContainer .= "<ul class='product-ul'> <a href='saleProduct.php?id=$id' class='product-link'>
