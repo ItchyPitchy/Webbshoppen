@@ -7,10 +7,15 @@ const city = document.querySelector("#city");
 const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
-if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
+if (
+  localStorage.getItem("cartArr") !== null &&
+  JSON.parse(localStorage.getItem("cartArr")).products.length !== 0
+) {
   const cartArr = JSON.parse(localStorage.getItem("cartArr"));
   const products = cartArr.products;
-  document.querySelector("#total").textContent = `Totalsumma: ${cartArr.sum} kr`;
+  document.querySelector(
+    "#total"
+  ).textContent = `Totalsumma: ${cartArr.sum} kr`;
   document.querySelector("#json").value = localStorage.getItem("cartArr");
 
   for (let i = 0; i < cartArr.products.length; i++) {
@@ -41,52 +46,55 @@ if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem(
   if (cartArr.sum > 500) {
     shipping.style = "text-decoration: line-through;";
   }
-    
-    document.querySelector("#phone").addEventListener("keypress", function(e) {
 
-        if (e.which < 48 || e.which > 57) {
-            e.preventDefault();
-        }
-    });
+  document.querySelector("#phone").addEventListener("keypress", function (e) {
+    if (e.which < 48 || e.which > 57) {
+      e.preventDefault();
+    }
+  });
 
-    const city = document.querySelector("#city");
-    
-    city.addEventListener("input", function(e) {
-        
-        if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
-            shipping.style = "text-decoration: line-through;"
-        } else if (cartArr.sum <= 500) {
-            shipping.style = "text-decoration: none;"
-        }
-    });
+  const city = document.querySelector("#city");
 
-    city.addEventListener("keypress", function(e) {
+  city.addEventListener("input", function (e) {
+    if (e.currentTarget.value.trim().toLowerCase() === "stockholm") {
+      shipping.style = "text-decoration: line-through;";
+    } else if (cartArr.sum <= 500) {
+      shipping.style = "text-decoration: none;";
+    }
+  });
 
-        if (e.which >= 48 && e.which <= 57) {
-            e.preventDefault();
-        }
-    });
+  city.addEventListener("keypress", function (e) {
+    if (e.which >= 48 && e.which <= 57) {
+      e.preventDefault();
+    }
+  });
 
-    name.addEventListener("keypress", function(e) {
-    
-        if (e.which >= 48 && e.which <= 57) {
-            e.preventDefault();
-        }
-    });
+  name.addEventListener("keypress", function (e) {
+    if (e.which >= 48 && e.which <= 57) {
+      e.preventDefault();
+    }
+  });
 
-    zipcode.addEventListener("keypress", function(e) {
-
-        if (e.which < 48 || e.which > 57) {
-            e.preventDefault();
-        }
-    });
-
+  zipcode.addEventListener("keypress", function (e) {
+    if (e.which < 48 || e.which > 57) {
+      e.preventDefault();
+    }
+  });
 } else {
   total.textContent = "Totalsumma: 0 kr";
   cart.innerHTML =
     "<h2 class='empty'>Varukorgen är tom</h2><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
   const form = document.querySelector("#form");
   form.parentElement.removeChild(form);
+}
+
+function validateLetters(inputText) {
+  var letters = /^[a-öA-Ö]+$/;
+  if (inputText.value.match(letters)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function validateForm() {
@@ -97,7 +105,19 @@ function validateForm() {
     alerts[i].parentElement.removeChild(alerts[i]);
   }
 
-  if (name.value.trim().length < 2 || name.value.trim().length > 20 || /\d/.test(name.value)) {
+  if (!validateLetters(name)) {
+    let alert = document.createElement("span");
+    alert.classList.add("alert");
+    alert.textContent = "Namn får endast innehålla bokstäver";
+    name.after(alert);
+    error = true;
+  }
+
+  if (
+    name.value.trim().length < 2 ||
+    name.value.trim().length > 20 ||
+    /\d/.test(name.value)
+  ) {
     let alert = document.createElement("span");
     alert.classList.add("alert");
     alert.textContent = "Namn måste vara mellan 2-20 tecken";
@@ -155,9 +175,9 @@ function validateForm() {
         error = true;
     }
 
-    if (error) {
-        return false;
-    } else {
-        return true;
-    }
+  if (error) {
+    return false;
+  } else {
+    return true;
+  }
 }
