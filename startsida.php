@@ -39,6 +39,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $price  = $row['price'];
   $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)['image'] : "";
   $imgUrl = "./images/$image";
+  $discount = floor($price*0.1);
 
   if(empty($image)){
     $imgUrl = "images/no-image.png";
@@ -55,8 +56,9 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                                 <p>Normalpris:</p>
                                 <span>$price kr</span>
                               </li>
+                              <li class='product-li product-li-discount'>Du sparar $discount Kr (-10%)</li>
                             </a>
-                            <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='" . ceil($price*0.9) . "' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                            <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='" . ceil($price*0.9) . "' data-stock='$row[stock]' data-discount='$discount' class='addToCartBtn'>Lägg till i varukorg</button>
                           </ul>";
 
   } else if (in_array($row["id"], $newProductArr)) {
@@ -78,7 +80,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                               <li class='product-li product-li-name'><h3>$name</h3></li>
                               <li class='product-li product-li-price'>$price kr</li>
                             </a>
-                            <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='$price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                            <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='$price' data-stock='$row[stock]' data-discount='0' class='addToCartBtn'>Lägg till i varukorg</button>
                           </ul>";
 
   }
@@ -130,7 +132,7 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
       <li class='product-li product-li-name'><h3>$name</h3></li>
       <li class='product-li product-li-price'>$price kr</li>
       </a>
-      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$price' data-stock='$row2[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$price' data-stock='$row2[stock]' data-discount='0' class='addToCartBtn'>Lägg till i varukorg</button>
       </ul>";
     
     $x++;
@@ -169,6 +171,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
   $img    = "images/$image";
   $sale_price = ceil($price*0.9);
+  $discount = floor($price*0.1);
 
   if(empty($image)){
     $img = "images/no-image.png";
@@ -181,8 +184,9 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       <li class='product-li product-li-price oldPrice'>
         <p>Normalpris:</p>
         <span>$price kr </span></li>
+        <li class='product-li product-li-discount'>Du sparar $discount Kr (-10%)</li>
       </a>
-      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$sale_price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+      <button class='addToCartBtn' data-id='$id' data-image='$img' data-name='$name' data-price='$sale_price' data-stock='$row[stock]' data-discount='$discount' class='addToCartBtn'>Lägg till i varukorg</button>
       </ul>";
  
 }

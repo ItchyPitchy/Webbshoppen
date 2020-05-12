@@ -9,6 +9,7 @@
         <ul id="cart" class="grid"></ul>
         <div class="cart-total-box">
             <span id="total"></span>
+            <span id="disSum"></span>
             <a href="./order.php" id="cashier">Till kassan</a>
         </div>
         <div id="dropCartBtn">Töm varukorgen</div>

@@ -525,8 +525,17 @@ textarea:required {
 
 .product-ul .product-li-buy {
   min-width: 70%;
-  margin-bottom: 20px;
   font-size: 17px;
+}
+
+.product-li-discount {
+  color: red;
+  font-size: 10px;
+  padding-bottom: 20px;
+}
+
+.product-li-price {
+  margin-bottom: 10px;
 }
 
 @media (min-width: 700px) {
@@ -755,6 +764,10 @@ textarea:required {
 
 .productInfo__oldprice span {
   text-decoration: line-through;
+}
+
+.productInfo__discount {
+  color: red;
 }
 
 .orderConfirmation-section {
@@ -1432,7 +1445,8 @@ footer .footer_categories {
 .cart-container li .price {
   width: 100px;
   text-align: center;
-  margin: 40px 0px 30px;
+  margin-top: 30px;
+  padding-right: 20px;
 }
 
 @media (min-width: 600px) {
@@ -1440,6 +1454,12 @@ footer .footer_categories {
     text-align: right;
     margin: 0;
   }
+}
+
+.cart-container li .discount {
+  font-size: 12px;
+  color: red;
+  margin: 20px 0 20px;
 }
 
 .cart-container #total {

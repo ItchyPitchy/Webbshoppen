@@ -1,258 +1,380 @@
-const cart = document.querySelector("#cart");
+const cart = document.querySelector("#cart")
 
-if (localStorage.getItem("cartArr") !== null && JSON.parse(localStorage.getItem("cartArr")).products.length !== 0) {
-
-    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
-    const products = cartArr.products;
-    const total = document.querySelector("#total");
-    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
+if (
+    localStorage.getItem("cartArr") !== null &&
+    JSON.parse(localStorage.getItem("cartArr")).products.length !== 0
+) {
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"))
+    console.log(cartArr)
+    const products = cartArr.products
+    const total = document.querySelector("#total")
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`
+    //vanessa
+    const disSum = document.querySelector("#disSum")
+    disSum.textContent = `Du sparar totalt: ${cartArr.totalDiscountSum} Kr`
+    //slut
 
     for (let i = 0; i < cartArr.products.length; i++) {
+        const li = document.createElement("li")
 
-        const li = document.createElement("li");
+        const dltBtn = document.createElement("img")
+        dltBtn.setAttribute("src", "./styles/images/delete.svg")
+        dltBtn.setAttribute("data-id", products[i].id)
+        dltBtn.classList.add("dlt-btn")
+        li.appendChild(dltBtn)
 
-        const dltBtn = document.createElement("img");
-        dltBtn.setAttribute("src", "./styles/images/delete.svg");
-        dltBtn.setAttribute("data-id", products[i].id);
-        dltBtn.classList.add("dlt-btn");
-        li.appendChild(dltBtn);
-        
-        const productImage = document.createElement("img");
-        productImage.setAttribute("src", products[i].image);
-        productImage.classList.add("product-image");
-        li.appendChild(productImage);
+        const productImage = document.createElement("img")
+        productImage.setAttribute("src", products[i].image)
+        productImage.classList.add("product-image")
+        li.appendChild(productImage)
 
-        const productTitle = document.createElement("span");
-        productTitle.classList.add("product-title");
-        productTitle.textContent = products[i].name;
-        li.appendChild(productTitle);
+        const productTitle = document.createElement("span")
+        productTitle.classList.add("product-title")
+        productTitle.textContent = products[i].name
+        li.appendChild(productTitle)
 
-        const qtyContainer = document.createElement("div");
-        qtyContainer.classList.add("qty-container");
+        const qtyContainer = document.createElement("div")
+        qtyContainer.classList.add("qty-container")
 
-        const maxLimitAlert = document.createElement("span");
-        maxLimitAlert.classList.add("max-limit-alert");
-        maxLimitAlert.textContent = "Maxgränsen är nådd";
-        qtyContainer.appendChild(maxLimitAlert);
+        const maxLimitAlert = document.createElement("span")
+        maxLimitAlert.classList.add("max-limit-alert")
+        maxLimitAlert.textContent = "Maxgränsen är nådd"
+        qtyContainer.appendChild(maxLimitAlert)
 
-        const decreaseBtn = document.createElement("button");
-        decreaseBtn.setAttribute("data-id", products[i].id);
-        decreaseBtn.classList.add("decrease-btn");
-        if (products[i].qty <= 1) decreaseBtn.classList.add("hide");
-        decreaseBtn.textContent = "-";
-        qtyContainer.appendChild(decreaseBtn);
+        const decreaseBtn = document.createElement("button")
+        decreaseBtn.setAttribute("data-id", products[i].id)
+        decreaseBtn.classList.add("decrease-btn")
+        if (products[i].qty <= 1) decreaseBtn.classList.add("hide")
+        decreaseBtn.textContent = "-"
+        qtyContainer.appendChild(decreaseBtn)
 
-        const qtyInput = document.createElement("input");
-        qtyInput.setAttribute("data-id", products[i].id);
-        qtyInput.classList.add("qty-input");
-        qtyInput.value = products[i].qty;
-        qtyContainer.appendChild(qtyInput);
+        const qtyInput = document.createElement("input")
+        qtyInput.setAttribute("data-id", products[i].id)
+        qtyInput.classList.add("qty-input")
+        qtyInput.value = products[i].qty
+        qtyContainer.appendChild(qtyInput)
 
-        const increaseBtn = document.createElement("button");
-        increaseBtn.setAttribute("data-id", products[i].id);
-        increaseBtn.classList.add("increase-btn");
-        products[i].qty >= products[i].stock ? increaseBtn.classList.add("hide") : maxLimitAlert.classList.add("hide");
-        increaseBtn.textContent = "+";
-        qtyContainer.appendChild(increaseBtn);
+        const increaseBtn = document.createElement("button")
+        increaseBtn.setAttribute("data-id", products[i].id)
+        increaseBtn.classList.add("increase-btn")
+        products[i].qty >= products[i].stock
+            ? increaseBtn.classList.add("hide")
+            : maxLimitAlert.classList.add("hide")
+        increaseBtn.textContent = "+"
+        qtyContainer.appendChild(increaseBtn)
 
-        li.appendChild(qtyContainer);
+        li.appendChild(qtyContainer)
 
-        const price = document.createElement("span");
-        price.classList.add("price");
-        price.textContent = `${products[i].unitPrice * products[i].qty} kr`;
-        li.appendChild(price);
+        const price = document.createElement("span")
+        price.classList.add("price")
+        price.textContent = `${products[i].unitPrice * products[i].qty} kr`
+        li.appendChild(price)
 
-        cart.appendChild(li);
+        if (products[i].discount) {
+            const discount = document.createElement("span")
+            discount.classList.add("discount")
+            discount.textContent = `Du sparar ${products[i].discount *
+                products[i].qty} Kr`
+            li.appendChild(discount)
+        }
+
+        cart.appendChild(li)
     }
 
-    const decreaseBtns = document.querySelectorAll(".decrease-btn");
+    const decreaseBtns = document.querySelectorAll(".decrease-btn")
     decreaseBtns.forEach(function(element) {
-
         element.addEventListener("click", function(e) {
-            decreaseEvent(e.currentTarget);
-        });
-    });
+            decreaseEvent(e.currentTarget)
+        })
+    })
 
-    const increaseBtns = document.querySelectorAll(".increase-btn");
+    const increaseBtns = document.querySelectorAll(".increase-btn")
     increaseBtns.forEach(function(element) {
-
         element.addEventListener("click", function(e) {
-            increaseEvent(e.currentTarget);
-        });
-    });
+            increaseEvent(e.currentTarget)
+        })
+    })
 
-    const dltBtns = document.querySelectorAll(".dlt-btn");
+    const dltBtns = document.querySelectorAll(".dlt-btn")
     dltBtns.forEach(function(element) {
-
         element.addEventListener("click", function(e) {
-            deleteEvent(e.currentTarget);
-        });
-    });
+            deleteEvent(e.currentTarget)
+        })
+    })
 
-    const qtyInputs = document.querySelectorAll(".qty-input");
+    const qtyInputs = document.querySelectorAll(".qty-input")
     qtyInputs.forEach(function(element) {
-
-        element.addEventListener("input", function (e) {
-            const cartArr = JSON.parse(localStorage.getItem("cartArr"));
-            const inputValue = parseInt(e.currentTarget.value);
-            let stock = 0;
+        element.addEventListener("input", function(e) {
+            const cartArr = JSON.parse(localStorage.getItem("cartArr"))
+            const inputValue = parseInt(e.currentTarget.value)
+            let stock = 0
 
             cartArr.products.forEach(function(element, index) {
-
-                if (element.id === e.currentTarget.dataset.id) stock = element.stock;
-
-            });
+                if (element.id === e.currentTarget.dataset.id)
+                    stock = element.stock
+            })
 
             if (isNaN(inputValue)) {
-                e.currentTarget.value = "";
-                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+                e.currentTarget.value = ""
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".increase-btn")
+                    .classList.remove("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".decrease-btn")
+                    .classList.add("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".max-limit-alert")
+                    .classList.add("hide")
             } else if (inputValue >= stock) {
-                e.currentTarget.value = stock;
-                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.add("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
+                e.currentTarget.value = stock
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".increase-btn")
+                    .classList.add("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".decrease-btn")
+                    .classList.remove("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".max-limit-alert")
+                    .classList.remove("hide")
             } else if (inputValue <= 1) {
-                inputValue < 1 ? e.currentTarget.value = "1" : e.currentTarget.value = inputValue;
-                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.add("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+                inputValue < 1
+                    ? (e.currentTarget.value = "1")
+                    : (e.currentTarget.value = inputValue)
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".increase-btn")
+                    .classList.remove("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".decrease-btn")
+                    .classList.add("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".max-limit-alert")
+                    .classList.add("hide")
             } else {
-                e.currentTarget.value = inputValue;
-                e.currentTarget.parentElement.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".decrease-btn").classList.remove("hide");
-                e.currentTarget.parentElement.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+                e.currentTarget.value = inputValue
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".increase-btn")
+                    .classList.remove("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".decrease-btn")
+                    .classList.remove("hide")
+                e.currentTarget.parentElement.parentElement
+                    .querySelector(".max-limit-alert")
+                    .classList.add("hide")
             }
-            
-            changePrice(e.currentTarget);
-        });
+
+            changePrice(e.currentTarget)
+            //vanessa
+            // totDiscount(e.currentTarget)
+            //slut
+        })
 
         element.addEventListener("keypress", function(e) {
-
             if (e.which < 48 || e.which > 57) {
-                e.preventDefault();
+                e.preventDefault()
             }
         })
 
         element.addEventListener("blur", function(e) {
-
-            const input = e.currentTarget.value.trim();
+            const input = e.currentTarget.value.trim()
 
             if (input < 1) {
-                e.currentTarget.value = "1";
-                changePrice(e.currentTarget);
+                e.currentTarget.value = "1"
+                changePrice(e.currentTarget)
+                //vanessa
+                // totDiscount(e.currentTarget)
+                //tot
             }
+        })
+    })
 
-        });
-    });
-
-    document.querySelector("#dropCartBtn").addEventListener("click", function(e) {
-        dropCart();
-    });
-
+    document
+        .querySelector("#dropCartBtn")
+        .addEventListener("click", function(e) {
+            dropCart()
+        })
 } else {
-    total.textContent = "Totalsumma: 0 kr";
-    cart.innerHTML = "<h3 class='empty'>Varukorgen är tom</h3><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>";
-    document.querySelector("#cashier").removeAttribute("href");
+    total.textContent = "Totalsumma: 0 kr"
+    cart.innerHTML =
+        "<h3 class='empty'>Varukorgen är tom</h3><a class='to-start' href='./index.php'>Tillbaka till startsidan</a>"
+    document.querySelector("#cashier").removeAttribute("href")
 }
 
-
-
 function dropCart() {
-    total.textContent = "Totalsumma: 0 kr";
-    document.querySelector("#cart").innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
-    document.querySelector("#cashier").removeAttribute("href");
-    localStorage.setItem("cartArr", JSON.stringify({products: [], sum: 0}));
-    document.querySelector("#header-cart").style = "fill: unset;";
+    total.textContent = "Totalsumma: 0 kr"
+    disSum.textContent = ""
+    document.querySelector("#cart").innerHTML =
+        "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>"
+    document.querySelector("#cashier").removeAttribute("href")
+    localStorage.setItem(
+        "cartArr",
+        JSON.stringify({ products: [], sum: 0, totalDiscountSum: 0 })
+    )
+    document.querySelector("#header-cart").style = "fill: unset;"
 }
 
 function changePrice(input) {
-    const inputValue = input.value.trim() === "" ? 0 : parseInt(input.value);
-    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+    const inputValue = input.value.trim() === "" ? 0 : parseInt(input.value)
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"))
 
     cartArr.products.forEach(function(element, index) {
-
         if (element.id === input.dataset.id) {
-            cartArr.sum = cartArr.sum - element.qty * element.unitPrice + inputValue * element.unitPrice;
-            element.qty = inputValue;
-            input.parentElement.parentElement.querySelector(".price").textContent = `${inputValue * element.unitPrice} kr`;
-        }
-    });
+            cartArr.sum =
+                cartArr.sum -
+                element.qty * element.unitPrice +
+                inputValue * element.unitPrice
+            cartArr.totalDiscountSum =
+                cartArr.totalDiscountSum -
+                element.qty * element.discount +
+                inputValue * element.discount
+            element.qty = inputValue
+            input.parentElement.parentElement.querySelector(
+                ".price"
+            ).textContent = `${inputValue * element.unitPrice} kr`
 
-    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
-    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+            if (input.parentElement.parentElement.querySelector(".discount")) {
+                input.parentElement.parentElement.querySelector(
+                    ".discount"
+                ).textContent = `Du sparar ${inputValue * element.discount} Kr`
+            }
+        }
+    })
+    disSum.textContent = `Du sparar totalt: ${cartArr.totalDiscountSum} Kr`
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`
+    localStorage.setItem("cartArr", JSON.stringify(cartArr))
 }
 
 function decreaseEvent(btn) {
-    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"))
 
     cartArr.products.forEach((element, index) => {
-
         if (element.id === btn.dataset.id) {
-            element.qty = element.qty - 1;
-            cartArr.sum = cartArr.sum - element.unitPrice;
-            btn.nextElementSibling.value = element.qty;
-            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice} kr`;
+            element.qty = element.qty - 1
+            cartArr.sum = cartArr.sum - element.unitPrice
+            cartArr.totalDiscountSum =
+                cartArr.totalDiscountSum - element.discount
+            btn.nextElementSibling.value = element.qty
+            btn.parentElement.parentElement.querySelector(
+                ".price"
+            ).textContent = `${element.qty * element.unitPrice} kr`
 
-            if (element.qty < element.stock) {
-                btn.parentElement.querySelector(".increase-btn").classList.remove("hide");
-                btn.parentElement.querySelector(".max-limit-alert").classList.add("hide");
+            //Vanessa
+            if (btn.parentElement.parentElement.querySelector(".discount")) {
+                btn.parentElement.parentElement.querySelector(
+                    ".discount"
+                ).textContent = `Du sparar ${element.qty * element.discount} Kr`
             }
 
-            if (element.qty <= 1) btn.classList.add("hide");
-        }
-    });
+            //slut
 
-    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
-    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+            if (element.qty < element.stock) {
+                btn.parentElement
+                    .querySelector(".increase-btn")
+                    .classList.remove("hide")
+                btn.parentElement
+                    .querySelector(".max-limit-alert")
+                    .classList.add("hide")
+            }
+
+            if (element.qty <= 1) btn.classList.add("hide")
+        }
+    })
+
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`
+    //vanessa
+    disSum.textContent = `Du sparar totalt: ${cartArr.totalDiscountSum} Kr`
+    localStorage.setItem("cartArr", JSON.stringify(cartArr))
 }
 
 function increaseEvent(btn) {
-    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"))
 
     cartArr.products.forEach((element, index) => {
-
         if (element.id === btn.dataset.id) {
-            element.qty = element.qty + 1;
-            cartArr.sum = cartArr.sum + element.unitPrice;
-            btn.previousElementSibling.value = element.qty;
-            btn.parentElement.parentElement.querySelector(".price").textContent = `${element.qty * element.unitPrice} kr`;
+            element.qty = element.qty + 1
+            cartArr.sum = cartArr.sum + element.unitPrice
+            cartArr.totalDiscountSum =
+                cartArr.totalDiscountSum + element.discount
+            btn.previousElementSibling.value = element.qty
+            btn.parentElement.parentElement.querySelector(
+                ".price"
+            ).textContent = `${element.qty * element.unitPrice} kr`
 
-            if (element.qty > 1) btn.parentElement.querySelector(".decrease-btn").classList.remove("hide");
+            //Vanessa
+            if (btn.parentElement.parentElement.querySelector(".discount")) {
+                btn.parentElement.parentElement.querySelector(
+                    ".discount"
+                ).textContent = `Du sparar ${element.qty * element.discount} Kr`
+            }
+
+            //slut
+            if (element.qty > 1)
+                btn.parentElement
+                    .querySelector(".decrease-btn")
+                    .classList.remove("hide")
 
             if (element.qty >= element.stock) {
-                btn.classList.add("hide");
-                btn.parentElement.querySelector(".max-limit-alert").classList.remove("hide");
+                btn.classList.add("hide")
+                btn.parentElement
+                    .querySelector(".max-limit-alert")
+                    .classList.remove("hide")
             }
         }
-    });
+    })
 
-    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
-    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`
+    disSum.textContent = `Du sparar totalt: ${cartArr.totalDiscountSum} Kr`
+    localStorage.setItem("cartArr", JSON.stringify(cartArr))
 }
 
 function deleteEvent(btn) {
-    const cartArr = JSON.parse(localStorage.getItem("cartArr"));
+    const cartArr = JSON.parse(localStorage.getItem("cartArr"))
 
     cartArr.products.forEach((element, index) => {
-
         if (element.id === btn.dataset.id) {
-            cartArr.sum = cartArr.sum - element.qty * element.unitPrice;
-            cartArr.products.splice(index, 1);
+            cartArr.sum = cartArr.sum - element.qty * element.unitPrice
+            //vanessa
+            cartArr.totalDiscountSum =
+                cartArr.totalDiscountSum - element.qty * element.discount
+            cartArr.products.splice(index, 1)
         }
-    });
+    })
 
-    const listItem = btn.parentElement;
+    const listItem = btn.parentElement
 
-    listItem.parentElement.removeChild(listItem);
-    total.textContent = `Totalsumma: ${cartArr.sum} kr`;
-    localStorage.setItem("cartArr", JSON.stringify(cartArr));
+    listItem.parentElement.removeChild(listItem)
+    total.textContent = `Totalsumma: ${cartArr.sum} kr`
+    //vanessa
+    disSum.textContent = `Du sparar totalt: ${cartArr.totalDiscountSum} Kr`
+    localStorage.setItem("cartArr", JSON.stringify(cartArr))
 
     if (cartArr.products.length === 0) {
-        total.textContent = "Totalsumma: 0 kr";
-        cart.innerHTML = "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>";
-        document.querySelector("#cashier").removeAttribute("href");
-        document.querySelector("#header-cart").style = "fill: unset;";
+        total.textContent = "Totalsumma: 0 kr"
+        disSum.textContent = ""
+        cart.innerHTML =
+            "<h2 class='empty'>Varukorgen är tom</h2><a href='./index.php'>Tillbaka till startsidan</a>"
+        document.querySelector("#cashier").removeAttribute("href")
+        document.querySelector("#header-cart").style = "fill: unset;"
     }
 }
+
+//test
+// function totDiscount(input) {
+//     const inputValue = input.value.trim() === "" ? 0 : parseInt(input.value)
+//     const cartArr = JSON.parse(localStorage.getItem("cartArr"))
+//     console.log(cartArr)
+//     cartArr.products.forEach(function(element, index) {
+//         if (element.id === input.dataset.id) {
+//             cartArr.totalDiscountSum =
+//                 cartArr.totalDiscountSum -
+//                 element.qty * element.discount +
+//                 inputValue * element.discount
+//             element.qty = inputValue
+//             input.parentElement.parentElement.querySelector(
+//                 ".discount"
+//             ).textContent = `${inputValue * element.discount} kr`
+//         }
+//     })
+
+//     disSum.textContent = `Du sparar totalt: ${cartArr.totalDiscountSum} kr`
+//     localStorage.setItem("cartArr", JSON.stringify(cartArr))
+// }
