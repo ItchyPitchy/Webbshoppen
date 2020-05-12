@@ -23,14 +23,14 @@ if (isset($_POST["category"]) && isset($_POST["update_id"])) {
 
         $output = "<div id='newCategoryMessage' class='newCategoryMessage'>
                         <p class='newCategoryMessage-text'>Kategorin är uppdaterad.</p>
-                        <a href='index.php#category'>OK</a>
+                        <a href='categories.php#category'>OK</a>
                     </div>";
                    
                  echo $output;
     } else {
         $output = "<div class='newCategoryMessage'>
                         <p class='newCategoryMessage-text'>Denna kategori finns redan.</p>
-                        <a href='index.php'>OK</a>
+                        <a href='categories.php'>OK</a>
                     </div>";
 
         echo $output;

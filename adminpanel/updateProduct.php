@@ -33,7 +33,7 @@ if ($stmt->rowcount() !== 0) {
 
     foreach ($images as $value) {
         $output .= "<li>
-                            <img class='selected-img' src=../images/" . $value . ">
+                            <img class='selected-img' src='../images/$value'>
                     </li>";
 
     }
@@ -41,7 +41,7 @@ if ($stmt->rowcount() !== 0) {
 
 
 } else {
-    header('Location:index.php');
+    header('Location:categories.php');
     exit;
 }
 
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':id', $product_id);
 
     $stmt->execute();
-    //header('Location:index.php');
+    //header('Location:categories.php');
     //exit;
     header('Location:#popup1');
 
@@ -95,11 +95,11 @@ $thumbnails = json_encode($images);
     </div>
     <div>
         <label class="labelsss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm" placeholder="">
+        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm" placeholder="" required>
     </div>
     <div>
         <label class="labelsss" for="price">Pris:</label>
-        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm">
+        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm" required>
     </div>
 
     <div>
@@ -134,22 +134,31 @@ $thumbnails = json_encode($images);
 
 var loadFile = function (event) {   
 
-    const imgUl = document.querySelector("#updated-imgUl");
-    const newP = document.querySelector("#new-file-p").style= "display:unset;";
-
-    
-    for(i = 0; i < event.target.files.length; i++) {
+    if (event.target.files.length > 5) {
         
-        const li = document.createElement("li");
+    alert("ENDAST 5 BILDER FÅR LADDAS UPP")
+    document.getElementById('file').value = "";
 
-        let image = document.createElement("img")
-        image.classList.add("selected-img");
-        image.src = URL.createObjectURL(event.target.files[i]);
-        li.appendChild(image);
-        imgUl.appendChild(li);
+    } else {
 
+        const imgUl = document.querySelector("#updated-imgUl");
+        const newP = document.querySelector("#new-file-p").style= "display:unset;";
+
+        
+        for(i = 0; i < event.target.files.length; i++) {
+            
+            const li = document.createElement("li");
+
+            let image = document.createElement("img")
+            image.classList.add("selected-img");
+            image.src = URL.createObjectURL(event.target.files[i]);
+            li.appendChild(image);
+            imgUl.appendChild(li);
+
+        }
     }
 };
+
 
 </script>
 
@@ -163,7 +172,7 @@ var loadFile = function (event) {
 <?php /*
 <div class="box">
     <a class="button" href="#popup1">Let me Pop up</a>
-</div>   href="index.php"  */ 
+</div>   href="categories.php"  */ 
 ?>
 <div id="popup1" class="overlay">
     <div class="popup">

@@ -3,7 +3,7 @@
 require_once 'db.php';
 require_once 'header.php';
 
-$id = isset($_POST['id']) ? $_POST['id'] : header('Location:index.php');
+$id = isset($_POST['id']) ? $_POST['id'] : header('Location:categories.php');
 
 $targetDir = "../images/"; 
 $allowTypes = array('jpg','png','jpeg','gif');
@@ -81,7 +81,7 @@ if(!empty($fileNames)){
     //echo ' alert("JavaScript Alert Box by PHP")';  //not showing an alert box.
     //echo '</script>';
     //header('Location:#popup1');
-    // header('Location:index.php');
+    // header('Location:categories.php');
     //function_alert();
     //header('Location:#popup1');
     echo "<script type='text/javascript'>location.href ='#popup1' ; </script>";

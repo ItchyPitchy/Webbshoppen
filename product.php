@@ -24,8 +24,12 @@ if ($stmt->rowcount() !== 0) {
     $selectImages->execute([$productId]);
 
     $images = [];
-    while ($imgRow = $selectImages->fetch(PDO::FETCH_ASSOC)) { 
-        array_push($images, $imgRow['image']);
+
+    if($selectImages->rowCount() == 0 ){
+        array_push($images, "no-image.png");
+    }
+    while ($imgRow =$selectImages->fetch(PDO::FETCH_ASSOC)) { 
+        array_push($images, $imgRow['image']); 
     }
        
     $sql3 = "SELECT * FROM products WHERE stock != 0 AND deleted = 0 ORDER BY create_date desc LIMIT 6";
@@ -43,7 +47,7 @@ if ($stmt->rowcount() !== 0) {
 
     foreach ($images as $value) {
         $productContainer .= "<div class='mySlides fade'>
-                            <img class='search-img' src=./images/" . $value . ">
+                            <img class='search-img' src='./images/$value'>
                          </div>";
     }
 

@@ -3,7 +3,7 @@
 require_once "db.php";
 require_once 'header.php';
 
-$ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:index.php');
+$ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:categories.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
   
@@ -115,11 +115,11 @@ function function_alert() {
     </div>
     <div>
         <label class="labelss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number" name="stock" min="0"  class="productGroupForm" placeholder="">
+        <input id="stock" type="number" name="stock" min="0" class="productGroupForm" placeholder="" required>
     </div>
     <div>
         <label class="labelss" for="price">pris:</label>
-        <input name="price" type="number" min="0" class="productGroupForm">
+        <input name="price" type="number" min="0" class="productGroupForm" required>
     </div>
     <div>
         <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
@@ -137,8 +137,12 @@ function function_alert() {
 var loadFile = function (event) {   
 
     const imgUl = document.querySelector("#imgUl");
-    
-    for(i = 0; i < event.target.files.length; i++) {
+
+    if (event.target.files.length > 5) {
+        alert("ENDAST 5 BILDER FÅR LADDAS UPP")
+        document.getElementById('file').value = "";
+    } else {
+        for(i = 0; i < event.target.files.length; i++) {
         
         const li = document.createElement("li");
         
@@ -148,7 +152,10 @@ var loadFile = function (event) {
         li.appendChild(image);
         imgUl.appendChild(li);
 
+        }
+
     }
+    
 };
 
 </script>

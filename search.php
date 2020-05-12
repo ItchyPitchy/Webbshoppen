@@ -50,7 +50,9 @@ if (isset($_GET["q"])) {
             $stmt2->execute();
             $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
 
-            
+            if(empty($image)){
+                $image = "no-image.png";
+              }
 
             if(in_array($row1['id'], $saleArr)){
 
