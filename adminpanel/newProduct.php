@@ -115,11 +115,11 @@ function function_alert() {
     </div>
     <div>
         <label class="labelss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number" name="stock" min="0" class="productGroupForm" placeholder="" required>
+        <input id="stock" type="number" name="stock" min="0"  class="productGroupForm numberInput" placeholder="">
     </div>
     <div>
         <label class="labelss" for="price">pris:</label>
-        <input name="price" type="number" min="0" class="productGroupForm" required>
+        <input name="price" type="number" min="0" class="productGroupForm numberInput">
     </div>
     <div>
         <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
@@ -133,6 +133,25 @@ function function_alert() {
 </div>
 
 <script type="text/javascript">
+
+const numberInputs = document.querySelectorAll(".numberInput");
+
+numberInputs.forEach(function(element) {
+    
+    element.addEventListener("keypress", function(e) {
+
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+
+    element.addEventListener("input", function(e) {
+
+        if (e.currentTarget.value.length > 10) {
+            e.currentTarget.value = e.currentTarget.value.substring(0, 10);
+        }
+    });
+});
 
 var loadFile = function (event) {   
 
@@ -155,8 +174,7 @@ var loadFile = function (event) {
         }
 
     }
-    
-};
+}
 
 </script>
 
@@ -177,4 +195,4 @@ var loadFile = function (event) {
     </div>
 </div>
 
-<?php require_once "./footer.php"; 
+<?php require_once "./footer.php";
