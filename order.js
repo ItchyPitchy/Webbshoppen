@@ -1,6 +1,9 @@
 const cart = document.querySelector("#cart");
 const name = document.querySelector("#name");
 const email = document.querySelector("#email");
+const phone = document.querySelector("#phone");
+const street = document.querySelector("#street");
+const city = document.querySelector("#city");
 const zipcode = document.querySelector("#zipcode");
 const shipping = document.querySelector("#shipping");
 
@@ -101,8 +104,24 @@ function validateForm() {
     name.after(alert);
     error = true;
   }
+  
+  if (email.value.trim().length < 2 || email.value.trim().length > 40 ) {  
+    let alert = document.createElement("span");
+    alert.classList.add("alert");
+    alert.textContent = "Email måste vara mellan 2-40 tecken";
+    email.after(alert);
+    error = true;
+  }
 
-  if (zipcode.value.trim().split(" ").join("").length !== 5) {
+  if (phone.value.trim().length < 2 || phone.value.trim().length > 20) {  
+    let alert = document.createElement("span");
+    alert.classList.add("alert");
+    alert.textContent = "Nummer måste vara mellan 2-20 tecken";
+    phone.after(alert);
+    error = true;
+  }
+
+  if (zipcode.value.trim().split(" ").join("").length !== 5) {    
     let alert = document.createElement("span");
     alert.classList.add("alert");
     alert.textContent = "Vänligen ange ett giltigt postnummer";
@@ -110,9 +129,25 @@ function validateForm() {
     error = true;
   }
 
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
-        
+  if (street.value.trim().length < 2 || street.value.trim().length > 40 || /\d/.test(street.value)) {
+    let alert = document.createElement("span");
+    alert.classList.add("alert");
+    alert.textContent = "Gatuadress måste vara mellan 2-40 tecken";
+    street.after(alert);
+    error = true;
+  }
+
+  if (city.value.trim().length < 2 || city.value.trim().length > 40 || /\d/.test(city.value)) {   
+    let alert = document.createElement("span");
+    alert.classList.add("alert");
+    alert.textContent = "Ort måste vara mellan 2-40 tecken";
+    city.after(alert);
+    error = true;
+  }
+
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
     } else {
+      
         let alert = document.createElement("span");
         alert.classList.add("alert");
         alert.textContent = "Vänligen ange en giltig e-post";
