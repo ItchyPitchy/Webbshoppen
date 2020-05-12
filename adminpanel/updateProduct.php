@@ -95,11 +95,11 @@ $thumbnails = json_encode($images);
     </div>
     <div>
         <label class="labelsss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm" placeholder="">
+        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm numberInput" placeholder="">
     </div>
     <div>
         <label class="labelsss" for="price">Pris:</label>
-        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm">
+        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm numberInput">
     </div>
 
     <div>
@@ -131,6 +131,25 @@ $thumbnails = json_encode($images);
 </div>
 
 <script type="text/javascript">
+
+const numberInputs = document.querySelectorAll(".numberInput");
+
+numberInputs.forEach(function(element) {
+    
+    element.addEventListener("keypress", function(e) {
+
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+
+    element.addEventListener("input", function(e) {
+
+        if (e.currentTarget.value.length > 10) {
+            e.currentTarget.value = e.currentTarget.value.substring(0, 10);
+        }
+    });
+});
 
 var loadFile = function (event) {   
 
