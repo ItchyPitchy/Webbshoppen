@@ -19,6 +19,7 @@ if ($stmt->rowcount() !== 0) {
     $stock = htmlspecialchars($row['stock']);
     $productId = htmlspecialchars($row['id']);
     $sale_price = ceil($price*0.9);
+    $discount = floor($price*0.1);
 
     $sql1 = " SELECT image FROM product_images WHERE product_images.product_id = ? ";
     $selectImages = $db->prepare($sql1);
@@ -45,7 +46,8 @@ if ($stmt->rowcount() !== 0) {
                         <h1 class='productName'>$name</h1>
                         <p class='productInfo__description'>$description</p>
                         <p class='productInfo__salePrice'><span id='price'>$sale_price</span> kr</p>
-                        <p class='productInfo__oldprice'>Normalpris: $price Kr</p>
+                        <p class='productInfo__oldprice'>Normalpris:<span> $price</span> Kr</p>
+                        <p class='productInfo__discount'>Du sparar:<span id='discount'> $discount </span> Kr (-10%)</p>
                         <p class='productInfo__stock'><span id='stock'>$stock</span> st finns i lager</p>
                         <input type='num' id='qtyInput' class='quantityInput' value='1' placeholder='ange antal'>
                         <br>

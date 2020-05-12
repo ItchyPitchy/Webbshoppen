@@ -428,7 +428,7 @@ textarea:required {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -526,8 +526,17 @@ textarea:required {
 
 .product-ul .product-li-buy {
   min-width: 70%;
-  margin-bottom: 20px;
   font-size: 17px;
+}
+
+.product-li-discount {
+  color: red;
+  font-size: 10px;
+  padding-bottom: 20px;
+}
+
+.product-li-price {
+  margin-bottom: 10px;
 }
 
 @media (min-width: 700px) {
@@ -649,7 +658,7 @@ textarea:required {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -758,6 +767,10 @@ textarea:required {
   text-decoration: line-through;
 }
 
+.productInfo__discount {
+  color: red;
+}
+
 .orderConfirmation-section {
   padding: 40px 0px;
 }
@@ -795,7 +808,7 @@ textarea:required {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
   display: block;
 }
@@ -845,7 +858,7 @@ textarea:required {
   width: 80vw;
   margin: auto;
   border: solid 2px #93a8ac;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 700px) {
@@ -1221,7 +1234,7 @@ footer .footer_categories {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
 }
 
@@ -1242,7 +1255,7 @@ footer .footer_categories {
       grid-template-rows: auto;
   max-width: 1200px;
   margin: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 980px) {
@@ -1433,7 +1446,8 @@ footer .footer_categories {
 .cart-container li .price {
   width: 100px;
   text-align: center;
-  margin: 40px 0px 30px;
+  margin-top: 30px;
+  padding-right: 20px;
 }
 
 @media (min-width: 600px) {
@@ -1441,6 +1455,12 @@ footer .footer_categories {
     text-align: right;
     margin: 0;
   }
+}
+
+.cart-container li .discount {
+  font-size: 12px;
+  color: red;
+  margin: 20px 0 20px;
 }
 
 .cart-container #total {

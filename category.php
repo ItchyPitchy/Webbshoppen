@@ -57,8 +57,9 @@ if (isset($_GET["category"])) {
                                         <p>Normalpris:</p>
                                         <span>$row2[price] kr</span>
                                     </li>
+                                    <li class='product-li product-li-discount'>Du sparar ". floor($row2["price"]*0.1) ." Kr (-10%)</li>
                                 </a>
-                                <button class='addToCartBtn' data-id='$row2[id]' data-image='$imgUrl' data-name='$row2[name]' data-price='" . ceil($row2["price"]*0.9) . "' data-stock='$row2[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                                <button class='addToCartBtn' data-id='$row2[id]' data-image='$imgUrl' data-name='$row2[name]' data-price='" . ceil($row2["price"]*0.9)  . "' data-discount='" . floor($row2["price"]*0.1) . "' data-stock='$row2[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
                             </ul>";
 
             } else {
@@ -69,7 +70,7 @@ if (isset($_GET["category"])) {
                                     <li class='product-li product-li-name'><h3>$row2[name]</h3></li>
                                     <li class='product-li product-li-price'>$row2[price] kr</li>
                                 </a>
-                                <button class='addToCartBtn' data-id='$row2[id]' data-image='$imgUrl' data-name='$row2[name]' data-price='$row2[price]' data-stock='$row2[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                                <button class='addToCartBtn' data-id='$row2[id]' data-image='$imgUrl' data-name='$row2[name]' data-price='$row2[price]' data-stock='$row2[stock]' data-discount='0' class='addToCartBtn'>Lägg till i varukorg</button>
                             </ul>";
             }
 

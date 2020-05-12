@@ -21,9 +21,17 @@
 .product-ul {
     .product-li-buy {
         min-width: 70%;
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
         font-size: 17px;
     }
+}
+.product-li-discount {
+    color: red;
+    font-size: 10px;
+    padding-bottom: 20px;
+}
+.product-li-price {
+    margin-bottom: 10px;
 }
 
 @media (min-width: 700px) {
