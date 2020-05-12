@@ -25,8 +25,11 @@ if ($stmt->rowcount() !== 0) {
 
     $images = [];
 
-    while ($imgRow = $selectImages->fetch(PDO::FETCH_ASSOC)) { 
-            array_push($images, $imgRow['image']);
+    if($selectImages->rowCount() == 0 ){
+        array_push($images, "no-image.png");
+    }
+    while ($imgRow =$selectImages->fetch(PDO::FETCH_ASSOC)) { 
+        array_push($images, $imgRow['image']); 
     }
         
     $productContainer = "<main>
@@ -35,7 +38,7 @@ if ($stmt->rowcount() !== 0) {
 
     foreach ($images as $value) {
         $productContainer .= "<div class='mySlides fade'>
-                            <img class='search-img' src=./images/" . $value . ">
+                            <img class='search-img' src='./images/$value'>
                          </div>";
     }
     $productContainer .= "<a class='prev'>&#10094;</a>
