@@ -87,6 +87,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       $phone = $row2['phone'];
       $street = $row2['street'];
       $city = $row2['city'];
+      $zipcode = $row2['zipcode'];
 
       $sql = "SELECT * FROM active_orders_products";
       $stmt3 = $db->prepare($sql);
@@ -139,7 +140,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $orderContainer  .=  "<ul class='order-tr order-ul first-ul' id='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street</li>
+      <li class='order-td'>$street, $zipcode</li>
       <li class='order-td' id='$orderCount" . "city'>$city</li></div>
       <div class='column-div'>
       <li class='order-td'>Ordernummer: $active_orders_id</li>
@@ -218,6 +219,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       $phone = $row2['phone'];
       $street = $row2['street'];
       $city = $row2['city'];
+      $zipcode = $row2['zipcode'];
 
       $sql = "SELECT * FROM completed_orders_products";
       $stmt3 = $db->prepare($sql);
@@ -249,7 +251,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $completedOrderContainer  .=  "<ul class='order-tr order-ul' id ='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street</li>
+      <li class='order-td'>$street, $zipcode</li>
       <li class='order-td' id='$orderCount" . "city'>$city</li></div>
       <div class='column-div'>
       <li class='order-td'>Ordernummer: $completed_orders_id</li>
