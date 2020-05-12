@@ -20,6 +20,6 @@
     <div class="side-container">
     <a href="http://localhost/Webbshoppen/adminpanel/"><h1 class="adminpanel-link">Adminpanelen</h1></a>
 
-    <a class="show-btn" href="../adminpanel">Kategorier</a>
-    <a class="show-btn" href="./orders.php">Beställningar</a>
+    <a class="show-btn" href="./categories.php">Kategorier</a>
+    <a class="show-btn" href="../adminpanel">Beställningar</a>
     </div>
