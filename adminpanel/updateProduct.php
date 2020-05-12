@@ -33,7 +33,7 @@ if ($stmt->rowcount() !== 0) {
 
     foreach ($images as $value) {
         $output .= "<li>
-                            <img class='selected-img' src=../images/" . $value . ">
+                            <img class='selected-img' src='../images/$value'>
                     </li>";
 
     }
@@ -41,7 +41,7 @@ if ($stmt->rowcount() !== 0) {
 
 
 } else {
-    header('Location:index.php');
+    header('Location:categories.php');
     exit;
 }
 
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':id', $product_id);
 
     $stmt->execute();
-    //header('Location:index.php');
+    //header('Location:categories.php');
     //exit;
     header('Location:#popup1');
 
@@ -163,7 +163,7 @@ var loadFile = function (event) {
 <?php /*
 <div class="box">
     <a class="button" href="#popup1">Let me Pop up</a>
-</div>   href="index.php"  */ 
+</div>   href="categories.php"  */ 
 ?>
 <div id="popup1" class="overlay">
     <div class="popup">
