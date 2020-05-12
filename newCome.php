@@ -28,7 +28,7 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
 
 
   $productContainer .= "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
-      <li class='product-li'><img src=$img></li>
+      <li class='product-li'><img src='$img'></li>
       <li class='product-li product-li-name'><h3>$name</h3></li>
       <li class='product-li product-li-price'>$price kr</li>
       </a>
