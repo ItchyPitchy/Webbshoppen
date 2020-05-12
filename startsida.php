@@ -16,11 +16,17 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $stmt1->execute();
 
   $saleArr = [];
-
   while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)):
-
     $saleArr[] = $row1["id"];
+  endwhile;
 
+  $sql3 = "SELECT * FROM products WHERE stock != 0 AND deleted = 0 ORDER BY create_date desc LIMIT 6";
+  $stmt3 = $db->prepare($sql3);
+  $stmt3->execute();
+
+  $newProductArr = [];
+  while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)):
+    $newProductArr[] = $row3['id'];
   endwhile;
 
   $sql2 = "SELECT image FROM product_images WHERE product_id = :product_id";
@@ -51,6 +57,17 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                               </li>
                             </a>
                             <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='" . ceil($price*0.9) . "' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                          </ul>";
+
+  } else if (in_array($row["id"], $newProductArr)) {
+
+    $productContainer .= "<ul class='product-ul'>
+                            <a href='product.php?id=$id' class='product-link'>
+                              <li class='product-li'><img src=$imgUrl></li>
+                              <li class='product-li product-li-name'><h3>$name (ny)</h3></li>
+                              <li class='product-li product-li-price'>$price kr</li>
+                            </a>
+                            <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='$price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
                           </ul>";
 
   } else {
