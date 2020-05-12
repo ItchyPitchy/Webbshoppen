@@ -26,6 +26,10 @@ if (isset($_GET['category_id'])):
         $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
         $url = "../images/$image";
 
+        if(empty($image)){
+            $url = "../images/no-image.png";
+          }
+
         $output .= "<tr class='productContainer'>
                     <td class='imgAdm'><img src='$url'></td>
 

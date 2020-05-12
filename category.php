@@ -46,6 +46,10 @@ if (isset($_GET["category"])) {
             $image = $stmt3->rowCount() ? $stmt3->fetch(PDO::FETCH_ASSOC)["image"] : "";
             $imgUrl = "./images/$image";
 
+            if(empty($image)){
+                $imgUrl = "images/no-image.png";
+              }
+
             if (in_array($row2["id"], $saleArr)) {
 
                 $output .= "<ul class='product-ul'>

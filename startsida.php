@@ -34,6 +34,10 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)['image'] : "";
   $imgUrl = "./images/$image";
 
+  if(empty($image)){
+    $imgUrl = "images/no-image.png";
+  }
+
   if (in_array($row["id"], $saleArr)) {
 
     $productContainer .= "<ul class='product-ul'>
@@ -100,6 +104,9 @@ while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
   $image = $stmt3->rowCount() !== 0 ? $stmt3->fetch(PDO::FETCH_ASSOC)['image'] : "";
   $img    = "images/$image";
 
+  if(empty($image)){
+    $img = "images/no-image.png";
+  }
 
   $productContainer2 .= "<ul class='product-ul'> <a href='product.php?id=$id' class='product-link'>
       <li class='product-li'><img src='$img'></li>
@@ -145,6 +152,10 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
   $img    = "images/$image";
   $sale_price = ceil($price*0.9);
+
+  if(empty($image)){
+    $img = "images/no-image.png";
+  }
 
   $productContainer3 .= "<ul class='product-ul'> <a href='saleProduct.php?id=$id' class='product-link'>
       <li class='product-li'><img src='$img'></li>
