@@ -129,7 +129,7 @@ function validateForm() {
     error = true;
   }
 
-  if (street.value.trim().length < 2 || street.value.trim().length > 40 || /\d/.test(street.value)) {
+  if (street.value.trim().length < 2 || street.value.trim().length > 40) {
     let alert = document.createElement("span");
     alert.classList.add("alert");
     alert.textContent = "Gatuadress måste vara mellan 2-40 tecken";
