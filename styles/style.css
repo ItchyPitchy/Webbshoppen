@@ -447,10 +447,9 @@ textarea:required {
 
 .product-li-price {
   margin-bottom: 30px;
-  padding: 1.5%;
+  padding: 5px;
   color: white;
   background-color: #424b54;
-  width: 20%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;

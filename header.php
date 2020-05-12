@@ -35,9 +35,19 @@ require_once "db.php";
   $stmt->execute();
   
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+    $sql1 = "SELECT * FROM products WHERE deleted = 0 AND stock != 0 AND category_id = :category_id";
+    $stmt1 = $db->prepare($sql1);
+    $stmt1->bindParam(":category_id", $category_id);
     $category_id = $row["category_id"];
-    $ucCategory = ucfirst($row["category"]);
-    $category_list .= "<a class='header-category-link' href='http://localhost/Webbshoppen/category.php?category=$category_id'>$ucCategory</a>";
+    $stmt1->execute();
+
+    if ($stmt1->rowCount() !== 0) {
+
+      $ucCategory = ucfirst($row["category"]);
+      $category_list .= "<a class='header-category-link' href='http://localhost/Webbshoppen/category.php?category=$category_id'>$ucCategory</a>";
+
+    }
   }
   $category_list .= "</div>";
   echo $category_list;

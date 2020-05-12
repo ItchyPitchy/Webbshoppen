@@ -3,7 +3,7 @@
 require_once "db.php";
 require_once 'header.php';
 
-$ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:index.php');
+$ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:categories.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
   
@@ -115,11 +115,11 @@ function function_alert() {
     </div>
     <div>
         <label class="labelss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number" name="stock" min="0"  class="productGroupForm" placeholder="">
+        <input id="stock" type="number" name="stock" min="0"  class="productGroupForm numberInput" placeholder="">
     </div>
     <div>
         <label class="labelss" for="price">pris:</label>
-        <input name="price" type="number" min="0" class="productGroupForm">
+        <input name="price" type="number" min="0" class="productGroupForm numberInput">
     </div>
     <div>
         <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
@@ -134,11 +134,34 @@ function function_alert() {
 
 <script type="text/javascript">
 
+const numberInputs = document.querySelectorAll(".numberInput");
+
+numberInputs.forEach(function(element) {
+    
+    element.addEventListener("keypress", function(e) {
+
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+
+    element.addEventListener("input", function(e) {
+
+        if (e.currentTarget.value.length > 10) {
+            e.currentTarget.value = e.currentTarget.value.substring(0, 10);
+        }
+    });
+});
+
 var loadFile = function (event) {   
 
     const imgUl = document.querySelector("#imgUl");
-    
-    for(i = 0; i < event.target.files.length; i++) {
+
+    if (event.target.files.length > 5) {
+        alert("ENDAST 5 BILDER FÅR LADDAS UPP")
+        document.getElementById('file').value = "";
+    } else {
+        for(i = 0; i < event.target.files.length; i++) {
         
         const li = document.createElement("li");
         
@@ -148,8 +171,10 @@ var loadFile = function (event) {
         li.appendChild(image);
         imgUl.appendChild(li);
 
+        }
+
     }
-};
+}
 
 </script>
 
@@ -170,4 +195,4 @@ var loadFile = function (event) {
     </div>
 </div>
 
-<?php require_once "./footer.php"; 
+<?php require_once "./footer.php";

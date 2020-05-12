@@ -22,6 +22,17 @@ if (isset($_GET["q"])) {
         
         endwhile;
             
+        $sql3 = "SELECT * FROM products WHERE stock != 0 AND deleted = 0 ORDER BY create_date desc LIMIT 6";
+        $stmt3 = $db->prepare($sql3);
+        $stmt3->execute();
+
+        $newProductArr = [];
+        while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)):
+
+            $newProductArr[] = $row3['id'];
+        
+        endwhile;
+
         $sql1 = "SELECT * FROM products
                 WHERE name LIKE CONCAT('%', :q, '%')
                 AND stock != 0 AND deleted = 0";
@@ -32,11 +43,16 @@ if (isset($_GET["q"])) {
         while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)):
 
             $counter++;
+
             $sql2 = "SELECT image FROM product_images WHERE product_id = :id";
             $stmt2 = $db->prepare($sql2);
             $stmt2->bindParam(":id", $row1["id"]);
             $stmt2->execute();
             $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
+
+            if(empty($image)){
+                $image = "no-image.png";
+              }
 
             if(in_array($row1['id'], $saleArr)){
 
@@ -53,6 +69,17 @@ if (isset($_GET["q"])) {
                                 </a>
                                 <button class='addToCartBtn' data-id='$row1[id]' data-image='./images/$image' data-name='$row1[name]' data-price=" . ceil($row1['price']*0.9) . "' data-discount='" . floor($row1["price"]*0.1) . "' data-stock='$row1[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
                                 </ul>";
+
+            } else if (in_array($row1["id"], $newProductArr)) {
+
+                $output .= "<ul class='product-ul'>
+                                <a href='product.php?id=$row1[id]' class='product-link'>
+                                    <li class='product-li'><img class='search-img' src='./images/$image'></li>
+                                    <li class='product-li product-li-name'><h3 class='title'>$row1[name] (ny)</h3></li>
+                                    <li class='product-li product-li-price'>$row1[price]kr</li>
+                                </a>
+                                <button class='addToCartBtn' data-id='$row1[id]' data-image='./images/$image' data-name='$row1[name]' data-price='$row1[price]' data-stock='$row1[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                            </ul>";
 
             } else {
 
