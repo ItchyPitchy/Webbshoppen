@@ -28,7 +28,6 @@ if ($stmt->rowcount() !== 0) {
     if($selectImages->rowCount() == 0 ){
         array_push($images, "no-image.png");
     }
-    // $image = $stmt2->rowCount() ? $stmt2->fetch(PDO::FETCH_ASSOC)["image"] : "";
     while ($imgRow =$selectImages->fetch(PDO::FETCH_ASSOC)) { 
         array_push($images, $imgRow['image']); 
     }
