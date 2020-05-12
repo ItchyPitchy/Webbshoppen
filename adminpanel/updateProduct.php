@@ -95,11 +95,11 @@ $thumbnails = json_encode($images);
     </div>
     <div>
         <label class="labelsss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm" placeholder="">
+        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm" placeholder="" required>
     </div>
     <div>
         <label class="labelsss" for="price">Pris:</label>
-        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm">
+        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm" required>
     </div>
 
     <div>

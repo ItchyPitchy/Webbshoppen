@@ -115,11 +115,11 @@ function function_alert() {
     </div>
     <div>
         <label class="labelss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number" name="stock" min="0"  class="productGroupForm" placeholder="">
+        <input id="stock" type="number" name="stock" min="0" class="productGroupForm" placeholder="" required>
     </div>
     <div>
         <label class="labelss" for="price">pris:</label>
-        <input name="price" type="number" min="0" class="productGroupForm">
+        <input name="price" type="number" min="0" class="productGroupForm" required>
     </div>
     <div>
         <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
