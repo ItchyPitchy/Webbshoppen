@@ -27,7 +27,7 @@ if (isset($_GET['category_id'])):
         $url = "../images/$image";
 
         $output .= "<tr class='productContainer'>
-                    <td class='imgAdm'><img src=$url></td>
+                    <td class='imgAdm'><img src='$url'></td>
 
                     <td class='admProductName'>$name</td>
 

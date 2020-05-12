@@ -26,7 +26,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
   $sale_price = ceil($price*0.9);
 
   $productContainer .= "<ul class='product-ul'> <a href='saleProduct.php?id=$id' class='product-link'>
-      <li class='product-li'><img src=$img></li>
+      <li class='product-li'><img src='$img'></li>
       <li class='product-li product-li-name'><h3>$name</h3></li>
       <li class='product-li product-li-sale'>$sale_price :- </li>
       <li class='product-li product-li-price oldPrice'>

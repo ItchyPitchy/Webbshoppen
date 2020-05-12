@@ -33,7 +33,7 @@ if ($stmt->rowcount() !== 0) {
 
     foreach ($images as $value) {
         $output .= "<li>
-                            <img class='selected-img' src=../images/" . $value . ">
+                            <img class='selected-img' src='../images/$value'>
                     </li>";
 
     }
