@@ -68,6 +68,7 @@
         align-items: center;
         border: solid 2px #93a8ac;
         margin: 20px;
+        position: relative;
 
         @media (min-width: 600px) {
             flex-direction: row;
@@ -158,18 +159,24 @@
         .price {
             width: 100px;
             text-align: center;
-            margin-top: 30px;
-            padding-right: 20px;
+            margin: 30px 0 50px;
 
             @media (min-width: 600px) {
                 text-align: right;
                 margin: 0;
+                padding-right: 20px;
             }
         }
         .discount {
             font-size: 12px;
             color: red;
             margin: 20px 0 20px;
+            position: absolute;
+            bottom: 10px;
+            @media (min-width: 600px) {
+                position: absolute;
+                right: 45px;
+            }
         }
     }
 
@@ -178,6 +185,11 @@
         // margin: 25px 10px;
         font-weight: bolder;
         text-align: center;
+    }
+
+    #disSum {
+        text-align: center;
+        color: red;
     }
 
     #dropCartBtn {

@@ -204,6 +204,13 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
+    .modalWarning {
+        text-align: center;
+    }
+    .modal-btn-container {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .modalDeleteBtn {
@@ -223,6 +230,9 @@
     font-size: 16px;
     padding: 8px;
     margin-right: 20%;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .bg-active{
@@ -297,6 +307,9 @@
             border: none;
             padding: 6px;
             font-size: 13px;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 

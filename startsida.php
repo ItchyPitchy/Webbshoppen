@@ -69,7 +69,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                               <li class='product-li product-li-name'><h3>$name (ny)</h3></li>
                               <li class='product-li product-li-price'>$price kr</li>
                             </a>
-                            <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='$price' data-stock='$row[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                            <button class='addToCartBtn' data-id='$id' data-image='$imgUrl' data-name='$name' data-price='$price' data-stock='$row[stock]' data-discount='0' class='addToCartBtn'>Lägg till i varukorg</button>
                           </ul>";
 
   } else {

@@ -78,7 +78,7 @@ if (isset($_GET["q"])) {
                                     <li class='product-li product-li-name'><h3 class='title'>$row1[name] (ny)</h3></li>
                                     <li class='product-li product-li-price'>$row1[price]kr</li>
                                 </a>
-                                <button class='addToCartBtn' data-id='$row1[id]' data-image='./images/$image' data-name='$row1[name]' data-price='$row1[price]' data-stock='$row1[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                                <button class='addToCartBtn' data-id='$row1[id]' data-image='./images/$image' data-name='$row1[name]' data-price='$row1[price]' data-stock='$row1[stock]' data-discount='0' class='addToCartBtn'>Lägg till i varukorg</button>
                             </ul>";
 
             } else {

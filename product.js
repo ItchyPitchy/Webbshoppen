@@ -60,7 +60,7 @@ function orderCheck(qty) {
     if (totalQty <= inStock) {
         product ? mergeProduct(cartArr, qty) : addProduct(cartArr, qty)
         document.querySelector("#qtyInput").value = "1"
-        document.querySelector("#header-cart").style = "fill: red;"
+        document.querySelector("#header-cart").style = "fill: aquamarine;"
     } else {
         document.querySelector("#stockAlert").classList.remove("hide")
     }

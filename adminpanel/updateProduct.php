@@ -87,7 +87,7 @@ $thumbnails = json_encode($images);
 </div>
 <div class="">
         <label class="labelsss" for="name">Produkts namn:</label>
-        <input name="name" type="text" maxlength="100" autofocus required class="updateProductGroupForm" value="<?php echo $name ?>" >
+        <input id="nameInput" name="name" type="text" maxlength="100" autofocus required class="updateProductGroupForm" value="<?php echo $name ?>" >
     </div>
     <div>
         <label class="labelsss" for="description">Beskrivning:</label>
@@ -95,11 +95,11 @@ $thumbnails = json_encode($images);
     </div>
     <div>
         <label class="labelsss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm numberInput" placeholder="">
+        <input id="stock" type="number"value="<?php echo $stock ?>" name="stock" min="0"  class="updateProductGroupForm numberInput" placeholder="" required>
     </div>
     <div>
         <label class="labelsss" for="price">Pris:</label>
-        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm numberInput">
+        <input name="price" type="number"value="<?php echo $price ?>" min="0" class="updateProductGroupForm numberInput" required>
     </div>
 
     <div>
@@ -149,6 +149,13 @@ numberInputs.forEach(function(element) {
             e.currentTarget.value = e.currentTarget.value.substring(0, 10);
         }
     });
+});
+
+document.querySelector("#nameInput").addEventListener("input", function(e) {
+
+    if (e.currentTarget.value.trim().length === 0) {
+        e.currentTarget.value = e.currentTarget.value.trim();
+    }
 });
 
 var loadFile = function (event) {   

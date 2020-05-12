@@ -107,7 +107,7 @@ function function_alert() {
 </div>
 <div class="">
         <label class="labelss" for="name">Produkts namn:</label>
-        <input name="name" type="text" maxlength="100" autofocus required class="productGroupForm" >
+        <input id="nameInput" name="name" type="text" maxlength="100" autofocus required class="productGroupForm">
     </div>
     <div>
         <label class="labelss" for="description">Beskrivning:</label>
@@ -115,11 +115,11 @@ function function_alert() {
     </div>
     <div>
         <label class="labelss" for="stock">Antal i lager:</label>
-        <input id="stock" type="number" name="stock" min="0"  class="productGroupForm numberInput" placeholder="">
+        <input id="stock" type="number" name="stock" min="0"  class="productGroupForm numberInput" placeholder="" required>
     </div>
     <div>
         <label class="labelss" for="price">pris:</label>
-        <input name="price" type="number" min="0" class="productGroupForm numberInput">
+        <input name="price" type="number" min="0" class="productGroupForm numberInput" required>
     </div>
     <div>
         <label class="labelss" for="image">Ladda upp bilder på produkten! (MAX 5)</label>
@@ -151,6 +151,13 @@ numberInputs.forEach(function(element) {
             e.currentTarget.value = e.currentTarget.value.substring(0, 10);
         }
     });
+});
+
+document.querySelector("#nameInput").addEventListener("input", function(e) {
+
+    if (e.currentTarget.value.trim().length === 0) {
+        e.currentTarget.value = e.currentTarget.value.trim();
+    }
 });
 
 var loadFile = function (event) {   

@@ -516,6 +516,7 @@ select {
   width: 100%;
   margin-top: 20px;
   resize: none;
+  font-size: 16px;
 }
 
 @media (min-width: 900px) {
@@ -749,6 +750,7 @@ li {
   width: 100%;
   margin-top: 20px;
   resize: none;
+  font-size: 16px;
 }
 
 @media (min-width: 900px) {
@@ -1123,6 +1125,19 @@ li {
   transition: visibility 0s, opacity 0.5s;
 }
 
+.modal-bg .modalWarning {
+  text-align: center;
+}
+
+.modal-bg .modal-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .modalDeleteBtn {
   padding: 8px;
   background: #bb2124;
@@ -1140,6 +1155,10 @@ li {
   font-size: 16px;
   padding: 8px;
   margin-right: 20%;
+}
+
+.cancelModal:hover {
+  cursor: pointer;
 }
 
 .bg-active {
@@ -1222,6 +1241,9 @@ li {
     border: none;
     padding: 6px;
     font-size: 13px;
+  }
+  .admDeleteTd .admDeleteBtn:hover {
+    cursor: pointer;
   }
   .admUpdateTd {
     padding: 10px;

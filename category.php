@@ -81,7 +81,7 @@ if (isset($_GET["category"])) {
                                     <li class='product-li product-li-name'><h3>$row2[name] (ny)</h3></li>
                                     <li class='product-li product-li-price'>$row2[price] kr</li>
                                 </a>
-                                <button class='addToCartBtn' data-id='$row2[id]' data-image='$imgUrl' data-name='$row2[name]' data-price='$row2[price]' data-stock='$row2[stock]' class='addToCartBtn'>Lägg till i varukorg</button>
+                                <button class='addToCartBtn' data-id='$row2[id]' data-image='$imgUrl' data-name='$row2[name]' data-price='$row2[price]' data-stock='$row2[stock]' data-discount='0' class='addToCartBtn'>Lägg till i varukorg</button>
                             </ul>";
 
             } else {

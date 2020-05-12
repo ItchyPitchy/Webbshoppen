@@ -89,7 +89,7 @@ if (
 }
 
 function validateLetters(inputText) {
-  var letters = /^[a-öA-Ö]+$/;
+  var letters = /^[a-öA-Ö\s]+$/;
   if (inputText.value.match(letters)) {
     return true;
   } else {

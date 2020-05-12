@@ -36,12 +36,22 @@ if (isset($_GET['category_id'])):
                     <td class='admProductName'>$name</td>
 
                     <td class='admUpdateTd'>
-                        <a class='admUpdateBtn' href='updateProduct.php?id=$id'>Redigera </a>
+                        <a class='admUpdateBtn' href='updateProduct.php?id=$id'>Redigera</a>
                     </td>
 
                     <td class='admDeleteTd'>
-                        <a class='admDeleteBtn' href='./deleteProduct.php?id=$id'>Radera</a>
+                        <a name='modalDeleteBtn' class='admDeleteBtn' id='button$id'>Radera</a>
                     </td>
+                    <div class='modal-bg' id='button$id'>
+                        <div class='modal'>
+                            <h2 class='modalWarning'>Vill du ta bort produkt?</h2>
+                            <div class='modal-btn-container'>
+                                <button name='closeModal' class='cancelModal' id= '$id'>Avbryt</button>
+                                <a class='modalDeleteBtn' href='deleteProduct.php?id=$id'> Ta bort </a>
+                                <span name='closeModal' class='modal-close'>X</span>
+                            </div>
+                        </div>
+                    </div>
                 </tr>";
     endwhile;
 

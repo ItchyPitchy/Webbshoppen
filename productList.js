@@ -42,7 +42,7 @@ function orderCheck(btn) {
             element.textContent = "Produkten är tillagd"
         })
 
-        document.querySelector("#header-cart").style = "fill: red;"
+        document.querySelector("#header-cart").style = "fill: aquamarine;"
     }
 }
 

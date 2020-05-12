@@ -8,11 +8,11 @@ require_once "header.php";
 <div class="main-container">
       <h2 class="admin_h2">Beställningar</h2>
       <p class="filtrera-p">Filtrera beställningar</p>
-          <div class="search-form" >
+          <form class="search-form" action="" method="post">
             <label for="search">Sök ort:</label>
         <input class="search-input" type="text" name="search" />
 
-    </div>
+    </form>
 
   
     <div class="radio-div">
@@ -87,7 +87,6 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       $phone = $row2['phone'];
       $street = $row2['street'];
       $city = $row2['city'];
-      $zipcode = $row2['zipcode'];
 
       $sql = "SELECT * FROM active_orders_products";
       $stmt3 = $db->prepare($sql);
@@ -116,7 +115,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
   
   if ($status == 0) {
-    $statusform = "<form action='orders.php?id=$active_orders_id' method='POST'>
+    $statusform = "<form action='index.php?id=$active_orders_id' method='POST'>
     <select class='orderstatus-select' id='$orderCount" . "select' name='status'>
     <option name='option' selected='selected' value='0'>Ny</option>
     <option name='option' value='1'>Behandlas</option>
@@ -126,7 +125,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     <input type='submit' value='Uppdatera' class='statusBtn'></form>";
   }
   else {
-    $statusform =  "<form action='orders.php?id=$active_orders_id' method='POST'>
+    $statusform =  "<form action='index.php?id=$active_orders_id' method='POST'>
     <select class='orderstatus-select' id='$orderCount" . "select' name='status'>
     <option name='option' value='0'>Ny</option>
     <option name='option' selected='selected' value='1'>Behandlas</option>
@@ -140,7 +139,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $orderContainer  .=  "<ul class='order-tr order-ul first-ul' id='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street, $zipcode</li>
+      <li class='order-td'>$street</li>
       <li class='order-td' id='$orderCount" . "city'>$city</li></div>
       <div class='column-div'>
       <li class='order-td'>Ordernummer: $active_orders_id</li>
@@ -219,7 +218,6 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       $phone = $row2['phone'];
       $street = $row2['street'];
       $city = $row2['city'];
-      $zipcode = $row2['zipcode'];
 
       $sql = "SELECT * FROM completed_orders_products";
       $stmt3 = $db->prepare($sql);
@@ -251,7 +249,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $completedOrderContainer  .=  "<ul class='order-tr order-ul' id ='$orderCount" . "ul'>
       <div class='column-div'><li class='order-td'>$name</li>
       <li class='order-td'>$phone</td>
-      <li class='order-td'>$street, $zipcode</li>
+      <li class='order-td'>$street</li>
       <li class='order-td' id='$orderCount" . "city'>$city</li></div>
       <div class='column-div'>
       <li class='order-td'>Ordernummer: $completed_orders_id</li>
@@ -366,7 +364,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
    $stmt->execute();
   }
-  echo "<script type='text/javascript'>location.href = 'orders.php'    ; </script>";
+  echo "<script type='text/javascript'>location.href = 'index.php'    ; </script>";
   exit;
 
 }
@@ -376,6 +374,3 @@ require_once "footer.php";
 ?>
 
 <script src="orders.js"></script>
-
-
-

@@ -428,7 +428,7 @@ textarea:required {
 
 .product-li-name {
   font-size: 11px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: gray;
   padding-bottom: 20px;
 }
@@ -657,7 +657,7 @@ textarea:required {
 
 .productName {
   margin-bottom: 20px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 750px) {
@@ -807,7 +807,7 @@ textarea:required {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
   display: block;
 }
@@ -857,7 +857,7 @@ textarea:required {
   width: 80vw;
   margin: auto;
   border: solid 2px #93a8ac;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 700px) {
@@ -1233,7 +1233,7 @@ footer .footer_categories {
   margin: 0px;
   padding-left: 15px;
   font-size: 28px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: lighter;
 }
 
@@ -1254,7 +1254,7 @@ footer .footer_categories {
       grid-template-rows: auto;
   max-width: 1200px;
   margin: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 @media (min-width: 980px) {
@@ -1306,6 +1306,7 @@ footer .footer_categories {
           align-items: center;
   border: solid 2px #93a8ac;
   margin: 20px;
+  position: relative;
 }
 
 @media (min-width: 600px) {
@@ -1445,14 +1446,14 @@ footer .footer_categories {
 .cart-container li .price {
   width: 100px;
   text-align: center;
-  margin-top: 30px;
-  padding-right: 20px;
+  margin: 30px 0 50px;
 }
 
 @media (min-width: 600px) {
   .cart-container li .price {
     text-align: right;
     margin: 0;
+    padding-right: 20px;
   }
 }
 
@@ -1460,12 +1461,26 @@ footer .footer_categories {
   font-size: 12px;
   color: red;
   margin: 20px 0 20px;
+  position: absolute;
+  bottom: 10px;
+}
+
+@media (min-width: 600px) {
+  .cart-container li .discount {
+    position: absolute;
+    right: 45px;
+  }
 }
 
 .cart-container #total {
   display: block;
   font-weight: bolder;
   text-align: center;
+}
+
+.cart-container #disSum {
+  text-align: center;
+  color: red;
 }
 
 .cart-container #dropCartBtn {
