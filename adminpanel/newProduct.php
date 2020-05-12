@@ -3,7 +3,7 @@
 require_once "db.php";
 require_once 'header.php';
 
-$ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:index.php');
+$ids = isset($_GET['category_id']) ? $_GET['category_id'] : header('Location:categories.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
   
@@ -156,8 +156,12 @@ numberInputs.forEach(function(element) {
 var loadFile = function (event) {   
 
     const imgUl = document.querySelector("#imgUl");
-    
-    for(i = 0; i < event.target.files.length; i++) {
+
+    if (event.target.files.length > 5) {
+        alert("ENDAST 5 BILDER FÅR LADDAS UPP")
+        document.getElementById('file').value = "";
+    } else {
+        for(i = 0; i < event.target.files.length; i++) {
         
         const li = document.createElement("li");
         
@@ -166,6 +170,8 @@ var loadFile = function (event) {
         image.src = URL.createObjectURL(event.target.files[i]);
         li.appendChild(image);
         imgUl.appendChild(li);
+
+        }
 
     }
 }
