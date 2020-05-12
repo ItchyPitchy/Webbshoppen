@@ -8,11 +8,11 @@ require_once "header.php";
 <div class="main-container">
       <h2 class="admin_h2">Beställningar</h2>
       <p class="filtrera-p">Filtrera beställningar</p>
-          <form class="search-form" action="" method="post">
+          <div class="search-form" >
             <label for="search">Sök ort:</label>
         <input class="search-input" type="text" name="search" />
 
-    </form>
+    </div>
 
   
     <div class="radio-div">
